@@ -1,6 +1,5 @@
 [project]
 name = "sonyci"
-version = "0.0.1"
 description = "A Sony Ci api client"
 authors = [{ name = "WGBH-MLA", email = "ryan_harbert@wgbh.org" }]
 dependencies = ["pydantic>=2.0a3", "requests-oauth2client>=1.1.0"]
@@ -9,6 +8,8 @@ readme = "README.md"
 license = { text = "MIT" }
 dynamic = ["version"]
 
+[project.scripts]
+ci = "sonyci.__main__:app"
 
 [project.optional-dependencies]
 test = [
@@ -19,6 +20,7 @@ test = [
     "pytest-sugar>=0.9.7",
     "pytest-xdist>=3.2.1",
 ]
+cli = ["typer[all]>=0.7.0"]
 
 [build-system]
 requires = ["pdm-backend"]
@@ -59,3 +61,4 @@ select = [
     "W", # pycodestyle warnings
 
 ]
+ignore = ["B008"]
