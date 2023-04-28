@@ -1,0 +1,21 @@
+[project]
+name = "sonyci"
+version = "0.0.1"
+description = "A Sony Ci api client"
+authors = [{ name = "WGBH-MLA", email = "ryan_harbert@wgbh.org" }]
+dependencies = ["pydantic>=2.0a3", "requests-oauth2client>=1.1.0"]
+requires-python = ">=3.8.1"
+readme = "README.md"
+license = { text = "MIT" }
+
+[project.optional-dependencies]
+test = ["pytest>=7.3.1", "vcrpy>=4.2.1", "pytest-vcr>=1.0.2"]
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.pdm]
