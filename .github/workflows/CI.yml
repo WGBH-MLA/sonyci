@@ -1,0 +1,18 @@
+name: 🧪 Integration Tests
+
+on: [push, pull_request]
+
+jobs:
+  tests:
+    name: ⚗️ Application Tests
+    uses: WGBH-MLA/.github/.github/workflows/pytest.yml@main
+    with:
+      pytest_args: -n auto
+
+  lint:
+    name: 👕 Lint
+    uses: WGBH-MLA/.github/.github/workflows/lint.yml@main
+
+  black:
+    name: 🖤 Black
+    uses: WGBH-MLA/.github/.github/workflows/black.yml@main
