@@ -1,0 +1,10 @@
+name: 📦 Release
+
+on:
+  milestone:
+    types: [closed]
+
+jobs:
+  release:
+    name: 📝 Draft Release
+    uses: WGBH-MLA/.github/.github/workflows/draft_release.yml@main

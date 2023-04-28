@@ -1,0 +1,12 @@
+name: 🛍 Update dependencies
+# On Wednesdays, we update our dependencies.
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 12 * * 3
+
+jobs:
+  update:
+    name: 🦿 Update dependencies
+    uses: WGBH-MLA/.github/.github/workflows/update.yml@main

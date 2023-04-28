@@ -27,7 +27,7 @@ requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
 [tool.pdm]
-version = { source = "file", path = "chowda/_version.py" }
+version = { source = "file", path = "sonyci/_version.py" }
 
 [tool.pdm.dev-dependencies]
 dev = ["ruff>=0.0.263", "black>=23.3.0"]
