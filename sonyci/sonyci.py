@@ -6,10 +6,15 @@ from requests_oauth2client import ApiClient, OAuth2Client
 from requests_oauth2client.auth import OAuth2AccessTokenAuth
 from requests_oauth2client.tokens import BearerToken
 
+from sonyci.log import log
+
+BASE_URL = 'https://api.cimediacloud.com/'
+TOKEN_URL = 'https://api.cimediacloud.com/oauth2/token'
+
 
 class SonyCi(BaseModel):
-    base_url: str = 'https://api.cimediacloud.com/'
-    token_url: str = 'https://api.cimediacloud.com/oauth2/token'
+    base_url: str = BASE_URL
+    token_url: str = TOKEN_URL
     username: str
     password: str
     client_id: str
@@ -38,18 +43,31 @@ class SonyCi(BaseModel):
 
     @cached_property
     def token(self) -> BearerToken:
-        response = post(
-            self.token_url,
-            auth=(self.username, self.password),
-            data={
-                'grant_type': 'password',
-                'client_id': self.client_id,
-                'client_secret': self.client_secret,
-            },
+        return get_token(
+            self.username, self.password, self.client_id, self.client_secret
         )
-        assert response.status_code == 200, 'Token did not return 200'
-        return BearerToken(**response.json())
 
     @property
     def workspace(self):
         return f'workspaces/{self.workspace_id}'
+
+
+def get_token(
+    username: str,
+    password: str,
+    client_id: str,
+    client_secret: str,
+    token_url: str = TOKEN_URL,
+) -> BearerToken:
+    response = post(
+        token_url,
+        auth=(username, password),
+        data={
+            'grant_type': 'password',
+            'client_id': client_id,
+            'client_secret': client_secret,
+        },
+    )
+    log.debug(f'token response status: {response.status_code}')
+    assert response.status_code == 200, 'Token did not return 200'
+    return BearerToken(**response.json())
