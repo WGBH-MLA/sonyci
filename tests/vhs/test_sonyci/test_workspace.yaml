@@ -1,0 +1,48 @@
+interactions:
+  - request:
+      body: null
+      headers:
+        Accept:
+          - '*/*'
+        Accept-Encoding:
+          - gzip, deflate, br
+        Connection:
+          - keep-alive
+        User-Agent:
+          - python-requests/2.29.0
+        authorization:
+          - DUMMY
+      method: GET
+      uri: https://api.cimediacloud.com/workspaces/051303c1c1d24da7988128e6d2f56aa9
+    response:
+      body:
+        string: '{"name":"American Archive of Public Broadcasting","id":"051303c1c1d24da7988128e6d2f56aa9"}'
+      headers:
+        Cache-Control:
+          - no-cache
+        Connection:
+          - keep-alive
+        Content-Length:
+          - '4458'
+        Content-Type:
+          - application/json; charset=utf-8
+        Date:
+          - Thu, 27 Apr 2023 18:35:03 GMT
+        Expires:
+          - '-1'
+        Pragma:
+          - no-cache
+        Strict-Transport-Security:
+          - max-age=86400; includeSubDomains
+        X-Frame-Options:
+          - deny
+        X-RateLimit-Limit:
+          - '5000'
+        X-RateLimit-Remaining:
+          - '4985'
+        X-RateLimit-Reset:
+          - '1682620560'
+      status:
+        code: 200
+        message: OK
+version: 1
