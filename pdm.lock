@@ -134,6 +134,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "markdown-it-py"
+version = "2.2.0"
+requires_python = ">=3.7"
+summary = "Python port of markdown-it. Markdown parsing, done right!"
+dependencies = [
+    "mdurl~=0.1",
+    "typing-extensions>=3.7.4; python_version < \"3.8\"",
+]
+
+[[package]]
+name = "mdurl"
+version = "0.1.2"
+requires_python = ">=3.7"
+summary = "Markdown URL utilities"
+
+[[package]]
 name = "mypy-extensions"
 version = "1.0.0"
 requires_python = ">=3.5"
@@ -195,6 +211,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "pygments"
+version = "2.15.1"
+requires_python = ">=3.7"
+summary = "Pygments is a syntax highlighting package written in Python."
+
+[[package]]
 name = "requests"
 version = "2.29.0"
 requires_python = ">=3.7"
@@ -216,6 +238,17 @@ dependencies = [
     "furl>=2.1.2",
     "jwskate<0.4.0,>=0.3.0",
     "requests>=2.19.0",
+]
+
+[[package]]
+name = "rich"
+version = "13.3.5"
+requires_python = ">=3.7.0"
+summary = "Render rich text, tables, progress bars, syntax highlighting, markdown and more to the terminal"
+dependencies = [
+    "markdown-it-py<3.0.0,>=2.2.0",
+    "pygments<3.0.0,>=2.13.0",
+    "typing-extensions<5.0,>=4.0.0; python_version < \"3.9\"",
 ]
 
 [[package]]
@@ -269,7 +302,7 @@ summary = "Backport of pathlib-compatible object wrapper for zip files"
 [metadata]
 lock_version = "4.2"
 groups = ["default", "dev"]
-content_hash = "sha256:7a29596866eda596e67a8d994cf05eb38fad09438ffd1c193470c35e93ba91bc"
+content_hash = "sha256:3563c6098e40e5e0b02c0121b63a079f2209cf1aa2151e54b69edd9f86cfafef"
 
 [metadata.files]
 "annotated-types 0.4.0" = [
@@ -507,6 +540,14 @@ content_hash = "sha256:7a29596866eda596e67a8d994cf05eb38fad09438ffd1c193470c35e9
     {url = "https://files.pythonhosted.org/packages/0c/1d/697cbb4ae54217784c1c4805696efb2fd7a1cbbe4827264a80a49e52b828/loguru-0.7.0.tar.gz", hash = "sha256:1612053ced6ae84d7959dd7d5e431a0532642237ec21f7fd83ac73fe539e03e1"},
     {url = "https://files.pythonhosted.org/packages/71/bd/337f7a0cd2628c4c77512d78e26f93b13c327a2ddf2132001dd78c000bf4/loguru-0.7.0-py3-none-any.whl", hash = "sha256:b93aa30099fa6860d4727f1b81f8718e965bb96253fa190fab2077aaad6d15d3"},
 ]
+"markdown-it-py 2.2.0" = [
+    {url = "https://files.pythonhosted.org/packages/bf/25/2d88e8feee8e055d015343f9b86e370a1ccbec546f2865c98397aaef24af/markdown_it_py-2.2.0-py3-none-any.whl", hash = "sha256:5a35f8d1870171d9acc47b99612dc146129b631baf04970128b568f190d0cc30"},
+    {url = "https://files.pythonhosted.org/packages/e4/c0/59bd6d0571986f72899288a95d9d6178d0eebd70b6650f1bb3f0da90f8f7/markdown-it-py-2.2.0.tar.gz", hash = "sha256:7c9a5e412688bc771c67432cbfebcdd686c93ce6484913dccf06cb5a0bea35a1"},
+]
+"mdurl 0.1.2" = [
+    {url = "https://files.pythonhosted.org/packages/b3/38/89ba8ad64ae25be8de66a6d463314cf1eb366222074cfda9ee839c56a4b4/mdurl-0.1.2-py3-none-any.whl", hash = "sha256:84008a41e51615a49fc9966191ff91509e3c40b939176e643fd50a5c2196b8f8"},
+    {url = "https://files.pythonhosted.org/packages/d6/54/cfe61301667036ec958cb99bd3efefba235e65cdeb9c84d24a8293ba1d90/mdurl-0.1.2.tar.gz", hash = "sha256:bb413d29f5eea38f31dd4754dd7377d4465116fb207585f97bf925588687c1ba"},
+]
 "mypy-extensions 1.0.0" = [
     {url = "https://files.pythonhosted.org/packages/2a/e2/5d3f6ada4297caebe1a2add3b126fe800c96f56dbe5d1988a2cbe0b267aa/mypy_extensions-1.0.0-py3-none-any.whl", hash = "sha256:4392f6c0eb8a5668a69e23d168ffa70f0be9ccfd32b5cc2d26a34ae5b844552d"},
     {url = "https://files.pythonhosted.org/packages/98/a4/1ab47638b92648243faf97a5aeb6ea83059cc3624972ab6b8d2316078d3f/mypy_extensions-1.0.0.tar.gz", hash = "sha256:75dbf8955dc00442a438fc4d0666508a9a97b6bd41aa2f0ffe9d2f2725af0782"},
@@ -618,6 +659,10 @@ content_hash = "sha256:7a29596866eda596e67a8d994cf05eb38fad09438ffd1c193470c35e9
     {url = "https://files.pythonhosted.org/packages/fa/a9/46aca6b4c6b1ec13b9308a377019d12c53d243828255433f21e3059a22a2/pydantic_core-0.25.0-cp311-cp311-manylinux_2_5_i686.manylinux1_i686.whl", hash = "sha256:9b5d094ad5728454e14115fed93766ae5ab89aacc218d4c641eb148bfdf0b555"},
     {url = "https://files.pythonhosted.org/packages/fe/ee/2be26bb61d2409e6dafe4e13edf17d64489359e3deacc59ee41b8164e42f/pydantic_core-0.25.0-cp38-none-win32.whl", hash = "sha256:58b65440b8149439f541910a71c0ccf23c388553b9539c25ebebaa95759c4017"},
 ]
+"pygments 2.15.1" = [
+    {url = "https://files.pythonhosted.org/packages/34/a7/37c8d68532ba71549db4212cb036dbd6161b40e463aba336770e80c72f84/Pygments-2.15.1-py3-none-any.whl", hash = "sha256:db2db3deb4b4179f399a09054b023b6a586b76499d36965813c71aa8ed7b5fd1"},
+    {url = "https://files.pythonhosted.org/packages/89/6b/2114e54b290824197006e41be3f9bbe1a26e9c39d1f5fa20a6d62945a0b3/Pygments-2.15.1.tar.gz", hash = "sha256:8ace4d3c1dd481894b2005f560ead0f9f19ee64fe983366be1a21e171d12775c"},
+]
 "requests 2.29.0" = [
     {url = "https://files.pythonhosted.org/packages/4c/d2/70fc708727b62d55bc24e43cc85f073039023212d482553d853c44e57bdb/requests-2.29.0.tar.gz", hash = "sha256:f2e34a75f4749019bb0e3effb66683630e4ffeaf75819fb51bebef1bf5aef059"},
     {url = "https://files.pythonhosted.org/packages/cf/e1/2aa539876d9ed0ddc95882451deb57cfd7aa8dbf0b8dbce68e045549ba56/requests-2.29.0-py3-none-any.whl", hash = "sha256:e8f3c9be120d3333921d213eef078af392fba3933ab7ed2d1cba3b56f2568c3b"},
@@ -625,6 +670,10 @@ content_hash = "sha256:7a29596866eda596e67a8d994cf05eb38fad09438ffd1c193470c35e9
 "requests-oauth2client 1.1.0" = [
     {url = "https://files.pythonhosted.org/packages/14/1d/9d8996e3511b3adbbe88eb251aec76467afaa5a854b057b6a215cd609543/requests_oauth2client-1.1.0-py3-none-any.whl", hash = "sha256:1fc0868dfa27096f92a7b912862327185ac3d8d858132f9a4fcc68fb1daf2825"},
     {url = "https://files.pythonhosted.org/packages/17/e8/e769626b2627c5a6da2b0392137e3e3af47040f90638564dbef5ab21fa4d/requests_oauth2client-1.1.0.tar.gz", hash = "sha256:2a514c024e7dad1077610a7c5a484aefbc435070dc1fc7bb2442fe88664edd90"},
+]
+"rich 13.3.5" = [
+    {url = "https://files.pythonhosted.org/packages/39/03/6de23bdd88f5ee7f8b03f94f6e88108f5d7ffe6d207e95cdb06d9aa4cd57/rich-13.3.5-py3-none-any.whl", hash = "sha256:69cdf53799e63f38b95b9bf9c875f8c90e78dd62b2f00c13a911c7a3b9fa4704"},
+    {url = "https://files.pythonhosted.org/packages/3d/0b/8dd34d20929c4b5e474db2e64426175469c2b7fea5ba71c6d4b3397a9729/rich-13.3.5.tar.gz", hash = "sha256:2d11b9b8dd03868f09b4fffadc84a6a8cda574e40dc90821bd845720ebb8e89c"},
 ]
 "ruff 0.0.263" = [
     {url = "https://files.pythonhosted.org/packages/08/01/e553109ab71bcef7dbf994b7c935f683857cdd7cef8353a76d6fad962014/ruff-0.0.263-py3-none-win_arm64.whl", hash = "sha256:ddf4503595b560bfa5fae92fa2e4cb09ec465ee4cf88cc248f10ad2e956deec3"},
