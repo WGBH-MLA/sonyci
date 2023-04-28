@@ -4,9 +4,11 @@ version = "0.0.1"
 description = "A Sony Ci api client"
 authors = [{ name = "WGBH-MLA", email = "ryan_harbert@wgbh.org" }]
 dependencies = ["pydantic>=2.0a3", "requests-oauth2client>=1.1.0"]
-requires-python = ">=3.8.1"
+requires-python = ">=3.7"
 readme = "README.md"
 license = { text = "MIT" }
+dynamic = ["version"]
+
 
 [project.optional-dependencies]
 test = [
@@ -22,11 +24,14 @@ test = [
 requires = ["pdm-backend"]
 build-backend = "pdm.backend"
 
-[tool.pytest.ini_options]
-testpaths = ["tests"]
+[tool.pdm]
+version = { source = "file", path = "chowda/_version.py" }
 
 [tool.pdm.dev-dependencies]
 dev = ["ruff>=0.0.263", "black>=23.3.0"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
 
 [tool.ruff.flake8-quotes]
 inline-quotes = "single"

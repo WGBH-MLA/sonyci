@@ -1,3 +1,4 @@
-from sonyci.sonyci import SonyCi
+from ._version import __version__
+from .sonyci import SonyCi
 
-__all__ = ['SonyCi']
+__all__ = ['__version__', 'SonyCi']
