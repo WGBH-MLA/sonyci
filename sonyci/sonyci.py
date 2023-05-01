@@ -9,9 +9,6 @@ from sonyci.config import BASE_URL, TOKEN_URL
 from sonyci.utils import get_token
 
 
-
-
-
 class SonyCi(BaseModel):
     base_url: str = BASE_URL
     token_url: str = TOKEN_URL
