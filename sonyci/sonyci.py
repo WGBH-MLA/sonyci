@@ -1,24 +1,24 @@
 from functools import cached_property
 
 from pydantic import BaseModel
-from requests import post
 from requests_oauth2client import ApiClient, OAuth2Client
 from requests_oauth2client.auth import OAuth2AccessTokenAuth
 from requests_oauth2client.tokens import BearerToken
 
-from sonyci.log import log
+from sonyci.config import BASE_URL, TOKEN_URL
+from sonyci.utils import get_token
 
-BASE_URL = 'https://api.cimediacloud.com/'
-TOKEN_URL = 'https://api.cimediacloud.com/oauth2/token'
+
+
 
 
 class SonyCi(BaseModel):
     base_url: str = BASE_URL
     token_url: str = TOKEN_URL
-    username: str
-    password: str
-    client_id: str
-    client_secret: str
+    username: str | None = None
+    password: str | None = None
+    client_id: str | None = None
+    client_secret: str | None = None
     workspace_id: str | None = None
 
     @cached_property
@@ -48,26 +48,5 @@ class SonyCi(BaseModel):
         )
 
     @property
-    def workspace(self):
+    def workspace(self) -> str:
         return f'workspaces/{self.workspace_id}'
-
-
-def get_token(
-    username: str,
-    password: str,
-    client_id: str,
-    client_secret: str,
-    token_url: str = TOKEN_URL,
-) -> BearerToken:
-    response = post(
-        token_url,
-        auth=(username, password),
-        data={
-            'grant_type': 'password',
-            'client_id': client_id,
-            'client_secret': client_secret,
-        },
-    )
-    log.debug(f'token response status: {response.status_code}')
-    assert response.status_code == 200, 'Token did not return 200'
-    return BearerToken(**response.json())
