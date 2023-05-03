@@ -9,7 +9,7 @@ from sonyci.config import BASE_URL, TOKEN_URL
 from sonyci.utils import get_token
 
 
-class SonyCi(BaseModel):
+class SonyCi(BaseModel, extra='allow'):
     base_url: str = BASE_URL
     token_url: str = TOKEN_URL
     username: str | None = None
@@ -31,18 +31,18 @@ class SonyCi(BaseModel):
         )
 
     @cached_property
+    def token(self) -> BearerToken:
+        return get_token(
+            self.username, self.password, self.client_id, self.client_secret
+        )
+
+    @cached_property
     def auth(self) -> OAuth2AccessTokenAuth:
         return OAuth2AccessTokenAuth(client=self.oauth, token=self.token)
 
     @cached_property
     def client(self) -> ApiClient:
         return ApiClient(self.base_url, auth=self.auth)
-
-    @cached_property
-    def token(self) -> BearerToken:
-        return get_token(
-            self.username, self.password, self.client_id, self.client_secret
-        )
 
     @property
     def workspace(self) -> str:
