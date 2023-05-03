@@ -3,10 +3,10 @@ name = "sonyci"
 description = "A Sony Ci api client"
 authors = [{ name = "WGBH-MLA", email = "ryan_harbert@wgbh.org" }]
 dependencies = [
-    "pydantic>=2.0a3",
-    "requests-oauth2client>=1.1.0",
-    "loguru>=0.7.0",
-    "rich>=13.3.5",
+    "pydantic~=2.0a3",
+    "requests-oauth2client~=1.1",
+    "loguru~=0.7",
+    "rich~=13.3",
 ]
 requires-python = ">=3.7"
 readme = "README.md"
@@ -35,7 +35,10 @@ build-backend = "pdm.backend"
 version = { source = "file", path = "sonyci/_version.py" }
 
 [tool.pdm.dev-dependencies]
-dev = ["ruff>=0.0.263", "black>=23.3.0"]
+dev = [
+    "ruff~=0.0",
+    "black~=23.3",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
