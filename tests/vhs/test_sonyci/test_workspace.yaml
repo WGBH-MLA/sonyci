@@ -1,17 +1,61 @@
 interactions:
   - request:
+      body: grant_type=password&client_id=FAKE_CLIENT_ID&client_secret=FAKE_CLIENT_SECRET
+      headers:
+        Accept:
+          - '*/*'
+        Accept-Encoding:
+          - gzip, deflate
+        Connection:
+          - keep-alive
+        Content-Length:
+          - '109'
+        Content-Type:
+          - application/x-www-form-urlencoded
+        User-Agent:
+          - python-requests/2.29.0
+        authorization:
+          - Bearer DUMMY
+      method: POST
+      uri: https://api.cimediacloud.com/oauth2/token
+    response:
+      body:
+        string: '{"access_token":"FAKE_ACCESS_TOKEN","expires_in":86400,"token_type":"bearer","refresh_token":"FAKE_REFRESH_TOKEN"}'
+      headers:
+        Cache-Control:
+          - no-cache
+        Connection:
+          - keep-alive
+        Content-Length:
+          - '143'
+        Content-Type:
+          - application/json; charset=utf-8
+        Date:
+          - Wed, 03 May 2023 20:12:18 GMT
+        Expires:
+          - '-1'
+        Pragma:
+          - no-cache
+        Strict-Transport-Security:
+          - max-age=86400; includeSubDomains
+        X-Frame-Options:
+          - deny
+      status:
+        code: 200
+        message: OK
+  - request:
       body: null
       headers:
         Accept:
           - '*/*'
         Accept-Encoding:
-          - gzip, deflate, br
+          - gzip, deflate
         Connection:
           - keep-alive
         User-Agent:
           - python-requests/2.29.0
         authorization:
-          - DUMMY
+          - Bearer DUMMY
       method: GET
       uri: https://api.cimediacloud.com/workspaces/051303c1c1d24da7988128e6d2f56aa9
     response:
@@ -23,11 +67,11 @@ interactions:
         Connection:
           - keep-alive
         Content-Length:
-          - '4458'
+          - '4461'
         Content-Type:
           - application/json; charset=utf-8
         Date:
-          - Thu, 27 Apr 2023 18:35:03 GMT
+          - Wed, 03 May 2023 20:12:19 GMT
         Expires:
           - '-1'
         Pragma:
@@ -39,9 +83,9 @@ interactions:
         X-RateLimit-Limit:
           - '5000'
         X-RateLimit-Remaining:
-          - '4985'
+          - '4987'
         X-RateLimit-Reset:
-          - '1682620560'
+          - '1683144780'
       status:
         code: 200
         message: OK
