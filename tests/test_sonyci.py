@@ -10,7 +10,7 @@ def ci():
         password='password',
         client_id='client_id',
         client_secret='client_secret',
-        workspace_id='051303c1c1d24da7988128e6d2f56aa9',
+        workspace_id='f44132c2393d470c88b9884f45877ebb',
     )
 
 

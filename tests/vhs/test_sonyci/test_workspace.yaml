@@ -20,7 +20,9 @@ interactions:
       uri: https://api.cimediacloud.com/oauth2/token
     response:
       body:
-        string: '{"access_token":"FAKE_ACCESS_TOKEN","expires_in":86400,"token_type":"bearer","refresh_token":"FAKE_REFRESH_TOKEN"}'
+        string:
+          '{"access_token": "DUMMY_ACCESS_TOKEN", "expires_in": 86400, "token_type":
+          "bearer", "refresh_token": "DUMMY_REFRESH_TOKEN"}'
       headers:
         Cache-Control:
           - no-cache
@@ -31,7 +33,7 @@ interactions:
         Content-Type:
           - application/json; charset=utf-8
         Date:
-          - Wed, 03 May 2023 20:12:18 GMT
+          - Wed, 03 May 2023 21:20:34 GMT
         Expires:
           - '-1'
         Pragma:
@@ -57,21 +59,21 @@ interactions:
         authorization:
           - Bearer DUMMY
       method: GET
-      uri: https://api.cimediacloud.com/workspaces/051303c1c1d24da7988128e6d2f56aa9
+      uri: https://api.cimediacloud.com/workspaces/f44132c2393d470c88b9884f45877ebb
     response:
       body:
-        string: '{"name":"American Archive of Public Broadcasting","id":"051303c1c1d24da7988128e6d2f56aa9"}'
+        string: '{"name": "My Workspace", "id": "f44132c2393d470c88b9884f45877ebb"}'
       headers:
         Cache-Control:
           - no-cache
         Connection:
           - keep-alive
         Content-Length:
-          - '4461'
+          - '3062'
         Content-Type:
           - application/json; charset=utf-8
         Date:
-          - Wed, 03 May 2023 20:12:19 GMT
+          - Wed, 03 May 2023 21:20:35 GMT
         Expires:
           - '-1'
         Pragma:
@@ -83,9 +85,9 @@ interactions:
         X-RateLimit-Limit:
           - '5000'
         X-RateLimit-Remaining:
-          - '4987'
+          - '4968'
         X-RateLimit-Reset:
-          - '1683144780'
+          - '1683148860'
       status:
         code: 200
         message: OK
