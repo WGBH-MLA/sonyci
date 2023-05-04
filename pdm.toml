@@ -1,0 +1,5 @@
+[venv]
+with_pip = true
+
+[strategy]
+update = 'eager'
