@@ -69,4 +69,8 @@ select = [
     "W", # pycodestyle warnings
 
 ]
-ignore = ["B008"]
+ignore = [
+    "B008", # Do not perform function call in argument defaults
+    "E501", # line too long
+
+]

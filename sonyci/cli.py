@@ -1,4 +1,5 @@
-from typer import Option, Typer
+from requests_oauth2client.tokens import BearerToken, BearerTokenSerializer
+from typer import Exit, Option, Typer
 
 from sonyci.log import log
 
@@ -8,8 +9,6 @@ app = Typer(context_settings={'help_option_names': ['-h', '--help']})
 def version_callback(value: bool):
     """Print the version of the program and exit."""
     if value:
-        from typer import Exit
-
         from ._version import __version__
 
         print(f'v{__version__}')
@@ -37,9 +36,6 @@ def login(
     ),
 ):
     """Login to Sony CI."""
-    # Save the credentials to config file.
-    from requests_oauth2client.tokens import BearerToken, BearerTokenSerializer
-
     from sonyci.sonyci import get_token
 
     token: BearerToken = get_token(username, password, client_id, client_secret)
@@ -60,7 +56,14 @@ def main(
     ),
     token: str = Option(None, '--token', '-t', help='Sony CI token.', envvar='TOKEN'),
 ):
-    pass
+    if not token:  # and if command is not login
+        log.debug('no token provided, trying to load from .token')
+        try:
+            with open('.token') as f:
+                token = BearerTokenSerializer().loads(f.read())
+                log.debug('loaded token from .token')
+        except FileNotFoundError:
+            log.debug('no .token file found')
 
 
 if __name__ == '__main__':

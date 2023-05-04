@@ -1,22 +1,11 @@
 from pytest import fixture, mark
-from requests_oauth2client.tokens import BearerToken
 
 from sonyci import SonyCi
 
 
-class FakeSonyCi(SonyCi):
-    def token(self) -> BearerToken:
-        return BearerToken(
-            access_token='fake_token',
-            token_type='bearer',
-            expires_in=3600,
-            refresh_token='fake_refresh_token',
-        )
-
-
 @fixture(scope='module')
 def ci():
-    return FakeSonyCi(
+    return SonyCi(
         username='username',
         password='password',
         client_id='client_id',
