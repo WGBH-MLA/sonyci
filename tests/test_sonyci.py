@@ -14,10 +14,11 @@ def ci():
     )
 
 
-# @mark.vcr()
-# def test_get_token(ci):
-#     response = ci.get_token()
-#     assert response.json()['id'] == ci.workspace_id, 'Workspace id did not match'
+@mark.vcr()
+def test_token(ci):
+    token = ci.token
+    assert type(token.access_token) is str, 'Access token is not a string'
+    assert len(token.access_token) > 0, 'Access token was empty'
 
 
 @mark.vcr()

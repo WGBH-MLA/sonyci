@@ -54,7 +54,7 @@ select = [
     "C4", # flake8-comprehensions
     "C90", # mccabe
     "E", # pycodestyle errors
-    # "ERA", # eradicate
+    "ERA", # eradicate
     "F", # pyflakes
     # "I", # isort
     "INT", # flake8-gettext
