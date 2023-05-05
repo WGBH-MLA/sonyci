@@ -1,0 +1,13 @@
+name: 📖 Docs
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - docs
+
+jobs:
+  build:
+    name: 📓 Build and deploy docs
+    uses: WGBH-MLA/.github/.github/workflows/docs.yml@pdm

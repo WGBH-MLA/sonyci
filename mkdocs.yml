@@ -1,0 +1,63 @@
+site_name: SonyCi
+site_description: CLAMS processing app
+repo_url: https://github.com/WGBH-MLA/sonyci
+edit_uri: ''
+
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - def_list
+  - admonition
+  - pymdownx.details
+  - attr_list
+  - md_in_html
+  - tables
+
+theme:
+  name: material
+  palette:
+    - media: '(prefers-color-scheme: dark)'
+      scheme: slate
+      toggle:
+        icon: material/lightbulb-outline
+        name: Switch to light mode
+    - media: '(prefers-color-scheme: light)'
+      scheme: default
+      toggle:
+        icon: material/lightbulb-on-outline
+        name: Switch to dark mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.indexes
+    - toc.integrate
+    - navigation.top
+    - content.code.annotate
+    - content.code.copy
+  custom_dir: overrides
+
+plugins:
+  - search
+  - mkdocstrings
+  - mkdocs-jupyter
+
+watch:
+  - sonyci
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/WGBH-MLA/sonyci
+  version:
+    provider: mike
