@@ -39,6 +39,7 @@ version = { source = "file", path = "sonyci/_version.py" }
 dev = [
     "ruff~=0.0",
     "black~=23.3",
+    "pre-commit>=2.21.0",
 ]
 
 [tool.pytest.ini_options]
