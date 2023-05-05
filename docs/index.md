@@ -8,7 +8,7 @@ Install instructions can be found on the [install page](install)
 
 ## Reference
 
-Further details can be found in the [reference section](reference/index.html)
+Further details can be found in the [reference section](reference)
 
 ## Credits
 
