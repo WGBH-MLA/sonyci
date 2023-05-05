@@ -1,6 +1,10 @@
-from requests_oauth2client.tokens import BearerToken, BearerTokenSerializer
-from typer import Exit, Option, Typer
+from json import dumps
 
+from requests_oauth2client.tokens import BearerToken, BearerTokenSerializer
+from typer import Abort, Argument, Context, Exit, Option, Typer
+from typing_extensions import Annotated
+
+from sonyci import SonyCi
 from sonyci.log import log
 
 app = Typer(context_settings={'help_option_names': ['-h', '--help']})
@@ -36,7 +40,7 @@ def login(
     ),
 ):
     """Login to Sony CI."""
-    from sonyci.sonyci import get_token
+    from sonyci.utils import get_token
 
     token: BearerToken = get_token(username, password, client_id, client_secret)
     with open('.token', 'w') as f:
@@ -44,8 +48,23 @@ def login(
         log.success('logged in to Sony CI!')
 
 
+@app.command()
+def get(ctx: Context, path: Annotated[str, Argument(..., help='The path to GET')]):
+    """Make a GET request to Sony CI."""
+    ci = SonyCi(token=ctx.parent.params['token'])
+    log.trace(f'GET {path}')
+    response = ci(path)
+    if response.status_code != 200:
+        log.error(response.text)
+        raise Abort(response.text)
+    result = response.json()
+    log.success(result)
+    print(dumps(result))
+
+
 @app.callback()
 def main(
+    ctx: Context,
     version: bool = Option(
         None,
         '--version',
@@ -62,6 +81,7 @@ def main(
             with open('.token') as f:
                 token = BearerTokenSerializer().loads(f.read())
                 log.debug('loaded token from .token')
+                ctx.params['token'] = token
         except FileNotFoundError:
             log.debug('no .token file found')
 
