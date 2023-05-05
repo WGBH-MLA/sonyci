@@ -68,13 +68,16 @@ def main(
     version: bool = Option(
         None,
         '--version',
-        '-v',
+        '-V',
         callback=version_callback,
         is_eager=True,
         help='Show the version and exit.',
     ),
+    verbose: bool = Option(None, '--verbose', '-v', help='Show verbose output.'),
     token: str = Option(None, '--token', '-t', help='Sony CI token.', envvar='TOKEN'),
 ):
+    if not verbose:
+        log.remove()
     if not token:  # and if command is not login
         log.debug('no token provided, trying to load from .token')
         try:
