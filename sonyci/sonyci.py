@@ -1,4 +1,5 @@
 from functools import cached_property
+from typing import Any
 
 from pydantic import BaseModel
 from requests_oauth2client import ApiClient, OAuth2Client
@@ -47,3 +48,7 @@ class SonyCi(BaseModel, extra='allow'):
     @property
     def workspace(self) -> str:
         return f'workspaces/{self.workspace_id}'
+
+    def __call__(self, path: str, **kwds: Any) -> Any:
+        """Default action: make GET request to Sony CI."""
+        return self.client.get(path, **kwds)
