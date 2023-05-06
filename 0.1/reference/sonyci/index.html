@@ -489,6 +489,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#sonyci.sonyci.SonyCi.__call__" class="md-nav__link">
+    __call__()
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -623,8 +630,7 @@
 
         <details class="quote">
           <summary>Source code in <code>sonyci/sonyci.py</code></summary>
-          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">12</span>
-<span class="normal">13</span>
+          <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
 <span class="normal">16</span>
@@ -686,7 +692,12 @@
 <span class="normal">72</span>
 <span class="normal">73</span>
 <span class="normal">74</span>
-<span class="normal">75</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">SonyCi</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s1">&#39;allow&#39;</span><span class="p">):</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">SonyCi</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s1">&#39;allow&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;SonyCI API client</span>
 
 <span class="sd">    Attributes:</span>
@@ -750,6 +761,10 @@
     <span class="k">def</span> <span class="nf">workspace</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the workspace prefix for API calls.&quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;workspaces/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace_id</span><span class="si">}</span><span class="s1">&#39;</span>
+
+    <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Default action: make GET request to Sony CI.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
         </details>
 
@@ -771,8 +786,8 @@
 <code class="highlight language-python"><span class="n">auth</span><span class="p">:</span> <span class="n">OAuth2AccessTokenAuth</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-cached"><code>cached</code></small>
       <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-cached"><code>cached</code></small>
   </span>
 
 </h3>
@@ -794,8 +809,8 @@
 <code class="highlight language-python"><span class="n">client</span><span class="p">:</span> <span class="n">ApiClient</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-cached"><code>cached</code></small>
       <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-cached"><code>cached</code></small>
   </span>
 
 </h3>
@@ -821,8 +836,8 @@
 <code class="highlight language-python"><span class="n">oauth</span><span class="p">:</span> <span class="n">OAuth2Client</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-cached"><code>cached</code></small>
       <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-cached"><code>cached</code></small>
   </span>
 
 </h3>
@@ -843,8 +858,8 @@
 <code class="highlight language-python"><span class="n">token</span><span class="p">:</span> <span class="n">BearerToken</span></code>
   
   <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-cached"><code>cached</code></small>
       <small class="doc doc-label doc-label-property"><code>property</code></small>
+      <small class="doc doc-label doc-label-cached"><code>cached</code></small>
   </span>
 
 </h3>
@@ -879,6 +894,33 @@
 </div>
 
 
+
+<div class="doc doc-object doc-function">
+
+
+
+<h3 id="sonyci.sonyci.SonyCi.__call__" class="doc doc-heading">
+<code class="highlight language-python"><span class="fm">__call__</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span></code>
+
+</h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Default action: make GET request to Sony CI.</p>
+
+      <details class="quote">
+        <summary>Source code in <code>sonyci/sonyci.py</code></summary>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Default action: make GET request to Sony CI.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+      </details>
+  </div>
+
+</div>
 
 
 
