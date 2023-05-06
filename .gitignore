@@ -3,3 +3,4 @@ build/
 .pdm-python
 .token
 .cred
+.cache_ggshield
