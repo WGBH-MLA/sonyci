@@ -1,7 +1,7 @@
 site_name: SonyCi
 site_description: CLAMS processing app
 repo_url: https://github.com/WGBH-MLA/sonyci
-edit_uri: ''
+edit_uri: ""
 
 markdown_extensions:
   - pymdownx.highlight
@@ -11,8 +11,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      # emoji_index: !!python/name:materialx.emoji.twemoji
+      # emoji_generator: !!python/name:materialx.emoji.to_svg
   - def_list
   - admonition
   - pymdownx.details
@@ -23,12 +23,12 @@ markdown_extensions:
 theme:
   name: material
   palette:
-    - media: '(prefers-color-scheme: dark)'
+    - media: "(prefers-color-scheme: dark)"
       scheme: slate
       toggle:
         icon: material/lightbulb-outline
         name: Switch to light mode
-    - media: '(prefers-color-scheme: light)'
+    - media: "(prefers-color-scheme: light)"
       scheme: default
       toggle:
         icon: material/lightbulb-on-outline

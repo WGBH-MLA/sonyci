@@ -3,7 +3,7 @@ name = "sonyci"
 description = "A Sony Ci api client"
 authors = [{ name = "WGBH-MLA", email = "ryan_harbert@wgbh.org" }]
 dependencies = [
-    "pydantic~=2.0a3",
+    "pydantic~=1.10",
     "requests-oauth2client~=1.1",
     "loguru~=0.7",
     "rich~=13.3",
@@ -24,7 +24,7 @@ test = [
     "pytest-cov>=4.0.0",
     "pytest-sugar>=0.9.7",
     "pytest-xdist>=3.2.1",
-    "urllib3~=1.26"
+    "urllib3~=1.26",
 ]
 cli = ["typer[all]>=0.7.0"]
 docs = [
