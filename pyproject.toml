@@ -27,6 +27,14 @@ test = [
     "urllib3~=1.26"
 ]
 cli = ["typer[all]>=0.7.0"]
+docs = [
+    "mkdocs~=1.4",
+    "mkdocs-material~=9.1",
+    "mkdocs-git-revision-date-localized-plugin~=1.2",
+    "mike @ git+https://github.com/jimporter/mike.git",
+    "mkdocstrings[python]~=0.21",
+    "mkdocs-jupyter~=0.24",
+]
 
 [build-system]
 requires = ["pdm-backend"]

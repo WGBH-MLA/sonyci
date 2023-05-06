@@ -1,0 +1,3 @@
+# CLI
+
+::: sonyci.cli
