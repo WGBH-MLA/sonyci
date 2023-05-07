@@ -35,4 +35,5 @@ def vcr_config(request):
         ],
         # Replace secrets in response body
         'before_record_response': clean_response,
+        'record_mode': 'new_episodes',
     }
