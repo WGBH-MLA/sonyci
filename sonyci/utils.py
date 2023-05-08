@@ -39,3 +39,12 @@ def get_token_from_file(filename: str = '.token'):
 def save_token_to_file(token, filename: str = '.token'):
     with open(filename, 'w') as f:
         f.write(BearerTokenSerializer().dumps(token))
+
+
+def json(func):
+    """Decorator for calling .json() on Response objects."""
+
+    def inner(*args, **kwargs):
+        return func(*args, **kwargs).json()
+
+    return inner

@@ -6,7 +6,7 @@ from requests_oauth2client.tokens import BearerToken
 
 from sonyci.config import Config
 from sonyci.log import log
-from sonyci.utils import get_token
+from sonyci.utils import get_token, json
 
 
 class SonyCi(Config):
@@ -65,17 +65,6 @@ class SonyCi(Config):
         """
         return ApiClient(self.base_url, auth=self.auth)
 
-    @staticmethod
-    def return_response_json(func):
-        """
-        Decorator for calling .json() on Response objects.
-        """
-
-        def inner(*args, **kwargs):
-            return func(*args, **kwargs).json()
-
-        return inner
-
     @property
     def workspaces(self):
         return self.get('workspaces')['items']
@@ -85,11 +74,11 @@ class SonyCi(Config):
         """Return response of /workspaces/{workspace_id}"""
         return self.get(f'workspaces/{self.workspace_id}')
 
-    @return_response_json
+    @json
     def get(self, *args, **kwargs):
         return self.client.get(*args, **kwargs)
 
-    @return_response_json
+    @json
     def post(self, *args, **kwargs):
         return self.client.post(*args, **kwargs)
 
