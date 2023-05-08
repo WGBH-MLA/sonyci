@@ -1,3 +1,5 @@
+from os import environ
+
 from pytest import fixture, mark
 
 from sonyci import SonyCi
@@ -6,6 +8,8 @@ from sonyci.config import Config
 
 @fixture(scope='module')
 def ci_config():
+    if environ.get('RECORD'):
+        return Config.load('./ci.toml')
     return Config.load('./tests/sonyci/sonyci.toml')
 
 
