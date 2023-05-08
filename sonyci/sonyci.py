@@ -76,6 +76,7 @@ class SonyCi(Config):
 
     @json
     def get(self, *args, **kwargs):
+        log.debug(f'GET {args} {kwargs}')
         return self.client.get(*args, **kwargs)
 
     @json
