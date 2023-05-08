@@ -48,6 +48,10 @@ class Config(BaseModel):
         return vals
 
     @classmethod
+    def load_from_toml(cls, filename: str, key: str = TOML_KEY):
+        return cls(**cls.from_toml(filename=filename, key=key))
+
+    @classmethod
     def from_env(cls, prefix: str = ENV_PREFIX) -> dict:
         if not prefix:
             return {}

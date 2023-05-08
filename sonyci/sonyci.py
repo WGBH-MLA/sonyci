@@ -13,16 +13,11 @@ class SonyCi(Config):
     class Config:
         arbitrary_types_allowed = True
 
-    t: BearerToken = None
+    """A SonyCI client."""
 
-    def get_token_from_login(self):
-        log.trace('getting token from login')
-        return get_token(
-            username=self.username,
-            password=self.password,
-            client_id=self.client_id,
-            client_secret=self.client_secret,
-        )
+    # This will not be needed when we upgrade to pydantic2,
+    # we will be able to directly overwrite the @cached_property instance
+    t: BearerToken = None
 
     @property
     def oauth(self) -> OAuth2Client:
@@ -42,7 +37,12 @@ class SonyCi(Config):
         """Get a token from SonyCI and cache the results."""
         if self.t:
             return self.t
-        return self.get_token_from_login()
+        return get_token(
+            username=self.username,
+            password=self.password,
+            client_id=self.client_id,
+            client_secret=self.client_secret,
+        )
 
     @property
     def auth(self) -> OAuth2AccessTokenAuth:
