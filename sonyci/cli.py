@@ -51,13 +51,9 @@ def login(
 @app.command()
 def get(ctx: Context, path: Annotated[str, Argument(..., help='The path to GET')]):
     """Make a GET request to Sony CI."""
-    ci = SonyCi(token=ctx.parent.params['token'])
+    ci = SonyCi(t=ctx.parent.params['token'])
     log.trace(f'GET {path}')
-    response = ci(path)
-    if response.status_code != 200:
-        log.error(response.text)
-        raise Abort(response.text)
-    result = response.json()
+    result = ci(path)
     log.success(result)
     print(dumps(result))
 

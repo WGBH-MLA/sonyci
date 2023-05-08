@@ -11,7 +11,7 @@ def ci_config():
 
 @fixture(scope='module')
 def ci(ci_config: Config):
-    return SonyCi(config=ci_config)
+    return SonyCi(**ci_config.dict())
 
 
 @mark.vcr()

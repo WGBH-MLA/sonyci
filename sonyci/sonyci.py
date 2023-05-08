@@ -1,66 +1,56 @@
-import contextlib
-import os
 from typing import Any
-from pydantic import BaseModel
-from requests_oauth2client import ApiClient
-from requests_oauth2client.auth import BearerAuth
-from requests_oauth2client.tokens import BearerToken, BearerTokenSerializer
-from requests import post
+
+from requests_oauth2client import ApiClient, OAuth2Client
+from requests_oauth2client.auth import BearerAuth, OAuth2AccessTokenAuth
+from requests_oauth2client.tokens import BearerToken
+
 from sonyci.config import Config
 from sonyci.log import log
+from sonyci.utils import get_token
 
 
-class SonyCi(BaseModel):
-    config: Config
-    base_url: str = 'https://api.cimediacloud.com/'
-    token_url: str = 'https://api.cimediacloud.com/oauth2/token'
+class SonyCi(Config):
+    class Config:
+        arbitrary_types_allowed = True
+
+    t: BearerToken = None
+
+    def get_token_from_login(self):
+        return get_token(
+            username=self.username,
+            password=self.password,
+            client_id=self.client_id,
+            client_secret=self.client_secret,
+        )
 
     @property
-    def token_from_file(self):
-        try:
-            with open('.token') as f:
-                return BearerTokenSerializer().loads(f.read())
-        except FileNotFoundError:
-            return None
-
-    def get_new_token(self) -> BearerToken:
-        response = post(
-            self.token_url,
-            auth=(self.config.username, self.config.password),
+    def oauth(self) -> OAuth2Client:
+        """Create and cache an OAuth2Client instance."""
+        return OAuth2Client(
+            token_endpoint=self.token_url,
+            auth=(self.username, self.password),
             data={
                 'grant_type': 'password',
-                'client_id': self.config.client_id,
-                'client_secret': self.config.client_secret,
+                'client_id': self.client_id,
+                'client_secret': self.client_secret,
             },
         )
-        log.debug(f'token response status: {response.status_code}')
-        if response.status_code != 200:
-            log.error('Token did not return 200', response.text)
-            raise Exception(
-                f'Token did not return 200. Returned: {response.status_code}: {response.text}'
-            )
-        return BearerToken(**response.json())
-
-    @staticmethod
-    def delete_token_file():
-        with contextlib.suppress(FileNotFoundError):
-            os.remove('.token')
-
-    def obtain_new_token_file(self):
-        new_token = self.get_new_token()
-        with open('.token', 'w') as f:
-            f.write(BearerTokenSerializer().dumps(new_token))
 
     @property
     def token(self) -> BearerToken:
         """Get a token from SonyCI and cache the results."""
-        if not self.token_from_file:
-            self.obtain_new_token_file()
-        return self.token_from_file
+        if self.t:
+            return self.t
+        return self.get_token_from_login()
 
     @property
-    def bearer_auth(self) -> BearerAuth:
-        """Returns a BearerAuth instance with"""
+    def auth(self) -> OAuth2AccessTokenAuth:
+        """Create and cache an OAuth2AccessTokenAuth instance.
+
+        This will refresh the token automatically if it is expired.
+        """
+        if self.client_id and self.client_secret:
+            return OAuth2AccessTokenAuth(client=self.oauth, token=self.token)
         return BearerAuth(token=self.token)
 
     @property
@@ -72,7 +62,7 @@ class SonyCi(BaseModel):
             ci.client.get('workspaces')
             ```
         """
-        return ApiClient(self.base_url, auth=self.bearer_auth)
+        return ApiClient(self.base_url, auth=self.auth)
 
     @staticmethod
     def return_response_json(func):
@@ -92,7 +82,7 @@ class SonyCi(BaseModel):
     @property
     def workspace(self):
         """Return response of /workspaces/{workspace_id}"""
-        return self.get(f'workspaces/{self.config.workspace_id}')
+        return self.get(f'workspaces/{self.workspace_id}')
 
     @return_response_json
     def get(self, *args, **kwargs):
