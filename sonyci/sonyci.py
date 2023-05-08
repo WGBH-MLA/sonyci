@@ -1,4 +1,5 @@
-import contextlib, os
+import contextlib
+import os
 from typing import Any
 from pydantic import BaseModel
 from requests_oauth2client import ApiClient

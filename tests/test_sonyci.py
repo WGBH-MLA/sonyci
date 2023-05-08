@@ -6,14 +6,11 @@ from sonyci.config import Config
 
 @fixture(scope='module')
 def ci_config():
-    # return Config.load('./tests/sonyci/sonyci.toml')
-    return Config.load('./ci.toml')
+    return Config.load('./tests/sonyci/sonyci.toml')
 
 
 @fixture(scope='module')
 def ci(ci_config: Config):
-    # Ensure all specs can without an existing .token file.
-    SonyCi.delete_token_file()
     return SonyCi(config=ci_config)
 
 
