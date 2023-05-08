@@ -16,6 +16,7 @@ class SonyCi(Config):
     t: BearerToken = None
 
     def get_token_from_login(self):
+        log.trace('getting token from login')
         return get_token(
             username=self.username,
             password=self.password,

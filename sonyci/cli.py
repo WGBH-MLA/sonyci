@@ -1,7 +1,7 @@
 from json import dumps
 
 from requests_oauth2client.tokens import BearerToken, BearerTokenSerializer
-from typer import Abort, Argument, Context, Exit, Option, Typer
+from typer import Argument, Context, Exit, Option, Typer
 from typing_extensions import Annotated
 
 from sonyci import SonyCi
