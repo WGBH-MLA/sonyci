@@ -1,4 +1,3 @@
-from functools import cached_property
 from typing import Any
 
 from pydantic import BaseModel
@@ -31,7 +30,7 @@ class SonyCi(BaseModel, extra='allow'):
     client_secret: str | None = None
     workspace_id: str | None = None
 
-    @cached_property
+    @property
     def oauth(self) -> OAuth2Client:
         """Create and cache an OAuth2Client instance."""
         return OAuth2Client(
@@ -44,14 +43,14 @@ class SonyCi(BaseModel, extra='allow'):
             },
         )
 
-    @cached_property
+    @property
     def token(self) -> BearerToken:
         """Get a token from SonyCI and cache the results."""
         return get_token(
             self.username, self.password, self.client_id, self.client_secret
         )
 
-    @cached_property
+    @property
     def auth(self) -> OAuth2AccessTokenAuth:
         """Create and cache an OAuth2AccessTokenAuth instance.
 
@@ -59,7 +58,7 @@ class SonyCi(BaseModel, extra='allow'):
         """
         return OAuth2AccessTokenAuth(client=self.oauth, token=self.token)
 
-    @cached_property
+    @property
     def client(self) -> ApiClient:
         """Create and cache an ApiClient instance.
 
