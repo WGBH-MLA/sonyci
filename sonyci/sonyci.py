@@ -65,14 +65,25 @@ class SonyCi(Config):
         """
         return ApiClient(self.base_url, auth=self.auth)
 
-    @property
     def workspaces(self):
         return self.get('workspaces')['items']
 
-    @property
     def workspace(self):
         """Return response of /workspaces/{workspace_id}"""
         return self.get(f'workspaces/{self.workspace_id}')
+
+    def workspace_contents(self, **kwargs) -> list:
+        """Returns items form the workspace"""
+        return self.get(f'workspaces/{self.workspace_id}/contents', params=kwargs)[
+            'items'
+        ]
+
+    def workspace_search(self, **kwargs) -> list:
+        """Performs a search of a workspace and returns the items found"""
+        kwargs['kind'] = 'asset'
+        return self.get(f'workspaces/{self.workspace_id}/search', params=kwargs)[
+            'items'
+        ]
 
     @json
     def get(self, *args, **kwargs):
