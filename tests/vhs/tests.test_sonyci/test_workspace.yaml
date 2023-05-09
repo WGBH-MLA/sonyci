@@ -1,9 +1,55 @@
 interactions:
   - request:
+      body: grant_type=password&client_id=FAKE_CLIENT_ID&client_secret=FAKE_CLIENT_SECRET
+      headers:
+        Accept:
+          - '*/*'
+        Accept-Encoding:
+          - gzip, deflate
+        Connection:
+          - keep-alive
+        Content-Length:
+          - '109'
+        Content-Type:
+          - application/x-www-form-urlencoded
+        User-Agent:
+          - python-requests/2.30.0
+        authorization:
+          - Bearer DUMMY
+      method: POST
+      uri: https://api.cimediacloud.com/oauth2/token
+    response:
+      body:
+        string:
+          '{"access_token": "DUMMY_ACCESS_TOKEN", "expires_in": 86400, "token_type":
+          "bearer", "refresh_token": "DUMMY_REFRESH_TOKEN"}'
+      headers:
+        Cache-Control:
+          - no-cache
+        Connection:
+          - keep-alive
+        Content-Length:
+          - '143'
+        Content-Type:
+          - application/json; charset=utf-8
+        Date:
+          - Mon, 08 May 2023 20:34:36 GMT
+        Expires:
+          - '-1'
+        Pragma:
+          - no-cache
+        Strict-Transport-Security:
+          - max-age=86400; includeSubDomains
+        X-Frame-Options:
+          - deny
+      status:
+        code: 200
+        message: OK
+  - request:
       body: null
       headers:
         Accept:
-          - "*/*"
+          - '*/*'
         Accept-Encoding:
           - gzip, deflate
         Connection:
@@ -13,73 +59,23 @@ interactions:
         authorization:
           - Bearer DUMMY
       method: GET
-      uri: https://api.cimediacloud.com/workspaces/051303c1c1d24da7988128e6d2f56aa9
+      uri: https://api.cimediacloud.com/workspaces/f44132c2393d470c88b9884f45877ebb
     response:
       body:
-        string:
-          '{"name": "American Archive of Public Broadcasting", "id": "051303c1c1d24da7988128e6d2f56aa9",
-          "assetCount": 171735, "elementCount": 231, "plan": {"name": "Custom Workspace"},
-          "storage": {"allotted": 43980465111040, "used": 32521152429204, "usedByAssets":
-          32521146061460, "usedByElements": 6367744}, "owner": {"id": "a12f49c148074878a6b50ff9f023a639",
-          "name": "Michael Potts"}, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
-          "name": "American Archive", "class": "Company"}, "enterpriseNetwork": {"id":
-          "2075d1389045443d97dfc24c9107f78f", "name": "WGBH"}, "createdOn": "2014-11-21T00:25:21.931Z",
-          "createdBy": {"id": "a12f49c148074878a6b50ff9f023a639", "name": "Michael Potts",
-          "email": "dummy@dummy.com", "emailNormalized": "dummy@dummy.com",
-          "isVerified": false}, "lastActivityOn": "2023-05-08T17:55:23.075Z", "isDeleted":
-          false, "bannerUrl": "DUMMY",
-          "logoUrl": "DUMMY",
-          "hideLogo": false, "userRole": "WorkspaceAdmin", "class": "Team", "runtime":
-          {"video": 220092002.288}, "rootFolderId": "a1459cf719eb4a7cb2686663018be161",
-          "entitlements": {"areExternalTargetsEnabled": true, "canManageUsers": true,
-          "canPurgeFiles": true, "canCopyWatermarkedContent": true, "disableDeleteFiles":
-          false, "isArchiveEnabled": true, "isArchiveAllowed": true, "isCiWorkflowAppEnabled":
-          false, "isAsperaEnabled": true, "isBrandingEnabled": true, "isElementMetadataEnabled":
-          true, "isElementUploadEnabled": true, "isExpeditedRestoreEnabled": false,
-          "isExpeditedRestoreEnabledAtNetworkLevel": false, "isFileRequestProEnabled":
-          true, "isFrameAccurateReviewEnabled": false, "isLiveSessionsEnabled": true,
-          "isLiveStreamsEnabled": false, "isMediaLogEnabled": false, "isMediaBoxNotifyEnabled":
-          true, "isNetworkStoragePoliciesEnabled": false, "isRelatedImagesEnabled":
-          false, "isRoughCutEnabled": true, "isRtmpPushEnabled": false, "isSharedFoldersEnabled":
-          false, "isWatermarkingEnabled": true, "isAudioMetersEnabled": false, "isVideoLevelsEnabled":
-          false, "isSpaceWatermarkingEnabled": false, "isTimedTextSearchEnabled": false,
-          "isForensicWatermarkingEnabled": false}, "note": {"text": "", "createdOn":
-          "2022-03-10T19:02:17.054Z", "createdBy": {"id": "2ec0ed738f784c36b77226d125cdc0e6",
-          "name": "Casey Davis", "email": "dummy@dummy.com", "emailNormalized":
-          "dummy@dummy.com", "isVerified": false}, "modifiedOn": "2022-03-10T19:02:17.054Z",
-          "modifiedBy": {"id": "2ec0ed738f784c36b77226d125cdc0e6", "name": "Casey Davis",
-          "email": "dummy@dummy.com", "emailNormalized": "dummy@dummy.com",
-          "isVerified": false}}, "availableRenderTargets": [{"name": "Same As Source
-          MXF", "key": "same-as-source-mxf", "description": "Create a same as source
-          MXF output. This will only work with MXF source files.", "format": "mxf",
-          "allowsFadeSettings": false, "allowsAspectRatioModifications": false}, {"name":
-          "Social Media (1080p)", "key": "social-media-1080p", "description": "MP4 format,
-          7000 kbps, AAC audio, H.264 codec", "format": "mp4", "allowsFadeSettings":
-          true, "allowsAspectRatioModifications": true}, {"name": "Social Media (720p)",
-          "key": "social-media-720p", "description": "MP4 format, 3500 kbps, AAC audio,
-          H.264 codec", "format": "mp4", "allowsFadeSettings": true, "allowsAspectRatioModifications":
-          true}], "isMfaRequired": false, "mediaboxRestrictions": {"allowedSecurityTypes":
-          ["Public", "Protected", "Secure"], "expirationDateRestrictions": {"allowNeverExpires":
-          true}, "commentSettings": {"isAllowedCommenting": true, "showExternalComments":
-          true}}, "usage": {"archiveStorage": {"used": 0}, "dataTransfer": {"uploads":
-          {}, "downloads": {}}}, "stats": {"activeCount": 171962, "activeStorageUsed":
-          32505035733870, "archivedCount": 0, "archivedStorageUsed": 0, "recycledCount":
-          4, "recycledStorageUsed": 16116695334, "temporaryRestoredCount": 0, "temporaryRestoredStorageUsed":
-          0, "storageAllotted": 0, "storageUsed": 32521152429204, "dataTransferAllotted":
-          107374182400, "dataTransferUsed": 0}}'
+        string: '{"name": "My Workspace", "id": "f44132c2393d470c88b9884f45877ebb"}'
       headers:
         Cache-Control:
           - no-cache
         Connection:
           - keep-alive
         Content-Length:
-          - "4461"
+          - '3062'
         Content-Type:
           - application/json; charset=utf-8
         Date:
-          - Mon, 08 May 2023 17:56:07 GMT
+          - Mon, 08 May 2023 20:34:37 GMT
         Expires:
-          - "-1"
+          - '-1'
         Pragma:
           - no-cache
         Strict-Transport-Security:
@@ -87,11 +83,11 @@ interactions:
         X-Frame-Options:
           - deny
         X-RateLimit-Limit:
-          - "5000"
+          - '5000'
         X-RateLimit-Remaining:
-          - "4988"
+          - '4984'
         X-RateLimit-Reset:
-          - "1683568620"
+          - '1683578100'
       status:
         code: 200
         message: OK

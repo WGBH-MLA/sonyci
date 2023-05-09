@@ -1,7 +1,7 @@
 from os import environ
-from pydantic import BaseModel
-import tomllib
 
+import tomllib
+from pydantic import BaseModel
 
 BASE_URL = 'https://api.cimediacloud.com/'
 TOKEN_URL = 'https://api.cimediacloud.com/oauth2/token'
@@ -11,13 +11,13 @@ class Config(BaseModel):
     ENV_PREFIX = 'CI_'
     TOML_KEY = 'sonyci'
 
-    base_url: str = 'https://api.cimediacloud.com/'
-    token_url: str = 'https://api.cimediacloud.com/oauth2/token'
-    username: str
-    password: str
-    client_id: str
-    client_secret: str
-    workspace_id: str
+    base_url: str = BASE_URL
+    token_url: str = TOKEN_URL
+    username: str | None = None
+    password: str | None = None
+    client_id: str | None = None
+    client_secret: str | None = None
+    workspace_id: str | None = None
 
     @classmethod
     def load(
@@ -46,6 +46,10 @@ class Config(BaseModel):
         if key:
             return vals.get(key)
         return vals
+
+    @classmethod
+    def load_from_toml(cls, filename: str, key: str = TOML_KEY):
+        return cls(**cls.from_toml(filename=filename, key=key))
 
     @classmethod
     def from_env(cls, prefix: str = ENV_PREFIX) -> dict:
