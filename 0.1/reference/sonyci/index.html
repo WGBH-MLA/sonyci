@@ -240,6 +240,18 @@
         
   
   
+
+
+  <li class="md-tabs__item">
+    <a href="../../interpreter/" class="md-tabs__link">
+      Interpreter
+    </a>
+  </li>
+
+      
+        
+  
+  
     
   
 
@@ -343,6 +355,21 @@
 
   
   
+  
+    <li class="md-nav__item">
+      <a href="../../interpreter/" class="md-nav__link">
+        Interpreter
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
     
   
   
@@ -352,7 +379,7 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
       
       
         
@@ -371,14 +398,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../">Reference</a>
           
-            <label for="__nav_3">
+            <label for="__nav_4">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_3">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Reference
         </label>
@@ -567,65 +594,8 @@
 
   <div class="doc doc-contents ">
       <p class="doc doc-class-bases">
-        Bases: <code><span title="pydantic.BaseModel">BaseModel</span></code></p>
+        Bases: <code><span title="sonyci.config.Config">Config</span></code></p>
 
-  
-      <p>SonyCI API client</p>
-
-  <p><strong>Attributes:</strong></p>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr>
-          <td><code>username</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td><p>SonyCI username.</p></td>
-        </tr>
-        <tr>
-          <td><code>password</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td><p>SonyCI password.</p></td>
-        </tr>
-        <tr>
-          <td><code>client_id</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td><p>SonyCI client ID.</p></td>
-        </tr>
-        <tr>
-          <td><code>client_secret</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td><p>SonyCI client secret.</p></td>
-        </tr>
-        <tr>
-          <td><code>workspace_id</code></td>
-          <td>
-                <code>str</code>
-          </td>
-          <td><p>SonyCI workspace ID.</p></td>
-        </tr>
-        <tr>
-          <td><code>token</code></td>
-          <td>
-                <code><span title="requests_oauth2client.tokens.BearerToken">BearerToken</span></code>
-          </td>
-          <td><p>SonyCI token.</p></td>
-        </tr>
-    </tbody>
-  </table>
 
 
         <details class="quote">
@@ -697,26 +667,24 @@
 <span class="normal">76</span>
 <span class="normal">77</span>
 <span class="normal">78</span>
-<span class="normal">79</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">SonyCi</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="s1">&#39;allow&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;SonyCI API client</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span>
+<span class="normal">84</span>
+<span class="normal">85</span>
+<span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">class</span> <span class="nc">SonyCi</span><span class="p">(</span><span class="n">Config</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Config</span><span class="p">:</span>
+        <span class="n">arbitrary_types_allowed</span> <span class="o">=</span> <span class="kc">True</span>
 
-<span class="sd">    Attributes:</span>
-<span class="sd">        username (str, optional): SonyCI username.</span>
-<span class="sd">        password (str): SonyCI password.</span>
-<span class="sd">        client_id (str): SonyCI client ID.</span>
-<span class="sd">        client_secret (str): SonyCI client secret.</span>
-<span class="sd">        workspace_id (str): SonyCI workspace ID.</span>
-<span class="sd">        token (BearerToken): SonyCI token.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A SonyCI client.&quot;&quot;&quot;</span>
 
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">BASE_URL</span>
-    <span class="n">token_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">TOKEN_URL</span>
-    <span class="n">username</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">password</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">client_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">client_secret</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="n">workspace_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1"># This will not be needed when we upgrade to pydantic2,</span>
+    <span class="c1"># we will be able to directly overwrite the @cached_property instance</span>
+    <span class="n">t</span><span class="p">:</span> <span class="n">BearerToken</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">oauth</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OAuth2Client</span><span class="p">:</span>
@@ -734,8 +702,13 @@
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">token</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BearerToken</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Get a token from SonyCI and cache the results.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">t</span>
         <span class="k">return</span> <span class="n">get_token</span><span class="p">(</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_secret</span>
+            <span class="n">username</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">username</span><span class="p">,</span>
+            <span class="n">password</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">password</span><span class="p">,</span>
+            <span class="n">client_id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client_id</span><span class="p">,</span>
+            <span class="n">client_secret</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">client_secret</span><span class="p">,</span>
         <span class="p">)</span>
 
     <span class="nd">@property</span>
@@ -744,7 +717,9 @@
 
 <span class="sd">        This will refresh the token automatically if it is expired.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="n">OAuth2AccessTokenAuth</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">oauth</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_id</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">client_secret</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">OAuth2AccessTokenAuth</span><span class="p">(</span><span class="n">client</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">oauth</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">BearerAuth</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">token</span><span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">client</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ApiClient</span><span class="p">:</span>
@@ -758,13 +733,26 @@
         <span class="k">return</span> <span class="n">ApiClient</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">base_url</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">auth</span><span class="p">)</span>
 
     <span class="nd">@property</span>
-    <span class="k">def</span> <span class="nf">workspace</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return the workspace prefix for API calls.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;workspaces/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace_id</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="k">def</span> <span class="nf">workspaces</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;workspaces&#39;</span><span class="p">)[</span><span class="s1">&#39;items&#39;</span><span class="p">]</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">workspace</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Return response of /workspaces/{workspace_id}&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;workspaces/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">workspace_id</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="nd">@json</span>
+    <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;GET </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">kwargs</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="nd">@json</span>
+    <span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Default action: make GET request to Sony CI.&quot;&quot;&quot;</span>
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
         </details>
 
@@ -873,7 +861,7 @@
 
 
 <h3 id="sonyci.sonyci.SonyCi.workspace" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">workspace</span><span class="p">:</span> <span class="nb">str</span></code>
+<code class="highlight language-python"><span class="n">workspace</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
@@ -884,7 +872,7 @@
 
   <div class="doc doc-contents ">
   
-      <p>Return the workspace prefix for API calls.</p>
+      <p>Return response of /workspaces/{workspace_id}</p>
   </div>
 
 </div>
@@ -907,11 +895,11 @@
 
       <details class="quote">
         <summary>Source code in <code>sonyci/sonyci.py</code></summary>
-        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+        <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">86</span>
+<span class="normal">87</span>
+<span class="normal">88</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Default action: make GET request to Sony CI.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
       </details>
   </div>

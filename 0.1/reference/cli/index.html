@@ -242,6 +242,18 @@
         
   
   
+
+
+  <li class="md-tabs__item">
+    <a href="../../interpreter/" class="md-tabs__link">
+      Interpreter
+    </a>
+  </li>
+
+      
+        
+  
+  
     
   
 
@@ -345,6 +357,21 @@
 
   
   
+  
+    <li class="md-nav__item">
+      <a href="../../interpreter/" class="md-nav__link">
+        Interpreter
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
     
   
   
@@ -354,7 +381,7 @@
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
       
       
         
@@ -373,14 +400,14 @@
         <div class="md-nav__link md-nav__link--index ">
           <a href="../">Reference</a>
           
-            <label for="__nav_3">
+            <label for="__nav_4">
               <span class="md-nav__icon md-icon"></span>
             </label>
           
         </div>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
-        <label class="md-nav__title" for="__nav_3">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
           Reference
         </label>
@@ -546,20 +573,12 @@
 <span class="normal">55</span>
 <span class="normal">56</span>
 <span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="normal">58</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
 <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Argument</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The path to GET&#39;</span><span class="p">)]):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a GET request to Sony CI.&quot;&quot;&quot;</span>
-    <span class="n">ci</span> <span class="o">=</span> <span class="n">SonyCi</span><span class="p">(</span><span class="n">token</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">])</span>
+    <span class="n">ci</span> <span class="o">=</span> <span class="n">SonyCi</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">])</span>
     <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;GET </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">ci</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
-        <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-        <span class="k">raise</span> <span class="n">Abort</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">ci</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
     <span class="n">log</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">dumps</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
