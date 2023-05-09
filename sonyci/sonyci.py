@@ -13,6 +13,11 @@ class SonyCi(Config):
     class Config:
         arbitrary_types_allowed = True
 
+
+class SonyCi(Config):
+    class Config:
+        arbitrary_types_allowed = True
+
     """A SonyCI client."""
     # This will not be needed when we upgrade to pydantic2,
     # we will be able to directly overwrite the @cached_property instance
@@ -36,7 +41,13 @@ class SonyCi(Config):
         """Get a token from SonyCI and cache the results."""
         if self.t:
             return self.t
+        if self.t:
+            return self.t
         return get_token(
+            username=self.username,
+            password=self.password,
+            client_id=self.client_id,
+            client_secret=self.client_secret,
             username=self.username,
             password=self.password,
             client_id=self.client_id,
@@ -49,6 +60,9 @@ class SonyCi(Config):
 
         This will refresh the token automatically if it is expired.
         """
+        if self.client_id and self.client_secret:
+            return OAuth2AccessTokenAuth(client=self.oauth, token=self.token)
+        return BearerAuth(token=self.token)
         if self.client_id and self.client_secret:
             return OAuth2AccessTokenAuth(client=self.oauth, token=self.token)
         return BearerAuth(token=self.token)
@@ -100,4 +114,5 @@ class SonyCi(Config):
 
     def __call__(self, path: str, **kwds: Any) -> Any:
         """Default action: make GET request to Sony CI."""
+        return self.get(path, **kwds)
         return self.get(path, **kwds)
