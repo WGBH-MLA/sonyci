@@ -14,7 +14,6 @@ class SonyCi(Config):
         arbitrary_types_allowed = True
 
     """A SonyCI client."""
-
     # This will not be needed when we upgrade to pydantic2,
     # we will be able to directly overwrite the @cached_property instance
     t: BearerToken = None

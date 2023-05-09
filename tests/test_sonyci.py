@@ -7,15 +7,16 @@ from sonyci.config import Config
 
 
 @fixture(scope='module')
-def ci_config():
-    # if environ.get('RECORD'):
-    return Config.load('./ci.toml')
-
-
-@fixture(scope='module')
 def guid():
     return 'cpb-aacip-e4308199588'
     # return Config.load('./tests/sonyci/sonyci.toml')
+
+
+@fixture(scope='module')
+def ci_config():
+    if environ.get('RECORD'):
+        return Config.load('./ci.toml')
+    return Config.load('./tests/sonyci/sonyci.toml')
 
 
 @fixture(scope='module')
