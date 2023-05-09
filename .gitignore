@@ -5,3 +5,6 @@ site/
 .token
 .cred
 .cache_ggshield
+
+# common name for local Sony Ci config file 
+ci.toml
