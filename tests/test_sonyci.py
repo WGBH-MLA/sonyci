@@ -7,9 +7,8 @@ from sonyci.config import Config
 
 
 @fixture(scope='module')
-def guid():
-    return 'cpb-aacip-e4308199588'
-    # return Config.load('./tests/sonyci/sonyci.toml')
+def guid() -> str:
+    return Config.from_toml('./tests/sonyci/guid.toml')['guid']
 
 
 @fixture(scope='module')
@@ -45,24 +44,24 @@ def test_workspace(ci: SonyCi):
     assert 'id' in workspace, 'workspace has no id'
 
 
+@mark.vcr()
 def test_workspace_contents(ci: SonyCi):
     result = ci.workspace_contents()
     assert type(result) is list
     assert result
 
 
+@mark.vcr()
 def test_workspace_empty_search(ci: SonyCi):
     result = ci.workspace_search(query='i am not a guid')
     assert type(result) is list
     assert not result
 
 
-def test_workspace_search(ci: SonyCi):
+@mark.vcr()
+def test_workspace_search(ci: SonyCi, guid: str):
     assets = ci.workspace_search(guid)
+    assert type(assets) is list
     assert len(assets) == 1
 
     assert guid in assets[0]['name']
-
-    item_names = [i['name'] for i in assets['items']]
-    assert guid in assets['items']
-    assert guid in item_names

@@ -77,9 +77,14 @@ class SonyCi(Config):
             'items'
         ]
 
-    def workspace_search(self, **kwargs) -> list:
+    def workspace_search(self, query: str = None, **kwargs) -> list:
         """Performs a search of a workspace and returns the items found"""
-        kwargs['kind'] = 'asset'
+        if len(query) > 20:
+            query = query[-20:]
+        if query:
+            kwargs['query'] = query
+        if not kwargs.get('kind'):
+            kwargs['kind'] = 'asset'
         return self.get(f'workspaces/{self.workspace_id}/search', params=kwargs)[
             'items'
         ]
