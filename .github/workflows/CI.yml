@@ -7,7 +7,7 @@ jobs:
     name: ⚗️ Application Tests
     uses: WGBH-MLA/.github/.github/workflows/pytest.yml@main
     with:
-      pytest_args: -n auto
+      pytest_args: -n auto --vcr-record=none
 
   lint:
     name: 👕 Lint

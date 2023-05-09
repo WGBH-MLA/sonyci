@@ -1,0 +1,6 @@
+[sonyci]
+username = "test username"
+password = "test password"
+client_id = "test client id"
+client_secret = "test client secret"
+workspace_id = "f44132c2393d470c88b9884f45877ebb"
