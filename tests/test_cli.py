@@ -58,6 +58,7 @@ def test_bad_login(runner):
             'test',
             '--client-secret',
             'test',
+            '--test',
         ],
     )
     assert result.exit_code == 1
