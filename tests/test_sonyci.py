@@ -75,3 +75,10 @@ def test_asset(ci: SonyCi, asset_id, **kwargs):
     asset = ci.asset(asset_id)
     assert type(asset) is dict
     assert asset['id'] == asset_id
+
+
+@mark.vcr()
+def test_asset_download(ci: SonyCi, asset_id, **kwargs):
+    asset = ci.asset_download(asset_id)
+    assert type(asset) is dict
+    assert asset['id'] == asset_id
