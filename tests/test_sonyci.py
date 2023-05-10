@@ -5,6 +5,11 @@ from sonyci.config import Config
 
 
 @fixture(scope='module')
+def guid() -> str:
+    return Config.from_toml('./tests/sonyci/guid.toml')['guid']
+
+
+@fixture(scope='module')
 def ci_config(pytestconfig):
     if pytestconfig.getoption('record'):
         return Config.load('./ci.toml')
@@ -25,13 +30,36 @@ def test_token(ci: SonyCi):
 
 @mark.vcr()
 def test_workspaces(ci: SonyCi):
-    workspaces = ci.workspaces
+    workspaces = ci.workspaces()
     assert type(workspaces) == list, 'workspaces is not a list'
     assert len(workspaces) > 0, 'no workspaces found'
 
 
 @mark.vcr()
 def test_workspace(ci: SonyCi):
-    workspace = ci.workspace
+    workspace = ci.workspace()
     assert type(workspace) == dict, 'workspace is not a dict'
     assert 'id' in workspace, 'workspace has no id'
+
+
+@mark.vcr()
+def test_workspace_contents(ci: SonyCi):
+    result = ci.workspace_contents()
+    assert type(result) is list
+    assert result
+
+
+@mark.vcr()
+def test_workspace_empty_search(ci: SonyCi):
+    result = ci.workspace_search(query='i am not a guid')
+    assert type(result) is list
+    assert not result
+
+
+@mark.vcr()
+def test_workspace_search(ci: SonyCi, guid: str):
+    assets = ci.workspace_search(guid)
+    assert type(assets) is list
+    assert len(assets) == 1
+
+    assert guid in assets[0]['name']
