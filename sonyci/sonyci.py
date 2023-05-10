@@ -92,6 +92,9 @@ class SonyCi(Config):
     def asset(self, asset_id: str = None, **kwargs):
         return self.get(f'/assets/{asset_id}', params=kwargs)
 
+    def asset_download(self, asset_id: str = None, **kwargs):
+        return self.get(f'/assets/{asset_id}/download', params=kwargs)
+
     @json
     def get(self, *args, **kwargs):
         log.debug(f'GET {args} {kwargs}')
