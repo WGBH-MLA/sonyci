@@ -1,0 +1,47 @@
+interactions:
+- request:
+    body: grant_type=password&client_id=FAKE_CLIENT_ID&client_secret=FAKE_CLIENT_SECRET
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '53'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - python-requests/2.30.0
+      authorization:
+      - Bearer DUMMY
+    method: POST
+    uri: https://api.cimediacloud.com/oauth2/token
+  response:
+    body:
+      string: '{"error": "invalid_client", "error_description": "Invalid client id
+        and client secret combination."}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '97'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 09 May 2023 17:18:47 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=86400; includeSubDomains
+      X-Frame-Options:
+      - deny
+    status:
+      code: 401
+      message: Unauthorized
+version: 1
