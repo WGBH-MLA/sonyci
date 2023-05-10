@@ -10,6 +10,11 @@ def guid() -> str:
 
 
 @fixture(scope='module')
+def asset_id():
+    return "554544ceaf6b4c94a4a06cee5bc1f39f"
+
+
+@fixture(scope='module')
 def ci_config(pytestconfig):
     if pytestconfig.getoption('record'):
         return Config.load('./ci.toml')
@@ -63,3 +68,10 @@ def test_workspace_search(ci: SonyCi, guid: str):
     assert len(assets) == 1
 
     assert guid in assets[0]['name']
+
+
+@mark.vcr()
+def test_asset(ci: SonyCi, asset_id, **kwargs):
+    asset = ci.asset(asset_id)
+    assert type(asset) is dict
+    assert asset['id'] == asset_id
