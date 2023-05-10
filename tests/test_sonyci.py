@@ -11,7 +11,7 @@ def guid() -> str:
 
 @fixture(scope='module')
 def asset_id():
-    return "554544ceaf6b4c94a4a06cee5bc1f39f"
+    return '554544ceaf6b4c94a4a06cee5bc1f39f'
 
 
 @fixture(scope='module')
