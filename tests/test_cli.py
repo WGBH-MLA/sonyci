@@ -13,8 +13,13 @@ def runner():
 
 
 @fixture
-def config():
-    if environ.get('RECORD'):
+def error_runner():
+    return CliRunner(mix_stderr=False)
+
+
+@fixture
+def config(pytestconfig):
+    if pytestconfig.getoption('record'):
         return Config.from_toml('./ci.toml')
     return Config.from_toml('./tests/sonyci/sonyci.toml')
 
@@ -57,3 +62,20 @@ def test_bad_login(runner):
     )
     assert result.exit_code == 1
     assert 'invalid_client' in str(result.exception)
+
+
+def test_missing_username(error_runner):
+    result = error_runner.invoke(
+        app,
+        [
+            'login',
+            '--password',
+            'test',
+            '--client-id',
+            'test',
+            '--client-secret',
+            'test',
+        ],
+    )
+    assert result.exit_code == 2
+    assert '--username' in result.stderr
