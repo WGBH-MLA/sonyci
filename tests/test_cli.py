@@ -1,5 +1,3 @@
-from os import environ
-
 from pytest import fixture, mark
 from typer.testing import CliRunner
 
@@ -38,6 +36,7 @@ def test_login(runner, config):
             config['client_id'],
             '--client-secret',
             config['client_secret'],
+            '--test',
         ],
     )
     assert result.exit_code == 0
@@ -65,8 +64,8 @@ def test_bad_login(runner):
     assert 'invalid_client' in str(result.exception)
 
 
-def test_missing_username(error_runner):
-    result = error_runner.invoke(
+def test_missing_username(runner):
+    result = runner.invoke(
         app,
         [
             'login',
@@ -79,4 +78,4 @@ def test_missing_username(error_runner):
         ],
     )
     assert result.exit_code == 2
-    assert '--username' in result.stderr
+    assert '--username' in result.stdout
