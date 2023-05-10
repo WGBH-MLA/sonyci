@@ -58,6 +58,20 @@ def get(ctx: Context, path: Annotated[str, Argument(..., help='The path to GET')
     print(dumps(result))
 
 
+@app.command()
+def post(
+    ctx: Context,
+    path: Annotated[str, Argument(..., help='The path to POST')],
+    data: Annotated[str, Argument(..., help='The data to POST')],
+):
+    """Make a POST request to Sony CI."""
+    ci = SonyCi(t=ctx.parent.params['token'])
+    log.trace(f'POST {path} {data}')
+    result = ci.post(path, data)
+    log.success(result)
+    print(dumps(result))
+
+
 @app.callback()
 def main(
     ctx: Context,
