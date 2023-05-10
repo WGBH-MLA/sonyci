@@ -1,3 +1,5 @@
+from json import loads
+
 from pytest import fixture, mark
 from typer.testing import CliRunner
 
@@ -79,3 +81,36 @@ def test_missing_username(runner):
     )
     assert result.exit_code == 2
     assert '--username' in result.stdout
+
+
+@mark.vcr()
+def test_empty_search(runner, config):
+    result = runner.invoke(
+        app,
+        [
+            '-w',
+            config['workspace_id'],
+            'search',
+            'i am not a guid',
+        ],
+    )
+    assert result.exit_code == 0
+    assert result.output == '[]\n'
+
+
+@mark.vcr()
+def test_guid_search(runner, config, guid):
+    result = runner.invoke(
+        app,
+        [
+            '-w',
+            config['workspace_id'],
+            'search',
+            guid,
+        ],
+    )
+    output = loads(result.output)
+    assert result.exit_code == 0
+    assert type(output) is list
+    assert len(output) == 1
+    assert guid in output[0]['name']

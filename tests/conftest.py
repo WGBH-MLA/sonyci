@@ -4,6 +4,8 @@ from os import path
 
 from pytest import fixture
 
+from sonyci import Config
+
 
 def clean_response(response: dict):
     """Replace secrets in response body with dummy values."""
@@ -40,3 +42,8 @@ def vcr_config(request):
 
 def pytest_addoption(parser):
     parser.addoption('--record', action='store_true', default=False)
+
+
+@fixture
+def guid() -> str:
+    return Config.from_toml('./tests/sonyci/guid.toml')['guid']
