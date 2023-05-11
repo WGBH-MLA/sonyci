@@ -27,6 +27,7 @@ test = [
     "urllib3~=1.26",
 ]
 cli = ["typer[all]>=0.7.0"]
+cli-ci = ["typer>=0.7.0"]
 docs = [
     "mkdocs~=1.4",
     "mkdocs-material~=9.1",
@@ -44,11 +45,7 @@ build-backend = "pdm.backend"
 version = { source = "file", path = "sonyci/_version.py" }
 
 [tool.pdm.dev-dependencies]
-dev = [
-    "ruff~=0.0",
-    "black~=23.3",
-    "pre-commit>=2.21.0",
-]
+dev = ["ruff~=0.0", "black~=23.3", "pre-commit>=2.21.0"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
