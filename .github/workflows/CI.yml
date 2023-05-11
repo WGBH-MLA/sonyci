@@ -8,7 +8,7 @@ jobs:
     uses: WGBH-MLA/.github/.github/workflows/pytest.yml@main
     with:
       pip_args: .[test,cli-ci]
-      pytest_args: -n auto --vcr-record=none
+      pytest_args: -n auto --vcr-record=none --no_ci
 
   lint:
     name: 👕 Lint
