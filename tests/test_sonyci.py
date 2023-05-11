@@ -5,11 +5,6 @@ from sonyci.config import Config
 
 
 @fixture(scope='module')
-def guid() -> str:
-    return Config.from_toml('./tests/sonyci/guid.toml')['guid']
-
-
-@fixture(scope='module')
 def asset_id():
     return '554544ceaf6b4c94a4a06cee5bc1f39f'
 

@@ -1,10 +1,15 @@
 from loguru import logger as log
-from rich.logging import RichHandler
 
-log.configure(
-    handlers=[
-        {
-            'sink': RichHandler(),
-        }
-    ]
-)
+try:
+    from rich.logging import RichHandler
+
+    log.configure(
+        handlers=[
+            {
+                'sink': RichHandler(),
+            }
+        ]
+    )
+
+except ImportError:
+    pass
