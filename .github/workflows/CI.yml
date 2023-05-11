@@ -6,6 +6,7 @@ jobs:
   tests:
     name: ⚗️ Application Tests
     uses: WGBH-MLA/.github/.github/workflows/pytest.yml@main
+    secrets: inherit
     with:
       pip_args: .[test,cli]
       pytest_args: -n auto --vcr-record=none
