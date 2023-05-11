@@ -29,6 +29,7 @@ def login(
     password: str = Option(
         ..., '--password', '-p', help='Sony CI password.', envvar='CI_PASSWORD'
     ),
+    test: bool = Option(False, '--test', '-t', help='Skips saving the token.'),
 ):
     """Login to Sony CI."""
     from sonyci.utils import get_token
@@ -39,9 +40,10 @@ def login(
         ctx.parent.params.get('client_id'),
         ctx.parent.params.get('client_secret'),
     )
-    with open('.token', 'w') as f:
-        f.write(BearerTokenSerializer().dumps(token))
-        log.success('logged in to Sony CI!')
+    if not test:
+        with open('.token', 'w') as f:
+            f.write(BearerTokenSerializer().dumps(token))
+    log.success('logged in to Sony CI!')
 
 
 @app.command()
