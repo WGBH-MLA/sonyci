@@ -83,7 +83,7 @@ def test_missing_username(runner):
     assert '--username' in result.stdout
 
 
-@mark.vcr(allow_playback_repeats=True)
+@mark.vcr()
 def test_empty_search(runner, config):
     result = runner.invoke(
         app,
