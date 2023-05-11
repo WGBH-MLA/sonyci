@@ -9,7 +9,7 @@ interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '109'
+      - '53'
       Content-Type:
       - application/x-www-form-urlencoded
       User-Agent:
@@ -20,19 +20,19 @@ interactions:
     uri: https://api.cimediacloud.com/oauth2/token
   response:
     body:
-      string: '{"access_token": "DUMMY_ACCESS_TOKEN", "expires_in": 86400, "token_type":
-        "bearer", "refresh_token": "DUMMY_REFRESH_TOKEN"}'
+      string: '{"error": "invalid_client", "error_description": "Invalid client id
+        and client secret combination."}'
     headers:
       Cache-Control:
       - no-cache
       Connection:
       - keep-alive
       Content-Length:
-      - '143'
+      - '97'
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Thu, 11 May 2023 16:34:37 GMT
+      - Thu, 11 May 2023 17:28:02 GMT
       Expires:
       - '-1'
       Pragma:
@@ -42,6 +42,6 @@ interactions:
       X-Frame-Options:
       - deny
     status:
-      code: 200
-      message: OK
+      code: 401
+      message: Unauthorized
 version: 1

@@ -3,6 +3,7 @@ from json.decoder import JSONDecodeError
 from os import path
 
 from pytest import fixture, mark
+from typer.testing import CliRunner
 
 from sonyci import Config
 
@@ -64,3 +65,21 @@ def pytest_collection_modifyitems(config, items):
 @fixture
 def guid() -> str:
     return Config.from_toml('./tests/sonyci/guid.toml')['guid']
+
+
+# CLI fixtures
+@fixture
+def runner():
+    return CliRunner()
+
+
+@fixture
+def error_runner():
+    return CliRunner(mix_stderr=False)
+
+
+@fixture
+def config(pytestconfig):
+    if pytestconfig.getoption('record'):
+        return Config.from_toml('./ci.toml')
+    return Config.from_toml('./tests/sonyci/sonyci.toml')
