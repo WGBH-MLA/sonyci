@@ -95,7 +95,9 @@ def test_empty_search(runner, config):
         ],
     )
     assert result.exit_code == 0
-    assert result.output == '[]\n'
+    output = loads(result.output)
+    assert type(output) is list
+    assert not output
 
 
 @mark.vcr()
@@ -109,8 +111,8 @@ def test_guid_search(runner, config, guid):
             guid,
         ],
     )
-    output = loads(result.output)
     assert result.exit_code == 0
+    output = loads(result.output)
     assert type(output) is list
     assert len(output) == 1
     assert guid in output[0]['name']
