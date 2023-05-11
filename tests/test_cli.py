@@ -1,5 +1,3 @@
-from os import environ
-
 from pytest import fixture, mark
 from typer.testing import CliRunner
 
