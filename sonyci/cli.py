@@ -105,10 +105,10 @@ def main(
         envvar='CI_WORKSPACE_ID',
     ),
     client_id: str = Option(
-        ..., '--client-id', '-c', help='Sony CI client ID.', envvar='CI_CLIENT_ID'
+        None, '--client-id', '-c', help='Sony CI client ID.', envvar='CI_CLIENT_ID'
     ),
     client_secret: str = Option(
-        ...,
+        None,
         '--client-secret',
         '-s',
         help='Sony CI client secret.',
