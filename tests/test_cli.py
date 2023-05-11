@@ -29,15 +29,15 @@ def test_login(runner, config):
     result = runner.invoke(
         app,
         [
+            '--client-id',
+            config['client_id'],
+            '--client-secret',
+            config['client_secret'],
             'login',
             '--username',
             config['username'],
             '--password',
             config['password'],
-            '--client-id',
-            config['client_id'],
-            '--client-secret',
-            config['client_secret'],
         ],
     )
     assert result.exit_code == 0
@@ -49,14 +49,14 @@ def test_bad_login(runner):
     result = runner.invoke(
         app,
         [
+            '--client-id',
+            'test',
+            '--client-secret',
+            'test',
             'login',
             '--username',
             'test',
             '--password',
-            'test',
-            '--client-id',
-            'test',
-            '--client-secret',
             'test',
         ],
     )
@@ -68,12 +68,12 @@ def test_missing_username(error_runner):
     result = error_runner.invoke(
         app,
         [
-            'login',
-            '--password',
-            'test',
             '--client-id',
             'test',
             '--client-secret',
+            'test',
+            'login',
+            '--password',
             'test',
         ],
     )

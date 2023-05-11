@@ -22,27 +22,23 @@ def version_callback(value: bool):
 
 @app.command()
 def login(
+    ctx: Context,
     username: str = Option(
         ..., '--username', '-u', help='Sony CI username.', envvar='CI_USERNAME'
     ),
     password: str = Option(
         ..., '--password', '-p', help='Sony CI password.', envvar='CI_PASSWORD'
     ),
-    client_id: str = Option(
-        ..., '--client-id', '-c', help='Sony CI client ID.', envvar='CI_CLIENT_ID'
-    ),
-    client_secret: str = Option(
-        ...,
-        '--client-secret',
-        '-s',
-        help='Sony CI client secret.',
-        envvar='CI_CLIENT_SECRET',
-    ),
 ):
     """Login to Sony CI."""
     from sonyci.utils import get_token
 
-    token: BearerToken = get_token(username, password, client_id, client_secret)
+    token: BearerToken = get_token(
+        username,
+        password,
+        ctx.parent.params.get('client_id'),
+        ctx.parent.params.get('client_secret'),
+    )
     with open('.token', 'w') as f:
         f.write(BearerTokenSerializer().dumps(token))
         log.success('logged in to Sony CI!')
@@ -105,6 +101,16 @@ def main(
         '-w',
         help='Sony CI workspace ID.',
         envvar='CI_WORKSPACE_ID',
+    ),
+    client_id: str = Option(
+        ..., '--client-id', '-c', help='Sony CI client ID.', envvar='CI_CLIENT_ID'
+    ),
+    client_secret: str = Option(
+        ...,
+        '--client-secret',
+        '-s',
+        help='Sony CI client secret.',
+        envvar='CI_CLIENT_SECRET',
     ),
 ):
     if not verbose:
