@@ -1,0 +1,11 @@
+name: 📖 Publish to PyPi
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  publish:
+    name: 🏛 Publish package to PyPi
+    uses: WGBH-MLA/.github/.github/workflows/publish.yml@main
