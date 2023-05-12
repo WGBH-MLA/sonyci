@@ -33,7 +33,7 @@ interactions:
         Content-Type:
           - application/json; charset=utf-8
         Date:
-          - Mon, 08 May 2023 20:34:35 GMT
+          - Fri, 12 May 2023 22:12:45 GMT
         Expires:
           - '-1'
         Pragma:
@@ -59,23 +59,23 @@ interactions:
         authorization:
           - Bearer DUMMY
       method: GET
-      uri: https://api.cimediacloud.com/workspaces
+      uri: https://api.cimediacloud.com/workspaces/f44132c2393d470c88b9884f45877ebb
     response:
       body:
         string:
-          '{"limit": 50, "offset": 0, "count": 2, "items": [{"name": "American
-          Archive of Public Broadcasting", "id": "051303c1c1d24da7988128e6d2f56aa9"}]}'
+          '{"name": "My Workspace", "id": "f44132c2393d470c88b9884f45877ebb",
+          "assetCount": 12}'
       headers:
         Cache-Control:
           - no-cache
         Connection:
           - keep-alive
         Content-Length:
-          - '7629'
+          - '3062'
         Content-Type:
           - application/json; charset=utf-8
         Date:
-          - Mon, 08 May 2023 20:34:36 GMT
+          - Fri, 12 May 2023 22:12:46 GMT
         Expires:
           - '-1'
         Pragma:
@@ -87,9 +87,9 @@ interactions:
         X-RateLimit-Limit:
           - '5000'
         X-RateLimit-Remaining:
-          - '4985'
+          - '4979'
         X-RateLimit-Reset:
-          - '1683578100'
+          - '1683929580'
       status:
         code: 200
         message: OK

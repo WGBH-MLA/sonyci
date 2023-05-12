@@ -33,7 +33,7 @@ interactions:
         Content-Type:
           - application/json; charset=utf-8
         Date:
-          - Mon, 08 May 2023 20:34:36 GMT
+          - Fri, 12 May 2023 22:12:46 GMT
         Expires:
           - '-1'
         Pragma:
@@ -59,21 +59,24 @@ interactions:
         authorization:
           - Bearer DUMMY
       method: GET
-      uri: https://api.cimediacloud.com/workspaces/f44132c2393d470c88b9884f45877ebb
+      uri: https://api.cimediacloud.com/workspaces/f44132c2393d470c88b9884f45877ebb/contents
     response:
       body:
-        string: '{"name": "My Workspace", "id": "f44132c2393d470c88b9884f45877ebb"}'
+        string:
+          '{"limit": 50, "offset": 0, "count": 13, "kind": "All", "order": {"by":
+          "CreatedOn", "direction": "Asc"}, "items": [{"id": "d870616520634dbc8eb8caec141188fa",
+          "name": "Workspace"}]}'
       headers:
         Cache-Control:
           - no-cache
         Connection:
           - keep-alive
         Content-Length:
-          - '3062'
+          - '119677'
         Content-Type:
           - application/json; charset=utf-8
         Date:
-          - Mon, 08 May 2023 20:34:37 GMT
+          - Fri, 12 May 2023 22:12:47 GMT
         Expires:
           - '-1'
         Pragma:
@@ -85,9 +88,9 @@ interactions:
         X-RateLimit-Limit:
           - '5000'
         X-RateLimit-Remaining:
-          - '4984'
+          - '4978'
         X-RateLimit-Reset:
-          - '1683578100'
+          - '1683929580'
       status:
         code: 200
         message: OK
