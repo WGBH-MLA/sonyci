@@ -27,7 +27,7 @@ docs = [
     "mkdocs~=1.4",
     "mkdocs-material~=9.1",
     "mkdocs-git-revision-date-localized-plugin~=1.2",
-    "mike @ git+https://github.com/jimporter/mike.git",
+    "mike",
     "mkdocstrings[python]~=0.21",
     "mkdocs-jupyter~=0.24",
 ]
