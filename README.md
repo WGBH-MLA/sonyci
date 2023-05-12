@@ -1,4 +1,6 @@
 ![deploy](https://github.com/WGBH-MLA/sonyci/actions/workflows/CI.yml/badge.svg)
+[![codecov](https://codecov.io/gh/WGBH-MLA/sonyci/branch/main/graph/badge.svg?token=6J7UUYW9I9)](https://codecov.io/gh/WGBH-MLA/sonyci)
+<a href="https://codecov.io/gh/WGBH-MLA/sonyci"><img height=20 src="https://codecov.io/gh/WGBH-MLA/sonyci/branch/main/graphs/tree.svg?token=6J7UUYW9I9"></img></a>
 
 # sonyci
 
