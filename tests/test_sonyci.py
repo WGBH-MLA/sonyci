@@ -1,7 +1,6 @@
 from pytest import fixture, mark
 
-from sonyci import SonyCi
-from sonyci.config import Config
+from sonyci import Config, SonyCi
 
 
 @fixture(scope='module')
