@@ -9,7 +9,7 @@ jobs:
     secrets: inherit
     with:
       pip_args: .[test,cli]
-      pytest_args: --cov -n auto --vcr-record=none
+      pytest_args: --cov=sonyci -n auto --vcr-record=none
 
   lint:
     name: 👕 Lint
