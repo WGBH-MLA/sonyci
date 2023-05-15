@@ -27,7 +27,7 @@ docs = [
     "mkdocs~=1.4",
     "mkdocs-material~=9.1",
     "mkdocs-git-revision-date-localized-plugin~=1.2",
-    "mike @ git+https://github.com/jimporter/mike.git",
+    "mike",
     "mkdocstrings[python]~=0.21",
     "mkdocs-jupyter~=0.24",
 ]
@@ -45,6 +45,9 @@ dev = ["ruff~=0.0", "black~=23.3", "pre-commit~=2.21"]
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 markers = ["no_ci: marks tests to skip on CI"]
+
+[tool.coverage.run]
+omit = ["tests/*"]
 
 [tool.ruff.flake8-quotes]
 inline-quotes = "single"
