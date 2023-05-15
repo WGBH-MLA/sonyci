@@ -53,6 +53,9 @@ dev = [
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
+[tool.coverage.run]
+omit = ["tests/*"]
+
 [tool.ruff.flake8-quotes]
 inline-quotes = "single"
 
