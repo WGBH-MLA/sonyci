@@ -56,6 +56,7 @@ addopts = ["--import-mode=importlib"]
 
 [tool.coverage.run]
 omit = ["tests/*"]
+source = "sonyci"
 
 [tool.ruff.flake8-quotes]
 inline-quotes = "single"
