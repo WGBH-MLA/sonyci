@@ -5,7 +5,7 @@ on: [push, pull_request, workflow_dispatch]
 jobs:
   tests:
     name: ⚗️ Application Tests
-    uses: WGBH-MLA/.github/.github/workflows/pytest.yml@main
+    uses: WGBH-MLA/.github/.github/workflows/pytest.yml@cov
     secrets: inherit
     with:
       pip_args: .[test,cli]
