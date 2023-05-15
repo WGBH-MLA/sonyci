@@ -64,10 +64,10 @@ class SonyCi(Config):
         """
         return ApiClient(self.base_url, auth=self.auth)
 
-    def workspaces(self):
+    def workspaces(self) -> list:
         return self.get('workspaces')['items']
 
-    def workspace(self):
+    def workspace(self) -> dict:
         """Return response of /workspaces/{workspace_id}"""
         return self.get(f'workspaces/{self.workspace_id}')
 
@@ -89,10 +89,10 @@ class SonyCi(Config):
             'items'
         ]
 
-    def asset(self, asset_id: str = None, **kwargs):
+    def asset(self, asset_id: str, **kwargs) -> dict:
         return self.get(f'/assets/{asset_id}', params=kwargs)
 
-    def asset_download(self, asset_id: str = None, **kwargs):
+    def asset_download(self, asset_id: str, **kwargs) -> dict:
         return self.get(f'/assets/{asset_id}/download', params=kwargs)
 
     @json

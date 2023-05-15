@@ -1,0 +1,76 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.30.0
+      authorization:
+      - Bearer DUMMY
+    method: GET
+    uri: https://api.cimediacloud.com/workspaces/f44132c2393d470c88b9884f45877ebb/search?query=pb-aacip-e4308199588&kind=asset
+  response:
+    body:
+      string: '{"limit": 50, "offset": 0, "count": 1, "kind": "Asset", "type": "All",
+        "query": "pb-aacip-e4308199588", "items": [{"id": "554544ceaf6b4c94a4a06cee5bc1f39f",
+        "name": "cpb-aacip-e4308199588.txt", "size": 16, "createdOn": "2021-08-17T15:13:59.841Z",
+        "thumbnails": [{"type": "medium", "location": "https://cdn01.cimediacloud.com/cifiles/554544ceaf6b4c94a4a06cee5bc1f39f/renditions/thumbnail-medium.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NkbjAxLmNpbWVkaWFjbG91ZC5jb20vY2lmaWxlcy81NTQ1NDRjZWFmNmI0Yzk0YTRhMDZjZWU1YmMxZjM5Zi9yZW5kaXRpb25zL3RodW1ibmFpbC1tZWRpdW0uanBnIiwiQ29uZGl0aW9uIjp7IklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifSwiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NDY4OTc5OTd9fX1dfQ__&Signature=SFtjecF7C~pWTCDz9wVqxcfJq~TQT2H7iMMC3i8QHyjTf5rrGlCnm1F3CENRsKMH0HsBY0BRb6IQlDzeEew~YWEFkYr4p2x5h2Sshzt2DoCrMN6a5klrqFdX~rGLwK3Q0d03Sow2HWn~RnR9tSFmEI5IwrVf7ye6k4~Zc6jxZzs_&Key-Pair-Id=APKAJNUSFH4IKQRZ44WA",
+        "size": 3554, "width": 433, "height": 560, "isExternal": false}, {"type":
+        "large", "location": "https://cdn01.cimediacloud.com/cifiles/554544ceaf6b4c94a4a06cee5bc1f39f/renditions/thumbnail-large.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NkbjAxLmNpbWVkaWFjbG91ZC5jb20vY2lmaWxlcy81NTQ1NDRjZWFmNmI0Yzk0YTRhMDZjZWU1YmMxZjM5Zi9yZW5kaXRpb25zL3RodW1ibmFpbC1sYXJnZS5qcGciLCJDb25kaXRpb24iOnsiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9LCJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc0Njg5Nzk5N319fV19&Signature=fSG3h4wDG9nT-4IyWqa813ajZ7mVfsd677hFxhabtZN2UOnMOJ2QeGBUz6qWvkzmDydcRj380TKB6VH4r8nEkP3y8H92hymlNiSdXaAWYxa3SLmfVkeNOLEOp4OZwL0mXzSX~5S6e8Fi4Tok4jlL3p9svIhBY0kSVLvrhXW0e8Y_&Key-Pair-Id=APKAJNUSFH4IKQRZ44WA",
+        "size": 7208, "width": 612, "height": 792, "isExternal": false}, {"type":
+        "2000px", "location": "https://cdn01.cimediacloud.com/cifiles/554544ceaf6b4c94a4a06cee5bc1f39f/renditions/thumbnail-2000px.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NkbjAxLmNpbWVkaWFjbG91ZC5jb20vY2lmaWxlcy81NTQ1NDRjZWFmNmI0Yzk0YTRhMDZjZWU1YmMxZjM5Zi9yZW5kaXRpb25zL3RodW1ibmFpbC0yMDAwcHguanBnIiwiQ29uZGl0aW9uIjp7IklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifSwiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE3NDY4OTc5OTd9fX1dfQ__&Signature=KS~a0qL5a-46kzduKyyeuZs3r6T6CugxvTbmxrWjjGNBrBx9r9wWQsQh-x4~c-w2U-Rw1UOX54pD3wyeDPxW8u0cJp3BNNrmUXaqIA65HcI167AaP42VDk5wnNDj0EZxQ1bKwQSYk8M3cxbOlRjX3092Cz2f1ak5qp4U34QfoVU_&Key-Pair-Id=APKAJNUSFH4IKQRZ44WA",
+        "size": 7208, "width": 612, "height": 792, "isExternal": false}, {"type":
+        "small", "location": "https://cdn01.cimediacloud.com/cifiles/554544ceaf6b4c94a4a06cee5bc1f39f/renditions/thumbnail.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NkbjAxLmNpbWVkaWFjbG91ZC5jb20vY2lmaWxlcy81NTQ1NDRjZWFmNmI0Yzk0YTRhMDZjZWU1YmMxZjM5Zi9yZW5kaXRpb25zL3RodW1ibmFpbC5qcGciLCJDb25kaXRpb24iOnsiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9LCJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc0Njg5Nzk5N319fV19&Signature=XImPzv3WB23Ug34HD8iFwd7ARCl1yom2pyXK-ML0QH5rxzW40oeY953-fsvLf9fxW79D5CtE7mIGYoUu3NVjLzscShXv83wdKeLp~ib9tCvsK~3o7mjSiZTM1Yrv8B2WPNYlMos8OJsyQqjdkpkFT1g5G3FQCt6bN3NS3jVPnBI_&Key-Pair-Id=APKAJNUSFH4IKQRZ44WA",
+        "size": 1038, "width": 193, "height": 250, "isExternal": false}, {"type":
+        "standard", "location": "https://cdn01.cimediacloud.com/cifiles/554544ceaf6b4c94a4a06cee5bc1f39f/renditions/thumbnail.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NkbjAxLmNpbWVkaWFjbG91ZC5jb20vY2lmaWxlcy81NTQ1NDRjZWFmNmI0Yzk0YTRhMDZjZWU1YmMxZjM5Zi9yZW5kaXRpb25zL3RodW1ibmFpbC5qcGciLCJDb25kaXRpb24iOnsiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9LCJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTc0Njg5Nzk5N319fV19&Signature=XImPzv3WB23Ug34HD8iFwd7ARCl1yom2pyXK-ML0QH5rxzW40oeY953-fsvLf9fxW79D5CtE7mIGYoUu3NVjLzscShXv83wdKeLp~ib9tCvsK~3o7mjSiZTM1Yrv8B2WPNYlMos8OJsyQqjdkpkFT1g5G3FQCt6bN3NS3jVPnBI_&Key-Pair-Id=APKAJNUSFH4IKQRZ44WA",
+        "size": 1038, "width": 193, "height": 250}], "proxies": [{"type": "document-pdf",
+        "location": "https://cdn01.cimediacloud.com/cifiles/554544ceaf6b4c94a4a06cee5bc1f39f/renditions/document-pdf.pdf?u=16a555d05c60439a8243a3d6c349fd8b&a=554544ceaf6b4c94a4a06cee5bc1f39f&ct=abb0668d5b054200b6a89c3826024e42&et=stream&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NkbjAxLmNpbWVkaWFjbG91ZC5jb20vY2lmaWxlcy81NTQ1NDRjZWFmNmI0Yzk0YTRhMDZjZWU1YmMxZjM5Zi9yZW5kaXRpb25zL2RvY3VtZW50LXBkZi5wZGY~dT0xNmE1NTVkMDVjNjA0MzlhODI0M2EzZDZjMzQ5ZmQ4YiZhPTU1NDU0NGNlYWY2YjRjOTRhNGEwNmNlZTViYzFmMzlmJmN0PWFiYjA2NjhkNWIwNTQyMDBiNmE4OWMzODI2MDI0ZTQyJmV0PXN0cmVhbSIsIkNvbmRpdGlvbiI6eyJJcEFkZHJlc3MiOnsiQVdTOlNvdXJjZUlwIjoiMC4wLjAuMC8wIn0sIkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNjgzODY5MTk3fX19XX0_&Signature=boSX5Wi7lAvoC-hfX6E0oNIQtdOc7K6fTFMP9EhTjUjxxSZ3FFpT6dI31~RjC1sTVmEbeazVym2dMKBVphBHXdM-bGRB4ZbYNRFZqBrNKcco6o17CpD5cY72yQcpXHgZlXEmEUsP~S7LaFjQFGKAFz11odfHgzm5bmdrE-5t1iA_&Key-Pair-Id=APKAJNUSFH4IKQRZ44WA",
+        "size": 7172, "isExternal": false}], "type": "Document", "format": "txt",
+        "status": "Complete", "lastActivityOn": "2023-05-11T17:25:47.652Z", "modifiedOn":
+        "2021-08-17T15:14:43.43Z", "md5Checksum": "23211babeacb8adf336194eaca77f510",
+        "clipSource": {}, "technicalMetadata": {}, "archiveStatus": "Not archived",
+        "restoreStatus": "Not restored", "uploadCompleteDate": "2021-08-17T15:13:59.966Z",
+        "isTrashed": false, "isFavorite": false, "isExternal": false, "uploadTransferType":
+        "SinglepartHttp", "folder": {"id": "d870616520634dbc8eb8caec141188fa", "name":
+        "Workspace"}, "workspace": {"id": "f44132c2393d470c88b9884f45877ebb", "name":
+        "My Workspace", "class": "Personal"}, "network": {"id": "70c6959f648a428096c88906b6655773",
+        "name": "AAPB''s Network", "class": "Personal"}, "filmstrips": [], "waveforms":
+        [], "mediaAnalyses": [], "acquisitionSource": {"name": "American Archive"},
+        "totalFolderCount": 1, "isTimedTextMatch": false, "kind": "Asset", "createdBy":
+        {"id": "16a555d05c60439a8243a3d6c349fd8b", "name": "AAPB Notifications", "email":
+        "aapb_notifications@wgbh.org"}}], "order": {"by": "Relevance", "direction":
+        "Desc"}}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '5785'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Thu, 11 May 2023 17:26:37 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=86400; includeSubDomains
+      X-Frame-Options:
+      - deny
+      X-RateLimit-Limit:
+      - '5000'
+      X-RateLimit-Remaining:
+      - '4968'
+      X-RateLimit-Reset:
+      - '1683826020'
+    status:
+      code: 200
+      message: OK
+version: 1

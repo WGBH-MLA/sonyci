@@ -8,8 +8,8 @@ jobs:
     uses: WGBH-MLA/.github/.github/workflows/pytest.yml@main
     secrets: inherit
     with:
-      pip_args: .[test,cli]
-      pytest_args: -n auto --vcr-record=none
+      pip_args: .[test,cli-ci]
+      pytest_args: -n auto --vcr-record=none --no_ci
 
   lint:
     name: 👕 Lint

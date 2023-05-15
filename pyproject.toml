@@ -2,12 +2,7 @@
 name = "sonyci"
 description = "A Sony Ci api client"
 authors = [{ name = "WGBH-MLA", email = "ryan_harbert@wgbh.org" }]
-dependencies = [
-    "pydantic~=1.10",
-    "requests-oauth2client~=1.1",
-    "loguru~=0.7",
-    "rich~=13.3",
-]
+dependencies = ["pydantic~=1.10", "requests-oauth2client~=1.1", "loguru~=0.7"]
 requires-python = ">=3.7"
 readme = "README.md"
 license = { text = "MIT" }
@@ -27,6 +22,7 @@ test = [
     "urllib3~=1.26",
 ]
 cli = ["typer[all]>=0.7.0"]
+cli-ci = ["typer>=0.7.0"]
 docs = [
     "mkdocs~=1.4",
     "mkdocs-material~=9.1",
@@ -44,14 +40,11 @@ build-backend = "pdm.backend"
 version = { source = "file", path = "sonyci/_version.py" }
 
 [tool.pdm.dev-dependencies]
-dev = [
-    "ruff~=0.0",
-    "black~=23.3",
-    "pre-commit>=2.21.0",
-]
+dev = ["ruff~=0.0", "black~=23.3", "pre-commit>=2.21.0"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+markers = ["no_ci: marks tests to skip on CI"]
 
 [tool.coverage.run]
 omit = ["tests/*"]
