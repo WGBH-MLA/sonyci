@@ -1,4 +1,4 @@
-from json import dumps
+from json import dumps, loads
 
 from requests_oauth2client.tokens import BearerToken, BearerTokenSerializer
 from typer import Argument, Context, Exit, Option, Typer
@@ -60,11 +60,12 @@ def get(ctx: Context, path: Annotated[str, Argument(..., help='The path to GET')
 def post(
     ctx: Context,
     path: Annotated[str, Argument(..., help='The path to POST')],
-    data: Annotated[str, Argument(..., help='The data to POST')],
+    data=Argument(help='The data to POST'),
 ):
     """Make a POST request to Sony CI."""
     ci = SonyCi(t=ctx.parent.params['token'])
-    log.trace(f'POST {path} {data}')
+    data = loads(data)
+    log.debug(f'POST {path} {data}')
     result = ci.post(path, data)
     log.success(result)
     print(dumps(result))
@@ -84,6 +85,21 @@ def search(
     print(dumps(result))
 
 
+@app.command()
+def asset(
+    ctx: Context,
+    asset: Annotated[str, Argument(..., help='The asset ID to search for')],
+):
+    """Search for files in a Sony CI workspace"""
+    ci = SonyCi(
+        t=ctx.parent.params['token'], workspace_id=ctx.parent.params['workspace_id']
+    )
+    log.trace(f'asset {asset}')
+    result = ci.asset(asset)
+    log.success(result)
+    print(dumps(result))
+
+
 @app.callback()
 def main(
     ctx: Context,
@@ -96,7 +112,9 @@ def main(
         help='Show the version and exit.',
     ),
     verbose: bool = Option(None, '--verbose', '-v', help='Show verbose output.'),
-    token: str = Option(None, '--token', '-t', help='Sony CI token.', envvar='TOKEN'),
+    token: str = Option(
+        None, '--token', '-t', help='Sony CI token.', envvar='CI_TOKEN'
+    ),
     workspace_id: str = Option(
         None,
         '--workspace-id',

@@ -83,3 +83,8 @@ def config(pytestconfig):
     if pytestconfig.getoption('record'):
         return Config.from_toml('./ci.toml')
     return Config.from_toml('./tests/sonyci/sonyci.toml')
+
+
+@fixture
+def asset_id():
+    return '554544ceaf6b4c94a4a06cee5bc1f39f'
