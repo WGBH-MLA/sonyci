@@ -6,6 +6,7 @@ from typing_extensions import Annotated
 
 from sonyci import SonyCi
 from sonyci.log import log
+from sonyci.types import ProxyType
 
 app = Typer(context_settings={'help_option_names': ['-h', '--help']})
 
@@ -82,6 +83,27 @@ def search(
     result = ci.workspace_search(query)
     log.success(result)
     print(dumps(result))
+
+
+@app.command()
+def download(
+    ctx: Context,
+    id: Annotated[str, Argument(..., help='The SonyCi ID of the file to download')],
+    proxy: Annotated[ProxyType, Option('--proxy', '-p', help='Download ')] = None,
+    output: Annotated[
+        str, Option('--output', '-o', help='The path to download the file to')
+    ] = None,
+):
+    """Download a file from Sony CI"""
+    ci = SonyCi(t=ctx.parent.params['token'])
+    log.trace(f'download id: {id} proxy: {proxy} output: {output}')
+    result = ci.asset_download(id)
+    if proxy:
+        result = result[proxy.value]
+        log.success(result)
+        print(result)
+    result = result['location']
+    print(result)
 
 
 @app.callback()
