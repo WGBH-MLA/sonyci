@@ -1,4 +1,6 @@
 from json import dumps
+from pathlib import Path
+from urllib.request import urlretrieve
 
 from requests_oauth2client.tokens import BearerToken, BearerTokenSerializer
 from typer import Argument, Context, Exit, Option, Typer
@@ -91,19 +93,27 @@ def download(
     id: Annotated[str, Argument(..., help='The SonyCi ID of the file to download')],
     proxy: Annotated[ProxyType, Option('--proxy', '-p', help='Download ')] = None,
     output: Annotated[
-        str, Option('--output', '-o', help='The path to download the file to')
+        Path, Option('--output', '-o', help='The path to download the file to')
     ] = None,
 ):
     """Download a file from Sony CI"""
     ci = SonyCi(t=ctx.parent.params['token'])
     log.trace(f'download id: {id} proxy: {proxy} output: {output}')
     result = ci.asset_download(id)
+    link = result['location']
     if proxy:
-        result = result[proxy.value]
-        log.success(result)
-        print(result)
-    result = result['location']
-    print(result)
+        for p in result['proxies']:
+            if p['type'] == proxy.value:
+                log.debug(f'found proxy {proxy.value}')
+                link = p['location']
+                break
+        assert link != result['location'], f'proxy {proxy} not found'
+
+    log.trace(f'link: {link}')
+    filename = output or Path(link).name.split('?')[0]
+    log.debug(f'downloading {id} to {filename}')
+    urlretrieve(link, filename)
+    log.success(f'downloaded {id} to {filename}')
 
 
 @app.callback()
