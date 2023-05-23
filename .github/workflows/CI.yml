@@ -9,7 +9,7 @@ jobs:
     secrets: inherit
     with:
       pdm_args: -G test,cli-ci
-      pytest_args: -n auto --vcr-record=none --no_ci
+      pytest_args: -n auto --vcr-record=none
 
   lint:
     name: 👕 Lint
