@@ -10,6 +10,11 @@ from sonyci.log import log
 app = Typer(context_settings={'help_option_names': ['-h', '--help']})
 
 
+def parse_bearer_token(token: str) -> BearerToken:
+    """Parse a bearer token from a json string."""
+    return BearerToken(loads(token))
+
+
 def version_callback(value: bool):
     """Print the version of the program and exit."""
     if value:
@@ -112,9 +117,16 @@ def main(
         help='Show the version and exit.',
     ),
     verbose: bool = Option(None, '--verbose', '-v', help='Show verbose output.'),
-    token: str = Option(
-        None, '--token', '-t', help='Sony CI token.', envvar='CI_TOKEN'
-    ),
+    token: Annotated[
+        BearerToken,
+        Option(
+            '--token',
+            '-t',
+            parser=parse_bearer_token,
+            help='Sony CI token.',
+            envvar='CI_TOKEN',
+        ),
+    ] = None,
     workspace_id: str = Option(
         None,
         '--workspace-id',

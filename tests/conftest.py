@@ -3,6 +3,7 @@ from json.decoder import JSONDecodeError
 from os import environ, path
 
 from pytest import fixture, mark
+from requests_oauth2client.tokens import BearerToken
 from typer.testing import CliRunner
 
 from sonyci import Config
@@ -67,10 +68,21 @@ def guid() -> str:
     return Config.from_toml('./tests/sonyci/guid.toml')['guid']
 
 
+@fixture
+def token() -> BearerToken:
+    return dumps(
+        BearerToken(
+            access_token='FakeAccessToken', refresh_token='FakeRefreshToken'
+        ).as_dict()
+    )
+
+
 # CLI fixtures
 @fixture
-def runner():
-    environ['CI_TOKEN'] = 'FAKE_CI_TOKEN'
+def runner(token, pytestconfig):
+    # If we're not recording, use a dummy token
+    if not pytestconfig.getoption('record'):
+        environ['CI_TOKEN'] = token
     return CliRunner()
 
 
