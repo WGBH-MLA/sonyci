@@ -1,6 +1,6 @@
 from json import dumps, loads
 from json.decoder import JSONDecodeError
-from os import path
+from os import environ, path
 
 from pytest import fixture, mark
 from typer.testing import CliRunner
@@ -70,6 +70,7 @@ def guid() -> str:
 # CLI fixtures
 @fixture
 def runner():
+    environ['CI_TOKEN'] = 'FAKE_CI_TOKEN'
     return CliRunner()
 
 
