@@ -6,6 +6,7 @@ from typing_extensions import Annotated
 
 from sonyci import SonyCi
 from sonyci.log import log
+from sonyci.utils import save_token_to_file
 
 app = Typer(context_settings={'help_option_names': ['-h', '--help']})
 
@@ -46,8 +47,7 @@ def login(
         ctx.parent.params.get('client_secret'),
     )
     if not test:
-        with open('.token', 'w') as f:
-            f.write(BearerTokenSerializer().dumps(token))
+        save_token_to_file(token, '.token')
     log.success('logged in to Sony CI!')
 
 
