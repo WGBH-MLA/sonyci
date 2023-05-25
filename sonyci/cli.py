@@ -1,13 +1,20 @@
 from json import dumps
 
 from requests_oauth2client.tokens import BearerToken, BearerTokenSerializer
+from trogon import Trogon
 from typer import Argument, Context, Exit, Option, Typer
+from typer.main import get_group
 from typing_extensions import Annotated
 
 from sonyci import SonyCi
 from sonyci.log import log
 
 app = Typer(context_settings={'help_option_names': ['-h', '--help']})
+
+
+@app.command()
+def tui(ctx: Context):
+    Trogon(get_group(app), click_context=ctx).run()
 
 
 def version_callback(value: bool):
