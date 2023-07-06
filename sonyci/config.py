@@ -22,7 +22,7 @@ class Config(BaseModel):
     @classmethod
     def load(
         cls,
-        toml_filename: str = None,
+        toml_filename: str | None = None,
         toml_key: str = TOML_KEY,
         env_prefix: str = ENV_PREFIX,
         **kwargs,
