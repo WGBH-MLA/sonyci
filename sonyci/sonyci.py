@@ -77,7 +77,7 @@ class SonyCi(Config):
             'items'
         ]
 
-    def workspace_search(self, query: str = None, **kwargs) -> list:
+    def workspace_search(self, query: str | None = None, **kwargs) -> list:
         """Performs a search of a workspace and returns the items found"""
         if len(query) > 20:
             query = query[-20:]
