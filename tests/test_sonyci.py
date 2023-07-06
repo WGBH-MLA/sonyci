@@ -4,11 +4,6 @@ from sonyci import Config, SonyCi
 
 
 @fixture(scope='module')
-def asset_id():
-    return '554544ceaf6b4c94a4a06cee5bc1f39f'
-
-
-@fixture(scope='module')
 def ci_config(pytestconfig):
     if pytestconfig.getoption('record'):
         return Config.load('./ci.toml')

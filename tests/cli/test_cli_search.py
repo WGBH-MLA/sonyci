@@ -5,7 +5,6 @@ from pytest import mark
 from sonyci.cli import app
 
 
-@mark.no_ci  # FIXME: Fails in CI with: CannotOverwriteExistingCassetteException
 @mark.vcr()
 def test_empty_search(runner, config):
     result = runner.invoke(
@@ -23,7 +22,6 @@ def test_empty_search(runner, config):
     assert not output
 
 
-@mark.no_ci  # FIXME: Fails in CI with: CannotOverwriteExistingCassetteException
 @mark.vcr()
 def test_guid_search(runner, config, guid):
     result = runner.invoke(

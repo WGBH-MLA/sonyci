@@ -1,6 +1,8 @@
-from sonyci.config import Config
-from pytest import fixture
 from os import environ
+
+from pytest import fixture
+
+from sonyci import Config
 
 
 @fixture(
