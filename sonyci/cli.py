@@ -1,4 +1,7 @@
-from json import dumps
+from json import dumps, loads
+from pathlib import Path
+from typing import Optional
+from urllib.request import urlretrieve
 
 from requests_oauth2client.tokens import BearerToken, BearerTokenSerializer
 from trogon import Trogon
@@ -8,13 +11,15 @@ from typing_extensions import Annotated
 
 from sonyci import SonyCi
 from sonyci.log import log
+from sonyci.types import ProxyType
+from sonyci.utils import save_token_to_file
 
 app = Typer(context_settings={'help_option_names': ['-h', '--help']})
 
 
-@app.command()
-def tui(ctx: Context):
-    Trogon(get_group(app), click_context=ctx).run()
+def parse_bearer_token(token: str) -> BearerToken:
+    """Parse a bearer token from a json string."""
+    return BearerToken(loads(token))
 
 
 def version_callback(value: bool):
@@ -25,6 +30,15 @@ def version_callback(value: bool):
         print(f'v{__version__}')
 
         raise Exit()
+
+
+class ProxyNotFoundError(Exception):
+    """Raised when a specific proxy is not found."""
+
+
+@app.command()
+def tui(ctx: Context):
+    Trogon(get_group(app), click_context=ctx).run()
 
 
 @app.command()
@@ -48,8 +62,7 @@ def login(
         ctx.parent.params.get('client_secret'),
     )
     if not test:
-        with open('.token', 'w') as f:
-            f.write(BearerTokenSerializer().dumps(token))
+        save_token_to_file(token, '.token')
     log.success('logged in to Sony CI!')
 
 
@@ -67,11 +80,12 @@ def get(ctx: Context, path: Annotated[str, Argument(..., help='The path to GET')
 def post(
     ctx: Context,
     path: Annotated[str, Argument(..., help='The path to POST')],
-    data: Annotated[str, Argument(..., help='The data to POST')],
+    data=Argument(help='The data to POST'),
 ):
     """Make a POST request to Sony CI."""
     ci = SonyCi(t=ctx.parent.params['token'])
-    log.trace(f'POST {path} {data}')
+    data = loads(data)
+    log.debug(f'POST {path} {data}')
     result = ci.post(path, data)
     log.success(result)
     print(dumps(result))
@@ -91,6 +105,53 @@ def search(
     print(dumps(result))
 
 
+@app.command()
+def download(
+    ctx: Context,
+    id: Annotated[str, Argument(..., help='The SonyCi ID of the file to download')],
+    proxy: Annotated[ProxyType, Option('--proxy', '-p', help='Download ')] = None,
+    output: Annotated[
+        Optional[Path],
+        Option('--output', '-o', help='The path to download the file to'),
+    ] = None,
+):
+    """Download a file from Sony CI"""
+    ci = SonyCi(t=ctx.parent.params['token'])
+    log.trace(f'download id: {id} proxy: {proxy} output: {output}')
+    result = ci.asset_download(id)
+    link = result['location']
+    if proxy:
+        for p in result['proxies']:
+            if p['type'] == proxy.value:
+                log.debug(f'found proxy {proxy.value}')
+                link = p['location']
+                break
+        # Check if matching proxy was found. Raise an exception if not found.
+        if link == result['location']:
+            raise ProxyNotFoundError(f'proxy {proxy} not found')
+
+    log.trace(f'link: {link}')
+    filename = output or Path(link).name.split('?')[0]
+    log.debug(f'downloading {id} to {filename}')
+    urlretrieve(link, filename)
+    log.success(f'downloaded {id} to {filename}')
+
+
+@app.command()
+def asset(
+    ctx: Context,
+    asset: Annotated[str, Argument(..., help='The asset ID to search for')],
+):
+    """Search for files in a Sony CI workspace"""
+    ci = SonyCi(
+        t=ctx.parent.params['token'], workspace_id=ctx.parent.params['workspace_id']
+    )
+    log.trace(f'asset {asset}')
+    result = ci.asset(asset)
+    log.success(result)
+    print(dumps(result))
+
+
 @app.callback()
 def main(
     ctx: Context,
@@ -103,7 +164,16 @@ def main(
         help='Show the version and exit.',
     ),
     verbose: bool = Option(None, '--verbose', '-v', help='Show verbose output.'),
-    token: str = Option(None, '--token', '-t', help='Sony CI token.', envvar='TOKEN'),
+    token: Annotated[
+        BearerToken,
+        Option(
+            '--token',
+            '-t',
+            parser=parse_bearer_token,
+            help='Sony CI token.',
+            envvar='CI_TOKEN',
+        ),
+    ] = None,
     workspace_id: str = Option(
         None,
         '--workspace-id',
