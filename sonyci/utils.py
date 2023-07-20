@@ -36,7 +36,7 @@ def get_token_from_file(filename: str = '.token'):
         return BearerTokenSerializer().loads(f.read())
 
 
-def save_token_to_file(token, filename: str = '.token'):
+def save_token_to_file(token: BearerToken, filename: str = '.token'):
     with open(filename, 'w') as f:
         f.write(BearerTokenSerializer().dumps(token))
 

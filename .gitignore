@@ -1,5 +1,6 @@
 __pycache__/
 build/
+dist/
 site/
 .pdm-python
 .token
