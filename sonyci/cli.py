@@ -124,6 +124,7 @@ def download(
     log.success(f'downloaded {id} to {filename}')
 
 
+@app.command()
 def asset(
     ctx: Context,
     asset: Annotated[str, Argument(..., help='The asset ID to search for')],
