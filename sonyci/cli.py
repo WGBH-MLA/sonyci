@@ -30,6 +30,10 @@ def version_callback(value: bool):
         raise Exit()
 
 
+class ProxyNotFoundError(Exception):
+    """Raised when a specific proxy is not found."""
+
+
 @app.command()
 def login(
     ctx: Context,
@@ -115,7 +119,9 @@ def download(
                 log.debug(f'found proxy {proxy.value}')
                 link = p['location']
                 break
-        assert link != result['location'], f'proxy {proxy} not found'
+        # Check if matching proxy was found. Raise an exception if not found.
+        if link == result['location']:
+            raise ProxyNotFoundError(f'proxy {proxy} not found')
 
     log.trace(f'link: {link}')
     filename = output or Path(link).name.split('?')[0]
