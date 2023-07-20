@@ -1,4 +1,7 @@
 from json import dumps, loads
+from pathlib import Path
+from typing import Optional
+from urllib.request import urlretrieve
 
 from requests_oauth2client.tokens import BearerToken, BearerTokenSerializer
 from typer import Argument, Context, Exit, Option, Typer
@@ -6,6 +9,7 @@ from typing_extensions import Annotated
 
 from sonyci import SonyCi
 from sonyci.log import log
+from sonyci.types import ProxyType
 from sonyci.utils import save_token_to_file
 
 app = Typer(context_settings={'help_option_names': ['-h', '--help']})
@@ -24,6 +28,10 @@ def version_callback(value: bool):
         print(f'v{__version__}')
 
         raise Exit()
+
+
+class ProxyNotFoundError(Exception):
+    """Raised when a specific proxy is not found."""
 
 
 @app.command()
@@ -88,6 +96,38 @@ def search(
     result = ci.workspace_search(query)
     log.success(result)
     print(dumps(result))
+
+
+@app.command()
+def download(
+    ctx: Context,
+    id: Annotated[str, Argument(..., help='The SonyCi ID of the file to download')],
+    proxy: Annotated[ProxyType, Option('--proxy', '-p', help='Download ')] = None,
+    output: Annotated[
+        Optional[Path],
+        Option('--output', '-o', help='The path to download the file to'),
+    ] = None,
+):
+    """Download a file from Sony CI"""
+    ci = SonyCi(t=ctx.parent.params['token'])
+    log.trace(f'download id: {id} proxy: {proxy} output: {output}')
+    result = ci.asset_download(id)
+    link = result['location']
+    if proxy:
+        for p in result['proxies']:
+            if p['type'] == proxy.value:
+                log.debug(f'found proxy {proxy.value}')
+                link = p['location']
+                break
+        # Check if matching proxy was found. Raise an exception if not found.
+        if link == result['location']:
+            raise ProxyNotFoundError(f'proxy {proxy} not found')
+
+    log.trace(f'link: {link}')
+    filename = output or Path(link).name.split('?')[0]
+    log.debug(f'downloading {id} to {filename}')
+    urlretrieve(link, filename)
+    log.success(f'downloaded {id} to {filename}')
 
 
 @app.command()
