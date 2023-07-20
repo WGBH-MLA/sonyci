@@ -4,7 +4,6 @@ from typing import Optional
 from urllib.request import urlretrieve
 
 from requests_oauth2client.tokens import BearerToken, BearerTokenSerializer
-from trogon import Trogon
 from typer import Argument, Context, Exit, Option, Typer
 from typer.main import get_group
 from typing_extensions import Annotated
@@ -36,9 +35,15 @@ class ProxyNotFoundError(Exception):
     """Raised when a specific proxy is not found."""
 
 
-@app.command()
-def tui(ctx: Context):
-    Trogon(get_group(app), click_context=ctx).run()
+try:
+    from trogon import Trogon
+
+    @app.command()
+    def tui(ctx: Context):
+        Trogon(get_group(app), click_context=ctx).run()
+
+except ImportError:
+    pass
 
 
 @app.command()

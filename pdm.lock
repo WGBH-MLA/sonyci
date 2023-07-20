@@ -2,11 +2,11 @@
 # It is not intended for manual editing.
 
 [metadata]
-groups = ["default", "cli", "cli-ci", "dev", "docs", "test"]
+groups = ["default", "cli", "cli-ci", "dev", "docs", "test", "tui"]
 cross_platform = true
 static_urls = false
 lock_version = "4.3"
-content_hash = "sha256:fcaa45a6a52b7abd0aba1eb788ad2dcef5c760c7d633a3cade50172667bd7c21"
+content_hash = "sha256:9453dd47d82b56ae656dd882c38c126fa3c1b537d071469d9fc3668d6753cfd5"
 
 [[package]]
 name = "appnope"
