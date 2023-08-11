@@ -1,6 +1,6 @@
-import tomllib
 from os import environ
 
+import tomllib
 from pydantic import BaseModel
 
 BASE_URL = 'https://api.cimediacloud.com/'

@@ -73,7 +73,7 @@ select = [
     'E', # pycodestyle errors
     'ERA', # eradicate
     'F', # pyflakes
-    # 'I', # isort
+    'I', # isort
     'INT', # flake8-gettext
     'N', # pep8-naming
     'PIE', # flake8-pie,
