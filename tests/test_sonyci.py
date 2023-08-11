@@ -18,7 +18,7 @@ def ci(ci_config: Config):
 @mark.vcr()
 def test_token(ci: SonyCi):
     token = ci.token
-    assert type(token.access_token) is str, 'Access token is not a string'
+    assert isinstance(token.access_token, str), 'Access token is not a string'
     assert len(token.access_token) > 0, 'Access token was empty'
 
 
