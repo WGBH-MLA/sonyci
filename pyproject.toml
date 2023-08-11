@@ -31,6 +31,7 @@ cli = [
 cli-ci = [
     "typer~=0.9",
 ]
+tui = ["trogon~=0.5"]
 docs = [
     "mkdocs~=1.5",
     "mkdocs-material~=9.1",

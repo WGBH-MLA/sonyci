@@ -2,7 +2,7 @@
 # It is not intended for manual editing.
 
 [metadata]
-groups = ["default", "cli", "cli-ci", "dev", "docs", "test"]
+groups = ["default", "cli", "cli-ci", "dev", "docs", "test", "tui"]
 cross_platform = true
 static_urls = false
 lock_version = "4.3"
@@ -923,6 +923,19 @@ files = [
 ]
 
 [[package]]
+name = "linkify-it-py"
+version = "2.0.2"
+requires_python = ">=3.7"
+summary = "Links recognition library with FULL unicode support."
+dependencies = [
+    "uc-micro-py",
+]
+files = [
+    {file = "linkify-it-py-2.0.2.tar.gz", hash = "sha256:19f3060727842c254c808e99d465c80c49d2c7306788140987a1a7a29b0d6ad2"},
+    {file = "linkify_it_py-2.0.2-py3-none-any.whl", hash = "sha256:a3a24428f6c96f27370d7fe61d2ac0be09017be5190d68d8658233171f1b6541"},
+]
+
+[[package]]
 name = "loguru"
 version = "0.7.0"
 requires_python = ">=3.5"
@@ -957,6 +970,22 @@ summary = "Python port of markdown-it. Markdown parsing, done right!"
 dependencies = [
     "mdurl~=0.1",
     "typing-extensions>=3.7.4; python_version < \"3.8\"",
+]
+files = [
+    {file = "markdown-it-py-2.2.0.tar.gz", hash = "sha256:7c9a5e412688bc771c67432cbfebcdd686c93ce6484913dccf06cb5a0bea35a1"},
+    {file = "markdown_it_py-2.2.0-py3-none-any.whl", hash = "sha256:5a35f8d1870171d9acc47b99612dc146129b631baf04970128b568f190d0cc30"},
+]
+
+[[package]]
+name = "markdown-it-py"
+version = "2.2.0"
+extras = ["linkify", "plugins"]
+requires_python = ">=3.7"
+summary = "Python port of markdown-it. Markdown parsing, done right!"
+dependencies = [
+    "linkify-it-py<3,>=1",
+    "markdown-it-py==2.2.0",
+    "mdit-py-plugins",
 ]
 files = [
     {file = "markdown-it-py-2.2.0.tar.gz", hash = "sha256:7c9a5e412688bc771c67432cbfebcdd686c93ce6484913dccf06cb5a0bea35a1"},
@@ -2249,6 +2278,22 @@ files = [
 ]
 
 [[package]]
+name = "textual"
+version = "0.30.0"
+requires_python = ">=3.7,<4.0"
+summary = "Modern Text User Interface framework"
+dependencies = [
+    "importlib-metadata>=4.11.3",
+    "markdown-it-py[linkify,plugins]>=2.1.0",
+    "rich>=13.3.3",
+    "typing-extensions<5.0.0,>=4.4.0",
+]
+files = [
+    {file = "textual-0.30.0-py3-none-any.whl", hash = "sha256:e87d587e4569236f3809d41955ed9556287dbedaca64724e1d6ad5adbb69c9c5"},
+    {file = "textual-0.30.0.tar.gz", hash = "sha256:bf7045a7e9b7dc3ac589c38ce86ac31aecf0e76e8c8ce09aee474316bc2e2c03"},
+]
+
+[[package]]
 name = "tinycss2"
 version = "1.2.1"
 requires_python = ">=3.7"
@@ -2308,6 +2353,20 @@ summary = "Traitlets Python configuration system"
 files = [
     {file = "traitlets-5.9.0-py3-none-any.whl", hash = "sha256:9e6ec080259b9a5940c797d58b613b5e31441c2257b87c2e795c5228ae80d2d8"},
     {file = "traitlets-5.9.0.tar.gz", hash = "sha256:f6cde21a9c68cf756af02035f72d5a723bf607e862e7be33ece505abf4a3bad9"},
+]
+
+[[package]]
+name = "trogon"
+version = "0.5.0"
+requires_python = ">=3.7,<4.0"
+summary = "Automatically generate a Textual TUI for your Click CLI"
+dependencies = [
+    "click>=8.0.0",
+    "textual>=0.26.0",
+]
+files = [
+    {file = "trogon-0.5.0-py3-none-any.whl", hash = "sha256:987d2195c1dd2f93c50e555063a9de57edbc5906ce20ee39081343ff194952c1"},
+    {file = "trogon-0.5.0.tar.gz", hash = "sha256:61a57f0f1a38227d90601cd020f46960be8e36947b5e56c6932c2e01ecc5042a"},
 ]
 
 [[package]]
@@ -2392,6 +2451,16 @@ summary = "Backported and Experimental Type Hints for Python 3.7+"
 files = [
     {file = "typing_extensions-4.7.1-py3-none-any.whl", hash = "sha256:440d5dd3af93b060174bf433bccd69b0babc3b15b1a8dca43789fd7f61514b36"},
     {file = "typing_extensions-4.7.1.tar.gz", hash = "sha256:b75ddc264f0ba5615db7ba217daeb99701ad295353c45f9e95963337ceeeffb2"},
+]
+
+[[package]]
+name = "uc-micro-py"
+version = "1.0.2"
+requires_python = ">=3.7"
+summary = "Micro subset of unicode data files for linkify-it-py projects."
+files = [
+    {file = "uc-micro-py-1.0.2.tar.gz", hash = "sha256:30ae2ac9c49f39ac6dce743bd187fcd2b574b16ca095fa74cd9396795c954c54"},
+    {file = "uc_micro_py-1.0.2-py3-none-any.whl", hash = "sha256:8c9110c309db9d9e87302e2f4ad2c3152770930d88ab385cd544e7a7e75f3de0"},
 ]
 
 [[package]]
