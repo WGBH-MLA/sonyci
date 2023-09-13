@@ -3,7 +3,7 @@ name = 'sonyci'
 description = 'A Sony Ci api client'
 authors = [{ name = 'WGBH-MLA', email = 'ryan_harbert@wgbh.org' }]
 dependencies = [
-    "pydantic~=2.1",
+    "pydantic~=2.3",
     "requests-oauth2client~=1.1",
     "loguru~=0.7",
 ]
@@ -36,7 +36,7 @@ tui = [
 ]
 docs = [
     "mkdocs~=1.5",
-    "mkdocs-material~=9.1",
+    "mkdocs-material~=9.2",
     "mkdocs-git-revision-date-localized-plugin~=1.2",
     "mike~=1.1",
     "mkdocstrings[python]~=0.22",
