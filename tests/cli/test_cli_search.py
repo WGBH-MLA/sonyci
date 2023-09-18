@@ -18,7 +18,7 @@ def test_empty_search(runner, config):
     )
     assert result.exit_code == 0
     output = loads(result.output)
-    assert type(output) is list
+    assert isinstance(output, list)
     assert not output
 
 
@@ -35,7 +35,7 @@ def test_guid_search(runner, config, guid):
     )
     assert result.exit_code == 0
     output = loads(result.output)
-    assert type(output) is list
+    assert isinstance(output, list)
     assert len(output) == 1
     assert guid in output[0]['name']
     assert len(output) == 1

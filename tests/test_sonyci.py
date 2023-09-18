@@ -12,7 +12,7 @@ def ci_config(pytestconfig):
 
 @fixture(scope='module')
 def ci(ci_config: Config):
-    return SonyCi(**ci_config.dict())
+    return SonyCi(**ci_config.model_dump())
 
 
 @mark.vcr()
@@ -25,35 +25,35 @@ def test_token(ci: SonyCi):
 @mark.vcr()
 def test_workspaces(ci: SonyCi):
     workspaces = ci.workspaces()
-    assert type(workspaces) == list, 'workspaces is not a list'
+    assert isinstance(workspaces, list), 'workspaces is not a list'
     assert len(workspaces) > 0, 'no workspaces found'
 
 
 @mark.vcr()
 def test_workspace(ci: SonyCi):
     workspace = ci.workspace()
-    assert type(workspace) == dict, 'workspace is not a dict'
+    assert isinstance(workspace, dict), 'workspace is not a dict'
     assert 'id' in workspace, 'workspace has no id'
 
 
 @mark.vcr()
 def test_workspace_contents(ci: SonyCi):
     result = ci.workspace_contents()
-    assert type(result) is list
+    assert isinstance(result, list)
     assert result
 
 
 @mark.vcr()
 def test_workspace_empty_search(ci: SonyCi):
     result = ci.workspace_search(query='i am not a guid')
-    assert type(result) is list
+    assert isinstance(result, list)
     assert not result
 
 
 @mark.vcr()
 def test_workspace_search(ci: SonyCi, guid: str):
     assets = ci.workspace_search(guid)
-    assert type(assets) is list
+    assert isinstance(assets, list)
     assert len(assets) == 1
 
     assert guid in assets[0]['name']
@@ -62,12 +62,12 @@ def test_workspace_search(ci: SonyCi, guid: str):
 @mark.vcr()
 def test_asset(ci: SonyCi, asset_id, **kwargs):
     asset = ci.asset(asset_id)
-    assert type(asset) is dict
+    assert isinstance(asset, dict)
     assert asset['id'] == asset_id
 
 
 @mark.vcr()
 def test_asset_download(ci: SonyCi, asset_id, **kwargs):
     asset = ci.asset_download(asset_id)
-    assert type(asset) is dict
+    assert isinstance(asset, dict)
     assert asset['id'] == asset_id
