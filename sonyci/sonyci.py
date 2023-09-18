@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, ClassVar
 
 from requests_oauth2client import ApiClient, OAuth2Client
 from requests_oauth2client.auth import BearerAuth, OAuth2AccessTokenAuth
@@ -10,8 +10,7 @@ from sonyci.utils import get_token, json
 
 
 class SonyCi(Config):
-    class Config:
-        arbitrary_types_allowed = True
+    model_config: ClassVar = {'arbitrary_types_allowed': True}
 
     """A SonyCI client."""
     # This will not be needed when we upgrade to pydantic2,

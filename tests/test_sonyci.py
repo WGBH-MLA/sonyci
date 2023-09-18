@@ -12,7 +12,7 @@ def ci_config(pytestconfig):
 
 @fixture(scope='module')
 def ci(ci_config: Config):
-    return SonyCi(**ci_config.dict())
+    return SonyCi(**ci_config.model_dump())
 
 
 @mark.vcr()
