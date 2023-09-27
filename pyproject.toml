@@ -3,7 +3,7 @@ name = 'sonyci'
 description = 'A Sony Ci api client'
 authors = [{ name = 'WGBH-MLA', email = 'ryan_harbert@wgbh.org' }]
 dependencies = [
-    "pydantic~=2.3",
+    "pydantic~=2.4",
     "requests-oauth2client~=1.1",
     "loguru~=0.7",
 ]
