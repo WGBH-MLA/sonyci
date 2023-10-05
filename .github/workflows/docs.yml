@@ -10,4 +10,4 @@ on:
 jobs:
   build:
     name: 📓 Build and deploy docs
-    uses: WGBH-MLA/.github/.github/workflows/docs.yml@pdm
+    uses: WGBH-MLA/.github/.github/workflows/docs.yml@main
