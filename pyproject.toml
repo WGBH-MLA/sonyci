@@ -52,9 +52,9 @@ version = { source = 'file', path = 'sonyci/_version.py' }
 
 [tool.pdm.dev-dependencies]
 dev = [
-    "ruff~=0.0",
-    "black~=23.9",
-    "pre-commit~=3.4",
+    "ruff~=0.1",
+    "black~=23.10",
+    "pre-commit~=3.5",
 ]
 
 [tool.pytest.ini_options]
