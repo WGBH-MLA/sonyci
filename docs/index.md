@@ -1,14 +1,18 @@
 # SonyCi
 
-A [SonyCi](https://developers.cimediacloud.com/#workspaces-list-workspaces-contents-get) API client for Python
+A Python client for [SonyCi API](https://developers.cimediacloud.com/)
 
 ## Install
 
-Install instructions can be found on the [install page](install)
+Install instructions can be found on the [install page](install.md)
 
 ## Reference
 
-Further details can be found in the [reference section](reference)
+Further details can be found in the [reference section](reference.md)
+
+## License
+
+[MIT License](https://github.com/WGBH-MLA/sonyci/blob/main/LICENSE)
 
 ## Credits
 
