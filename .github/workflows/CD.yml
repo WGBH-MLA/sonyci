@@ -9,6 +9,7 @@ on:
       - main
   release:
     types: [published, edited, prereleased]
+  merge_group:
   workflow_dispatch:
 
 jobs:
