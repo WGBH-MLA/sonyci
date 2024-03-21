@@ -11,10 +11,10 @@
       
       
       
-        <link rel="prev" href="..">
+        <link rel="prev" href="../example/">
       
       
-        <link rel="next" href="../interpreter/">
+        <link rel="next" href="../reference/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -244,6 +244,23 @@
         
   
   
+  
+    <li class="md-tabs__item">
+      <a href="../example/" class="md-tabs__link">
+        
+  
+    
+  
+  Example
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
     
   
   
@@ -254,23 +271,6 @@
     
   
   Install
-
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../interpreter/" class="md-tabs__link">
-        
-  
-    
-  
-  Interpreter
 
       </a>
     </li>
@@ -374,6 +374,26 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../example/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -423,6 +443,25 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#option-1-install-with-pip" class="md-nav__link">
+    <span class="md-ellipsis">
+      (Option 1) Install with pip
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#option-2-install-with-pdm" class="md-nav__link">
+    <span class="md-ellipsis">
+      (Option 2) Install with pdm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="(Option 2) Install with pdm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#clone-the-repository" class="md-nav__link">
     <span class="md-ellipsis">
       Clone the repository::
@@ -430,13 +469,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#install-with-pdm" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#install_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Install with PDM
+      Install
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -473,30 +517,34 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#development" class="md-nav__link">
+    <span class="md-ellipsis">
+      Development
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Development">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#available-scripts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Available scripts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
       
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../interpreter/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Interpreter
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -631,12 +679,17 @@
 
 
 <h1 id="install">Install</h1>
+<p>This guide will walk you through the installation process for the <code>sonyci</code> package. It can be installed with <code>pip</code> or <code>pdm</code></p>
+<h2 id="option-1-install-with-pip">(Option 1) Install with pip</h2>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>sonyci
+</code></pre></div>
+<h2 id="option-2-install-with-pdm">(Option 2) Install with pdm</h2>
+<p><a href="https://pdm.fming.dev/">PDM</a> is used as the packaging manager. It can be installed with <code>pip install pdm</code>.</p>
 <h3 id="clone-the-repository">Clone the repository::</h3>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/WGBH-MLA/sonyci.git
 <span class="nb">cd</span><span class="w"> </span>sonyci
 </code></pre></div>
-<h3 id="install-with-pdm">Install with PDM</h3>
-<p><a href="https://pdm.fming.dev/">PDM</a> is used as the packaging manager. It can be installed with <code>pip install pdm</code>.</p>
+<h3 id="install_1">Install</h3>
 <p>Install the project with development dependencies:</p>
 <div class="highlight"><pre><span></span><code>pdm<span class="w"> </span>install
 </code></pre></div>
@@ -664,11 +717,11 @@
 <div class="highlight"><pre><span></span><code>deactivate
 </code></pre></div>
 </div>
-<h3 id="login">Login</h3>
+<h2 id="login">Login</h2>
 <p>The first time you run the application, you will need to get an access token. You can do this with the <code>login</code> command:</p>
 <div class="highlight"><pre><span></span><code>ci<span class="w"> </span>login
 </code></pre></div>
-<h4 id="credentials">Credentials</h4>
+<h3 id="credentials">Credentials</h3>
 <p>You will need to provide your <code>username</code> and <code>password</code>, as well as your <code>client_id</code> and <code>client_secret</code>. These can be provided as command line options, or (recommended) as <code>ENVIRONMENT_VARIABLES</code>:</p>
 <p>Create a file called <code>.cred</code> with the following contents, and add your credentials:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">CI_USERNAME</span><span class="o">=</span>
@@ -677,16 +730,23 @@
 <span class="nb">export</span><span class="w"> </span><span class="nv">CI_CLIENT_SECRET</span><span class="o">=</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">CI_WORKSPACE_ID</span><span class="o">=</span>
 </code></pre></div>
+<div class="admonition abstract inline end">
+<p class="admonition-title">Dot notation</p>
+<p>Alternate notation for <code>source</code> (may not be available in your terminal):</p>
+<div class="highlight"><pre><span></span><code>.<span class="w"> </span>.cred
+</code></pre></div>
+</div>
 <p>Activate the variables:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>.cred
 </code></pre></div>
 <div class="admonition abstract">
-<p class="admonition-title">Dot notation</p>
-<p>Alternate notation (may not be available in your terminal):</p>
-<div class="highlight"><pre><span></span><code>.<span class="w"> </span>.cred
+<p class="admonition-title">Check ennvironment variables</p>
+<p>To check your environment variables are stored, run:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="nv">$CI_USERNAME</span>
 </code></pre></div>
+<p>If your username does not appear, you may need to run the <code>source</code> command again.</p>
 </div>
-<p>Now you can login and get an access token:</p>
+<p>Otherwise, you can now login and get an access token:</p>
 <div class="highlight"><pre><span></span><code>ci<span class="w"> </span>login
 </code></pre></div>
 <p>This will save a file called <code>.token</code> in the current directory. This file will be used to authenticate future requests, and you do not need to login again until the token expires.</p>
@@ -695,6 +755,17 @@
 <div class="highlight"><pre><span></span><code>ci<span class="w"> </span>-h
 </code></pre></div>
 <p>See the <a href="../reference/cli">CLI reference</a> for more details.</p>
+<h2 id="development">Development</h2>
+<p>Additional development scripts are available in the <code>pyproject.toml</code> file. You can run them with <code>pdm &lt;script_name&gt;</code>. For example, to run the tests:</p>
+<div class="highlight"><pre><span></span><code>pdm<span class="w"> </span><span class="nb">test</span>
+</code></pre></div>
+<h3 id="available-scripts">Available scripts</h3>
+<ul>
+<li><code>test</code>: Run the tests</li>
+<li><code>lint</code>: Run the linter, autofix fixable issues</li>
+<li><code>format</code>: Format the code</li>
+<li><code>docs</code>: Build the documentation</li>
+</ul>
 
 
 
