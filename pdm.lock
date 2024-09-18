@@ -5,7 +5,7 @@
 groups = ["default", "cli", "cli-ci", "dev", "docs", "test", "tui"]
 strategy = ["cross_platform"]
 lock_version = "4.5.0"
-content_hash = "sha256:0e6538dc11c48bc381845ef2710b4ce5ec132879f6445d3d29bf952aee03f99a"
+content_hash = "sha256:a543166ef4cfcdf31d661d933c144244c32e0f99eecc523217988d36a1447136"
 
 [[metadata.targets]]
 requires_python = ">=3.8"
@@ -2337,7 +2337,7 @@ files = [
 
 [[package]]
 name = "requests-oauth2client"
-version = "1.6.0"
+version = "1.5.3"
 requires_python = ">=3.8"
 summary = "An OAuth2.x client based on `requests`."
 dependencies = [
@@ -2348,8 +2348,8 @@ dependencies = [
     "requests>=2.19.0",
 ]
 files = [
-    {file = "requests_oauth2client-1.6.0-py3-none-any.whl", hash = "sha256:fa702619409cc93ab6433871d1ccec58140a70d86923fd742983fac47b334881"},
-    {file = "requests_oauth2client-1.6.0.tar.gz", hash = "sha256:53f4a82b566d21707ecd7e4b8cdab019e6eb0965f26c4ac0484b9e28ffd221ee"},
+    {file = "requests_oauth2client-1.5.3-py3-none-any.whl", hash = "sha256:069f574c2ab2ad0814b8fba9e98323d63265bf5a8aec88312ff061a6366358e0"},
+    {file = "requests_oauth2client-1.5.3.tar.gz", hash = "sha256:06d10728d58fec4ae5e4b9ce3bbbbef8565817bc3bfacce3edde9ef18f21fc32"},
 ]
 
 [[package]]

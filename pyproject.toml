@@ -2,7 +2,7 @@
 name = 'sonyci'
 description = 'A Sony Ci api client'
 authors = [{ name = 'WGBH-MLA', email = 'ryan_harbert@wgbh.org' }]
-dependencies = ["pydantic~=2.9", "requests-oauth2client~=1.6", "loguru~=0.7"]
+dependencies = ["pydantic~=2.9", "requests-oauth2client<1.6", "loguru~=0.7"]
 requires-python = '>=3.8'
 readme = 'README.md'
 license = { text = 'MIT' }
