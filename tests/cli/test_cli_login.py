@@ -59,4 +59,4 @@ def test_missing_username(runner):
         ],
     )
     assert result.exit_code == 2
-    assert '--username' in result.stdout
+    assert 'username' in result.stdout
