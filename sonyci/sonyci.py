@@ -50,7 +50,7 @@ class SonyCi(Config):
         """
         if self.client_id and self.client_secret:
             return OAuth2AccessTokenAuth(client=self.oauth, token=self.token)
-        return BearerToken(self.token)
+        return BearerToken(self.token.access_token)
 
     @property
     def client(self) -> ApiClient:
