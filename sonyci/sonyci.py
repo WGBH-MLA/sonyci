@@ -1,7 +1,7 @@
 from typing import Any, ClassVar
 
 from requests_oauth2client import ApiClient, OAuth2Client
-from requests_oauth2client.auth import BearerAuth, OAuth2AccessTokenAuth
+from requests_oauth2client.auth import OAuth2AccessTokenAuth
 from requests_oauth2client.tokens import BearerToken
 
 from sonyci.config import Config
@@ -50,7 +50,7 @@ class SonyCi(Config):
         """
         if self.client_id and self.client_secret:
             return OAuth2AccessTokenAuth(client=self.oauth, token=self.token)
-        return BearerAuth(token=self.token)
+        return BearerToken(self.token)
 
     @property
     def client(self) -> ApiClient:
