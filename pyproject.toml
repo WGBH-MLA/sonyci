@@ -2,7 +2,11 @@
 name = 'sonyci'
 description = 'A Sony Ci api client'
 authors = [{ name = 'WGBH-MLA', email = 'ryan_harbert@wgbh.org' }]
-dependencies = ["pydantic~=2.9", "requests-oauth2client<1.6", "loguru~=0.7"]
+dependencies = [
+    "pydantic~=2.9",
+    "requests-oauth2client~=1.6",
+    "loguru~=0.7",
+]
 requires-python = '>=3.8'
 readme = 'README.md'
 license = { text = 'MIT' }
@@ -21,9 +25,15 @@ test = [
     "pytest-xdist~=3.6",
     "urllib3~=1.26",
 ]
-cli = ["typer[all]~=0.12"]
-cli-ci = ["typer~=0.12"]
-tui = ["trogon~=0.5"]
+cli = [
+    "typer[all]~=0.12",
+]
+cli-ci = [
+    "typer~=0.12",
+]
+tui = [
+    "trogon~=0.5",
+]
 docs = [
     "mkdocs~=1.6",
     "mkdocs-material~=9.5",
@@ -41,7 +51,17 @@ build-backend = 'pdm.backend'
 version = { source = 'file', path = 'sonyci/_version.py' }
 
 [tool.pdm.dev-dependencies]
-dev = ["ruff~=0.6", "black~=24.8", "pre-commit~=3.5"]
+dev = [
+    "ruff~=0.6",
+    "black~=24.8",
+    "pre-commit~=3.5",
+]
+
+[tool.pdm.scripts]
+test = 'pytest --vcr-record=none'
+docs = 'mkdocs serve'
+lint = 'ruff check . --fix'
+format = 'black -S .'
 
 [tool.pytest.ini_options]
 testpaths = ['tests']
