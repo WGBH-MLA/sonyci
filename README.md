@@ -45,17 +45,31 @@ $ ci -h
 
  Usage: ci [OPTIONS] COMMAND [ARGS]...
 
-╭─ Options ─────────────────────────────────────────────────────────────────────────────────────╮
-│ --version             -v            Show the version and exit.                                │
-│ --token               -t      TEXT  Sony CI token. [env var: TOKEN] [default: None]           │
-│ --install-completion                Install completion for the current shell.                 │
-│ --show-completion                   Show completion for the current shell, to copy it or      │
-│                                     customize the installation.                               │
-│ --help                -h            Show this message and exit.                               │
-╰───────────────────────────────────────────────────────────────────────────────────────────────╯
-╭─ Commands ────────────────────────────────────────────────────────────────────────────────────╮
-│ login                    Login to Sony CI.                                                    │
-╰───────────────────────────────────────────────────────────────────────────────────────────────╯
+
+╭─ Options ────────────────────────────────────────────────────────────────────────────────────────────────╮
+│ --version             -V                          Show the version and exit.                             │
+│ --verbose             -v                          Show verbose output.                                   │
+│ --token               -t      PARSE_BEARER_TOKEN  Sony CI token. [env var: CI_TOKEN] [default: None]     │
+│ --workspace-id        -w      TEXT                Sony CI workspace ID. [env var: CI_WORKSPACE_ID]       │
+│                                                   [default: None]                                        │
+│ --client-id           -c      TEXT                Sony CI client ID. [env var: CI_CLIENT_ID]             │
+│                                                   [default: None]                                        │
+│ --client-secret       -s      TEXT                Sony CI client secret. [env var: CI_CLIENT_SECRET]     │
+│                                                   [default: None]                                        │
+│ --install-completion                              Install completion for the current shell.              │
+│ --show-completion                                 Show completion for the current shell, to copy it or   │
+│                                                   customize the installation.                            │
+│ --help                -h                          Show this message and exit.                            │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭─ Commands ───────────────────────────────────────────────────────────────────────────────────────────────╮
+│ asset      Search for files in a Sony CI workspace                                                       │
+│ download   Download a file from Sony CI                                                                  │
+│ get        Make a GET request to Sony CI.                                                                │
+│ login      Login to Sony CI.                                                                             │
+│ post       Make a POST request to Sony CI.                                                               │
+│ search     Search for files in a Sony CI workspace                                                       │
+│ tui                                                                                                      │
+╰──────────────────────────────────────────────────────────────────────────────────────────────────────────╯
 
 ```
 
