@@ -1,12 +1,11 @@
 from json import dumps, loads
 from pathlib import Path
-from typing import Optional
+from typing import Annotated, Optional
 from urllib.request import urlretrieve
 
 from requests_oauth2client.tokens import BearerToken, BearerTokenSerializer
 from typer import Argument, Context, Exit, Option, Typer
 from typer.main import get_group
-from typing_extensions import Annotated
 
 from sonyci import SonyCi
 from sonyci.log import log

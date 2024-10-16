@@ -5,6 +5,7 @@ site/
 .pdm-python
 .token
 .cred
+.env
 .cache_ggshield
 
 # common name for local Sony Ci config file 

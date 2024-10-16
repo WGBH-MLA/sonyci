@@ -45,8 +45,8 @@ def test_bad_login(error_runner):
     assert 'invalid_client' in str(result.exception)
 
 
-def test_missing_username(runner):
-    result = runner.invoke(
+def test_missing_username(error_runner):
+    result = error_runner.invoke(
         app,
         [
             '--client-id',
@@ -59,4 +59,5 @@ def test_missing_username(runner):
         ],
     )
     assert result.exit_code == 2
-    assert 'username' in result.stdout
+    assert 'Missing option' in result.stderr
+    assert 'username' in result.stderr

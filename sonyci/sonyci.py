@@ -6,7 +6,7 @@ from requests_oauth2client.tokens import BearerToken
 
 from sonyci.config import Config
 from sonyci.log import log
-from sonyci.utils import get_token, json
+from sonyci.utils import get_token, json, retry
 
 
 class SonyCi(Config):
@@ -95,12 +95,15 @@ class SonyCi(Config):
         return self.get(f'/assets/{asset_id}/download', params=kwargs)
 
     @json
+    @retry
     def get(self, *args, **kwargs):
         log.debug(f'GET {args} {kwargs}')
         return self.client.get(*args, **kwargs)
 
     @json
+    @retry
     def post(self, *args, **kwargs):
+        log.debug(f'POST {args} {kwargs}')
         return self.client.post(*args, **kwargs)
 
     def __call__(self, path: str, **kwds: Any) -> Any:
