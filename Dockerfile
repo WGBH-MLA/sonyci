@@ -5,4 +5,4 @@ COPY sonyci sonyci
 
 RUN pip install .[cli]
 
-CMD [ "ci" ]
+CMD [ "sh" ]
