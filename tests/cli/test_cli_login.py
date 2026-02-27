@@ -25,8 +25,8 @@ def test_login(runner, config):
 
 
 @mark.vcr()
-def test_bad_login(error_runner):
-    result = error_runner.invoke(
+def test_bad_login(runner):
+    result = runner.invoke(
         app,
         [
             '--client-id',
@@ -59,4 +59,4 @@ def test_missing_username(runner):
         ],
     )
     assert result.exit_code == 2
-    assert 'username' in result.stdout
+    assert '--username' in result.stderr

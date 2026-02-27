@@ -2276,9 +2276,6 @@ dependencies = [
 ]
 
 [package.optional-dependencies]
-cli = [
-    { name = "typer" },
-]
 docs = [
     { name = "mike" },
     { name = "mkdocs" },
@@ -2295,9 +2292,6 @@ test = [
     { name = "pytest-xdist" },
     { name = "urllib3" },
     { name = "vcrpy" },
-]
-tui = [
-    { name = "trogon" },
 ]
 
 [package.dev-dependencies]
@@ -2325,12 +2319,10 @@ requires-dist = [
     { name = "pytest-vcr", marker = "extra == 'test'", specifier = "~=1.0" },
     { name = "pytest-xdist", marker = "extra == 'test'", specifier = "~=3.6" },
     { name = "requests-oauth2client", specifier = "~=1.8" },
-    { name = "trogon", marker = "extra == 'tui'", specifier = "~=0.5" },
-    { name = "typer", marker = "extra == 'cli'", specifier = "~=0.24" },
     { name = "urllib3", marker = "extra == 'test'", specifier = "~=2.6" },
     { name = "vcrpy", marker = "extra == 'test'", specifier = "~=8.1" },
 ]
-provides-extras = ["test", "cli", "tui", "docs"]
+provides-extras = ["test", "docs"]
 
 [package.metadata.requires-dev]
 dev = [
