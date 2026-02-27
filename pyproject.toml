@@ -50,6 +50,9 @@ markers = ['no_ci: marks tests to skip on CI']
 [tool.coverage.run]
 omit = ['tests/*']
 
+[tool.ruff]
+extend-exclude = ["*.ipynb"]
+
 [tool.ruff.lint.flake8-quotes]
 inline-quotes = 'single'
 

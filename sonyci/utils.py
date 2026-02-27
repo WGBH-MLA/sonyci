@@ -1,5 +1,5 @@
 from requests import post
-from requests_oauth2client.tokens import BearerToken, BearerTokenSerializer
+from requests_oauth2client import BearerToken, TokenSerializer
 
 from sonyci.config import TOKEN_URL
 from sonyci.log import log
@@ -33,12 +33,12 @@ def get_token(
 
 def get_token_from_file(filename: str = '.token'):
     with open(filename) as f:
-        return BearerTokenSerializer().loads(f.read())
+        return TokenSerializer().loads(f.read())
 
 
 def save_token_to_file(token: BearerToken, filename: str = '.token'):
-    with open(filename, 'w') as f:
-        f.write(BearerTokenSerializer().dumps(token))
+    with open(filename, 'wb') as f:
+        f.write(TokenSerializer().dumps(token))
 
 
 def json(func):
