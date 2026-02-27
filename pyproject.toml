@@ -2,37 +2,30 @@
 name = 'sonyci'
 description = 'A Sony Ci api client'
 authors = [{ name = 'WGBH-MLA', email = 'ryan_harbert@wgbh.org' }]
-dependencies = [
-    "pydantic~=2.9",
-    "requests-oauth2client~=1.6",
-    "loguru~=0.7",
-]
-requires-python = '>=3.8'
+dependencies = ["pydantic~=2.12", "requests-oauth2client~=1.8", "loguru~=0.7"]
+requires-python = '>=3.10'
 readme = 'README.md'
 license = { text = 'MIT' }
-dynamic = ['version']
+version = "0.3.0"
 
-[project.scripts]
-ci = 'sonyci.__main__:app'
+[dependency-groups]
+dev = [
+    "black>=26.1.0",
+    "pre-commit>=4.5.1",
+    "ruff>=0.15.4",
+    "trogon>=0.6.0",
+    "typer>=0.24.1",
+]
 
 [project.optional-dependencies]
 test = [
     "pytest~=8.3",
-    "vcrpy~=6.0",
+    "vcrpy~=8.1",
     "pytest-vcr~=1.0",
     "pytest-cov~=5.0",
     "pytest-sugar~=1.0",
     "pytest-xdist~=3.6",
-    "urllib3~=1.26",
-]
-cli = [
-    "typer[all]~=0.12",
-]
-cli-ci = [
-    "typer~=0.12",
-]
-tui = [
-    "trogon~=0.5",
+    "urllib3~=2.6",
 ]
 docs = [
     "mkdocs~=1.6",
@@ -43,25 +36,12 @@ docs = [
     "mkdocs-jupyter~=0.24",
 ]
 
-[build-system]
-requires = ['pdm-backend']
-build-backend = 'pdm.backend'
-
-[tool.pdm]
-version = { source = 'file', path = 'sonyci/_version.py' }
-
-[tool.pdm.dev-dependencies]
-dev = [
-    "ruff~=0.6",
-    "black~=24.8",
-    "pre-commit~=3.5",
-]
-
-[tool.pdm.scripts]
-test = 'pytest --vcr-record=none'
-docs = 'mkdocs serve'
-lint = 'ruff check . --fix'
-format = 'black -S .'
+[project.scripts]
+ci = 'sonyci.__main__:app'
+docs = 'mkdocs.commands:serve.serve'
+# test = 'pytest --vcr-record=none'
+# lint = 'ruff check . --fix'
+# format = 'black -S .'
 
 [tool.pytest.ini_options]
 testpaths = ['tests']
@@ -75,25 +55,25 @@ inline-quotes = 'single'
 
 [tool.ruff.lint]
 select = [
-    'B', # flake8-bugbear
-    'C4', # flake8-comprehensions
+    'B',   # flake8-bugbear
+    'C4',  # flake8-comprehensions
     'C90', # mccabe
-    'E', # pycodestyle errors
+    'E',   # pycodestyle errors
     'ERA', # eradicate
-    'F', # pyflakes
-    'I', # isort
+    'F',   # pyflakes
+    'I',   # isort
     'INT', # flake8-gettext
-    'N', # pep8-naming
+    'N',   # pep8-naming
     'PIE', # flake8-pie,
     'PLC', # pylint - convention
     'PLE', # pylint - error
     'PLW', # pylint - warning
-    'Q', # flake8-quotes
+    'Q',   # flake8-quotes
     'RET', # flake8-return,
     'RUF', # Ruff-specific rules
     'SIM', # flake8-simplify
-    'UP', # pyupgrade
-    'W', # pycodestyle warnings
+    'UP',  # pyupgrade
+    'W',   # pycodestyle warnings
 
 ]
 ignore = [
@@ -101,3 +81,10 @@ ignore = [
     'E501', # line too long
 
 ]
+
+[build-system]
+requires = ["uv_build>=0.10.7,<0.11.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-root = ""

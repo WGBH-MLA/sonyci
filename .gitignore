@@ -2,10 +2,6 @@ __pycache__/
 build/
 dist/
 site/
-.pdm-python
+.env
 .token
-.cred
 .cache_ggshield
-
-# common name for local Sony Ci config file 
-ci.toml
