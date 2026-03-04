@@ -1,12 +1,12 @@
-name: 🪂 Deploy
+name: 🏗 Build
 
 on:
   push:
     branches:
-      - main
+    - main
   pull_request:
     branches:
-      - main
+    - main
   release:
     types: [published, edited, prereleased]
   merge_group:
@@ -14,5 +14,5 @@ on:
 
 jobs:
   build:
-    name: 🔨 Build and deploy docker image
-    uses: WGBH-MLA/.github/.github/workflows/build.yml@v1                                                                             
+    name: 🔨 Build and push docker image
+    uses: WGBH-MLA/.github/.github/workflows/build.yml@v1
