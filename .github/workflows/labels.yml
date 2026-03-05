@@ -7,6 +7,6 @@ permissions:
 
 jobs:
   labels:
-      name: 🔄 Sync labels
-      uses: WGBH-MLA/.github/.github/workflows/labels.yml@v1
+    name: 🔄 Sync labels
+    uses: WGBH-MLA/.github/.github/workflows/labels.yml@v1
 
