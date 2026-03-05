@@ -12,6 +12,9 @@ on:
   merge_group:
   workflow_dispatch:
 
+permissions:
+  packages: write
+
 jobs:
   build:
     name: 🔨 Build and push docker image
