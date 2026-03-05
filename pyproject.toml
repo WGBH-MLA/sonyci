@@ -32,7 +32,7 @@ docs = [
     "mkdocs-material~=9.5",
     "mkdocs-git-revision-date-localized-plugin~=1.2",
     "mike~=2.1",
-    "mkdocstrings[python]~=0.26",
+    "mkdocstrings[python]>=0.26,<2.0",
     "mkdocs-jupyter~=0.24",
 ]
 
