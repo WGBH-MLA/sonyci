@@ -12,6 +12,7 @@ updates:
     prefix: ⬆
   labels:
   - maintenance 🔧
+
 # uv
 - package-ecosystem: uv
   directory: /
@@ -24,3 +25,21 @@ updates:
     prefix: ⬆
   labels:
   - maintenance 🔧
+  groups:
+    dev:
+      patterns:
+      - uv
+      - black
+      - pre-commit
+      - ruff
+      - trogon
+      - typer
+    tests:
+      patterns:
+      - pytest*
+      - urllib3
+      - vcrpy*
+    docs:
+      patterns:
+      - mkdocs*
+      - mike*
