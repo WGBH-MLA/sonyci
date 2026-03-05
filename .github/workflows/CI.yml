@@ -8,6 +8,7 @@ jobs:
     uses: WGBH-MLA/.github/.github/workflows/pytest.yml@v1
     secrets: inherit
     with:
+      uv_args: --no-dev --extra test
       pytest_args: -n auto --vcr-record=none --no_ci
 
   lint:
