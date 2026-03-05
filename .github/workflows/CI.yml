@@ -5,16 +5,16 @@ on: [push, pull_request, merge_group, workflow_dispatch]
 jobs:
   tests:
     name: ⚗️ Application Tests
-    uses: WGBH-MLA/.github/.github/workflows/pytest.yml@main
+    uses: WGBH-MLA/.github/.github/workflows/pytest.yml@v1
     secrets: inherit
     with:
-      pdm_args: -G test,cli-ci
+      uv_args: --no-dev --extra test
       pytest_args: -n auto --vcr-record=none --no_ci
 
   lint:
     name: 👕 Lint
-    uses: WGBH-MLA/.github/.github/workflows/lint.yml@main
+    uses: WGBH-MLA/.github/.github/workflows/lint.yml@v1
 
   black:
     name: 🖤 Black
-    uses: WGBH-MLA/.github/.github/workflows/black.yml@main
+    uses: WGBH-MLA/.github/.github/workflows/black.yml@v1
