@@ -8,15 +8,24 @@ A Sony Ci api client
 
 ## Install
 
-```shell
-pdm install
+### with pip
+
+```sh
+pip install sonyci
+```
+
+### with git
+
+```sh
+git clone https://github.com/WGBH-MLA/sonyci.git && cd sonyci
+uv sync
 ```
 
 ## Configure
 
 Create a file called `.cred` with the following contents, and add your credentials:
 
-```shell
+```sh
 export CI_USERNAME=
 export CI_PASSWORD=
 export CI_CLIENT_ID=
@@ -26,13 +35,13 @@ export CI_WORKSPACE_ID=
 
 Activate the variables:
 
-```shell
+```sh
 source .cred
 ```
 
 Alternate notation: (May not be available in your terminal)
 
-```shell
+```sh
 . .cred
 ```
 
@@ -40,7 +49,7 @@ Alternate notation: (May not be available in your terminal)
 
 Run the cli with `ci`
 
-```shell
+```sh
 $ ci -h
 
  Usage: ci [OPTIONS] COMMAND [ARGS]...
@@ -75,7 +84,7 @@ $ ci -h
 
 ### Login
 
-```shell
+```sh
 ci login
 ```
 
@@ -85,7 +94,7 @@ ci login
 
 0. Install [ggshield](https://docs.gitguardian.com/ggshield-docs/getting-started)
 
-```shell
+```sh
 pip install ggshield
 # or
 brew install gitguardian/tap/ggshield
@@ -93,12 +102,12 @@ brew install gitguardian/tap/ggshield
 
 1. Login to gitguardian
 
-```shell
+```sh
 ggshield auth login
 ```
 
 2. Install the pre-commit hooks
 
-```shell
+```sh
 pre-commit install
 ```
