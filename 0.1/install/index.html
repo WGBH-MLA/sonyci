@@ -495,15 +495,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#option-2-install-with-pdm" class="md-nav__link">
+  <a href="#option-2-install-with-uv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        (Option 2) Install with pdm
+        (Option 2) Install with uv
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="(Option 2) Install with pdm">
+    <nav class="md-nav" aria-label="(Option 2) Install with uv">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -511,6 +511,28 @@
     <span class="md-ellipsis">
       
         Clone the repository::
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-a-virtual-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a virtual environment
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#activate-your-virtual-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Activate your virtual environment
       
     </span>
   </a>
@@ -765,44 +787,32 @@
 
 
 <h1 id="install">Install</h1>
-<p>This guide will walk you through the installation process for the <code>sonyci</code> package. It can be installed with <code>pip</code> or <code>pdm</code></p>
+<p>This guide will walk you through the installation process for the <code>sonyci</code> package. It can be installed with <code>pip</code> or <code>uv</code></p>
 <h2 id="option-1-install-with-pip">(Option 1) Install with pip</h2>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>sonyci
 </code></pre></div>
-<h2 id="option-2-install-with-pdm">(Option 2) Install with pdm</h2>
-<p><a href="https://pdm.fming.dev/">PDM</a> is used as the packaging manager. It can be installed with <code>pip install pdm</code>.</p>
+<h2 id="option-2-install-with-uv">(Option 2) Install with uv</h2>
+<p><a href="https://docs.astral.sh/uv/">uv</a> is used as the packaging manager. It can be installed with <code>pip install uv</code>.</p>
 <h3 id="clone-the-repository">Clone the repository::</h3>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/WGBH-MLA/sonyci.git
 <span class="nb">cd</span><span class="w"> </span>sonyci
 </code></pre></div>
-<h3 id="install_1">Install</h3>
-<p>Install the project with development dependencies:</p>
-<div class="highlight"><pre><span></span><code>pdm<span class="w"> </span>install
+<h3 id="create-a-virtual-environment">Create a virtual environment</h3>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>venv
 </code></pre></div>
-<p>Activate your virtual environment</p>
-<div class="highlight"><pre><span></span><code><span class="k">$(</span>pdm<span class="w"> </span>venv<span class="w"> </span>activate<span class="k">)</span>
+<h3 id="activate-your-virtual-environment">Activate your virtual environment</h3>
+<div class="highlight"><pre><span></span><code><span class="nb">source</span><span class="w"> </span>.venv/bin/activate
 </code></pre></div>
-<div class="admonition note">
-<p class="admonition-title">What is <code>$(pdm venv activate)</code>?</p>
-<p><code>pdm venv activate</code> outputs the command needed to activate your virtual environment.</p>
-<p>The <code>$()</code> wrapper evaluates it in your current shell context.</p>
-</div>
-<details class="abstract">
-<summary>Install with venv</summary>
-<p>If PDM is not available, it can also be installed with pip. It is recommeneded to install to a virtual environment using <code>venv</code>:</p>
-<div class="highlight"><pre><span></span><code>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>.venv
-<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
-</code></pre></div>
-<p>Install the package</p>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>.
-</code></pre></div>
-</details>
 <div class="admonition info">
 <p class="admonition-title">Deactivate</p>
 <p>To deactivate the virtual environmet, run the <code>deactivate</code> command.</p>
 <div class="highlight"><pre><span></span><code>deactivate
 </code></pre></div>
 </div>
+<h3 id="install_1">Install</h3>
+<p>Install the project with development dependencies:</p>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>sync
+</code></pre></div>
 <h2 id="login">Login</h2>
 <p>The first time you run the application, you will need to get an access token. You can do this with the <code>login</code> command:</p>
 <div class="highlight"><pre><span></span><code>ci<span class="w"> </span>login
@@ -842,8 +852,8 @@
 </code></pre></div>
 <p>See the <a href="../reference/cli">CLI reference</a> for more details.</p>
 <h2 id="development">Development</h2>
-<p>Additional development scripts are available in the <code>pyproject.toml</code> file. You can run them with <code>pdm &lt;script_name&gt;</code>. For example, to run the tests:</p>
-<div class="highlight"><pre><span></span><code>pdm<span class="w"> </span><span class="nb">test</span>
+<p>Additional development scripts are available in the <code>pyproject.toml</code> file. You can run them with <code>uv run &lt;script_name&gt;</code>. For example, to run the tests:</p>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>run<span class="w"> </span><span class="nb">test</span>
 </code></pre></div>
 <h3 id="available-scripts">Available scripts</h3>
 <ul>
