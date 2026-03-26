@@ -6,7 +6,7 @@ dependencies = ["pydantic~=2.12", "requests-oauth2client~=1.8", "loguru~=0.7"]
 requires-python = '>=3.10'
 readme = 'README.md'
 license = { text = 'MIT' }
-version = "0.3.0"
+version = "0.4.0"
 
 [dependency-groups]
 dev = [
