@@ -1,5 +1,7 @@
-from pytest import mark
 from os import environ as env
+
+from pytest import mark
+
 from sonyci.cli import app
 
 

@@ -1,6 +1,6 @@
 from pytest import fixture, mark
 
-from sonyci import Config, SonyCi
+from sonyci import SonyCi
 
 
 @fixture

@@ -61,13 +61,6 @@ def pytest_collection_modifyitems(config, items):
         for item in items:
             if 'no_ci' in item.keywords:
                 item.add_marker(skip_ci)
-    # if config.getoption('--record'):
-    #     skip_record = mark.skip(
-    #         reason='skipping tests that should not run in record mode'
-    #     )
-    #     for item in items:
-    #         if 'no_vcr' in item.keywords:
-    #             item.add_marker(skip_record)
 
 
 @fixture
