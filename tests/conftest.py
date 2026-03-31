@@ -61,11 +61,18 @@ def pytest_collection_modifyitems(config, items):
         for item in items:
             if 'no_ci' in item.keywords:
                 item.add_marker(skip_ci)
+    # if config.getoption('--record'):
+    #     skip_record = mark.skip(
+    #         reason='skipping tests that should not run in record mode'
+    #     )
+    #     for item in items:
+    #         if 'no_vcr' in item.keywords:
+    #             item.add_marker(skip_record)
 
 
 @fixture
 def guid() -> str:
-    return Config.from_toml('./tests/sonyci/guid.toml')['guid']
+    return 'cpb-aacip-imalittleguid'  # This asset is a text file with the guid in its name, so it's easy to verify in tests
 
 
 @fixture
@@ -94,7 +101,7 @@ def error_runner():
 @fixture
 def config(pytestconfig):
     if pytestconfig.getoption('record'):
-        return Config.from_toml('./ci.toml')
+        return Config.from_env()
     return Config.from_toml('./tests/sonyci/sonyci.toml')
 
 

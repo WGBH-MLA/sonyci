@@ -1,98 +1,126 @@
 interactions:
-  - request:
-      body: grant_type=password&client_id=FAKE_CLIENT_ID&client_secret=FAKE_CLIENT_SECRET
-      headers:
-        Accept:
-          - '*/*'
-        Accept-Encoding:
-          - gzip, deflate
-        Connection:
-          - keep-alive
-        Content-Length:
-          - '109'
-        Content-Type:
-          - application/x-www-form-urlencoded
-        User-Agent:
-          - python-requests/2.30.0
-        authorization:
-          - Bearer DUMMY
-      method: POST
-      uri: https://api.cimediacloud.com/oauth2/token
-    response:
-      body:
-        string:
-          '{"access_token": "DUMMY_ACCESS_TOKEN", "expires_in": 86400, "token_type":
-          "bearer", "refresh_token": "DUMMY_REFRESH_TOKEN"}'
-      headers:
-        Cache-Control:
-          - no-cache
-        Connection:
-          - keep-alive
-        Content-Length:
-          - '143'
-        Content-Type:
-          - application/json; charset=utf-8
-        Date:
-          - Fri, 12 May 2023 22:12:49 GMT
-        Expires:
-          - '-1'
-        Pragma:
-          - no-cache
-        Strict-Transport-Security:
-          - max-age=86400; includeSubDomains
-        X-Frame-Options:
-          - deny
-      status:
-        code: 200
-        message: OK
-  - request:
-      body: null
-      headers:
-        Accept:
-          - '*/*'
-        Accept-Encoding:
-          - gzip, deflate
-        Connection:
-          - keep-alive
-        User-Agent:
-          - python-requests/2.30.0
-        authorization:
-          - Bearer DUMMY
-      method: GET
-      uri: https://api.cimediacloud.com/workspaces/f44132c2393d470c88b9884f45877ebb/search?query=pb-aacip-e4308199588&kind=asset
-    response:
-      body:
-        string:
-          '{"limit": 50, "offset": 0, "count": 1, "kind": "Asset", "type": "All",
-          "query": "pb-aacip-e4308199588", "items": [{"id": "554544ceaf6b4c94a4a06cee5bc1f39f",
-          "name": "cpb-aacip-e4308199588.txt"}], "order": {"by": "Relevance", "direction":
-          "Desc"}}'
-      headers:
-        Cache-Control:
-          - no-cache
-        Connection:
-          - keep-alive
-        Content-Length:
-          - '5785'
-        Content-Type:
-          - application/json; charset=utf-8
-        Date:
-          - Fri, 12 May 2023 22:12:49 GMT
-        Expires:
-          - '-1'
-        Pragma:
-          - no-cache
-        Strict-Transport-Security:
-          - max-age=86400; includeSubDomains
-        X-Frame-Options:
-          - deny
-        X-RateLimit-Limit:
-          - '5000'
-        X-RateLimit-Remaining:
-          - '4976'
-        X-RateLimit-Reset:
-          - '1683929580'
-      status:
-        code: 200
-        message: OK
+- request:
+    body: grant_type=password&client_id=FAKE_CLIENT_ID&client_secret=FAKE_CLIENT_SECRET
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '109'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - python-requests/2.32.5
+      authorization:
+      - Bearer DUMMY
+    method: POST
+    uri: https://api.cimediacloud.com/oauth2/token
+  response:
+    body:
+      string: '{"access_token": "DUMMY_ACCESS_TOKEN", "expires_in": 86400, "token_type":
+        "bearer", "refresh_token": "DUMMY_REFRESH_TOKEN"}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '143'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 31 Mar 2026 19:13:15 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=86400; includeSubDomains
+      X-Frame-Options:
+      - deny
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.5
+      authorization:
+      - Bearer DUMMY
+    method: GET
+    uri: https://api.cimediacloud.com/workspaces/051303c1c1d24da7988128e6d2f56aa9/search?query=-aacip-imalittleguid&kind=asset
+  response:
+    body:
+      string: '{"limit": 50, "offset": 0, "count": 1, "kind": "Asset", "query": "-aacip-imalittleguid",
+        "items": [{"id": "93b14ec3b9ad48be90aad58172aad880", "name": "cpb-aacip-imalittleguid.txt",
+        "size": 6, "createdOn": "2026-03-31T16:46:00.078Z", "thumbnails": [{"type":
+        "small", "location": "https://cdn01.cimediacloud.com/cifiles/93b14ec3b9ad48be90aad58172aad880/renditions/thumbnail.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NkbjAxLmNpbWVkaWFjbG91ZC5jb20vY2lmaWxlcy85M2IxNGVjM2I5YWQ0OGJlOTBhYWQ1ODE3MmFhZDg4MC9yZW5kaXRpb25zL3RodW1ibmFpbC5qcGciLCJDb25kaXRpb24iOnsiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9LCJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTgzODA1NjM5OX19fV19&Signature=XfW2ZwdgEEwvwrmeiNUxLDV3pGnl0cIBUyo7-iVW4p7Jwto5Iw5XdveoOclb1MbOw~nLqXqH5GG0arTip1p64rYYbR~7nAwfQGwP1xgjZoUCnjDLxpoSQeGikmI49JFsD8deyv9rXVpZAN~xi6dgrGzVKpEAKYfsvnNOhKdWLro_&Key-Pair-Id=APKAJNUSFH4IKQRZ44WA",
+        "size": 912, "width": 177, "height": 250, "isExternal": false}, {"type": "medium",
+        "location": "https://cdn01.cimediacloud.com/cifiles/93b14ec3b9ad48be90aad58172aad880/renditions/thumbnail-medium.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NkbjAxLmNpbWVkaWFjbG91ZC5jb20vY2lmaWxlcy85M2IxNGVjM2I5YWQ0OGJlOTBhYWQ1ODE3MmFhZDg4MC9yZW5kaXRpb25zL3RodW1ibmFpbC1tZWRpdW0uanBnIiwiQ29uZGl0aW9uIjp7IklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifSwiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE4MzgwNTYzOTl9fX1dfQ__&Signature=H7YUSPfhothoZ0KayUv9iGNB3A-gIeL4hD9TSH4uIEK09ybzp-UxD-kqUNqsvxEDghqWPOfP1CfT0ghy27r0FIQ3oMHCpDv0r2I2wG65Awj43n18CZ87YNrvOescqQBLek5F08ZSa~zd4DEoE0Hdmo1Bgmth92D7IysCSaMEOZY_&Key-Pair-Id=APKAJNUSFH4IKQRZ44WA",
+        "size": 912, "width": 177, "height": 250, "isExternal": false}, {"type": "large",
+        "location": "https://cdn01.cimediacloud.com/cifiles/93b14ec3b9ad48be90aad58172aad880/renditions/thumbnail-large.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NkbjAxLmNpbWVkaWFjbG91ZC5jb20vY2lmaWxlcy85M2IxNGVjM2I5YWQ0OGJlOTBhYWQ1ODE3MmFhZDg4MC9yZW5kaXRpb25zL3RodW1ibmFpbC1sYXJnZS5qcGciLCJDb25kaXRpb24iOnsiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9LCJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTgzODA1NjM5OX19fV19&Signature=FS-Az0oxhgS60k9tifOmh~Q8WPBaaPQixvklDT7H5-dBYSuVNHAoDE3e5KwlAP-DYVg9r9zuEEFoLgsIiRYU~KYr8JNhKJvHhDLhGhWI04OsRVZBTDisnA2AEUG-HKcF22SjRns8zHOcdWdZILczkcDqVGhqQsBJEwojI7FKCJs_&Key-Pair-Id=APKAJNUSFH4IKQRZ44WA",
+        "size": 912, "width": 177, "height": 250, "isExternal": false}, {"type": "2000px",
+        "location": "https://cdn01.cimediacloud.com/cifiles/93b14ec3b9ad48be90aad58172aad880/renditions/thumbnail-2000px.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NkbjAxLmNpbWVkaWFjbG91ZC5jb20vY2lmaWxlcy85M2IxNGVjM2I5YWQ0OGJlOTBhYWQ1ODE3MmFhZDg4MC9yZW5kaXRpb25zL3RodW1ibmFpbC0yMDAwcHguanBnIiwiQ29uZGl0aW9uIjp7IklwQWRkcmVzcyI6eyJBV1M6U291cmNlSXAiOiIwLjAuMC4wLzAifSwiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE4MzgwNTYzOTl9fX1dfQ__&Signature=jPMKVv9teQrLVkS11uXWXf11s7O1NuBpuRHpnQ6bYOCbxl5LSi08kxU23br4qjSp8AOaPqo4wdrGxvgUtzVeq8q8i8Kt1Ax4ne1kZksHGRa83b45bqmW13K0MpzWIfh9NmxWpY0FUU2h7rilNP79dpyobcrtEdJpI3svTuQUdWk_&Key-Pair-Id=APKAJNUSFH4IKQRZ44WA",
+        "size": 912, "width": 177, "height": 250, "isExternal": false}, {"type": "standard",
+        "location": "https://cdn01.cimediacloud.com/cifiles/93b14ec3b9ad48be90aad58172aad880/renditions/thumbnail.jpg?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NkbjAxLmNpbWVkaWFjbG91ZC5jb20vY2lmaWxlcy85M2IxNGVjM2I5YWQ0OGJlOTBhYWQ1ODE3MmFhZDg4MC9yZW5kaXRpb25zL3RodW1ibmFpbC5qcGciLCJDb25kaXRpb24iOnsiSXBBZGRyZXNzIjp7IkFXUzpTb3VyY2VJcCI6IjAuMC4wLjAvMCJ9LCJEYXRlTGVzc1RoYW4iOnsiQVdTOkVwb2NoVGltZSI6MTgzODA1NjM5OX19fV19&Signature=XfW2ZwdgEEwvwrmeiNUxLDV3pGnl0cIBUyo7-iVW4p7Jwto5Iw5XdveoOclb1MbOw~nLqXqH5GG0arTip1p64rYYbR~7nAwfQGwP1xgjZoUCnjDLxpoSQeGikmI49JFsD8deyv9rXVpZAN~xi6dgrGzVKpEAKYfsvnNOhKdWLro_&Key-Pair-Id=APKAJNUSFH4IKQRZ44WA",
+        "size": 912, "width": 177, "height": 250}], "proxies": [{"type": "document-pdf",
+        "location": "https://cdn01.cimediacloud.com/cifiles/93b14ec3b9ad48be90aad58172aad880/renditions/document-pdf.pdf?u=16a555d05c60439a8243a3d6c349fd8b&a=93b14ec3b9ad48be90aad58172aad880&ct=033353dcb7f94511973247db2c0479f0&et=stream&Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NkbjAxLmNpbWVkaWFjbG91ZC5jb20vY2lmaWxlcy85M2IxNGVjM2I5YWQ0OGJlOTBhYWQ1ODE3MmFhZDg4MC9yZW5kaXRpb25zL2RvY3VtZW50LXBkZi5wZGY~dT0xNmE1NTVkMDVjNjA0MzlhODI0M2EzZDZjMzQ5ZmQ4YiZhPTkzYjE0ZWMzYjlhZDQ4YmU5MGFhZDU4MTcyYWFkODgwJmN0PTAzMzM1M2RjYjdmOTQ1MTE5NzMyNDdkYjJjMDQ3OWYwJmV0PXN0cmVhbSIsIkNvbmRpdGlvbiI6eyJJcEFkZHJlc3MiOnsiQVdTOlNvdXJjZUlwIjoiMC4wLjAuMC8wIn0sIkRhdGVMZXNzVGhhbiI6eyJBV1M6RXBvY2hUaW1lIjoxNzc1MDI3NTk5fX19XX0_&Signature=kfRyXsLuKk7nDc7BMD6TY8BvMnxf-Wlk9FgFj3qNQ-7hjWBBj0WZH-QwESWM3EpVEWOMYyKHxnVXumLdMAkWxLuhcHzLnGRYbRGuLKWt6D9ST6C8kHC-~LChQP1FA4LRelflTmW4FQIhMcll6AsSnhaHF6-yC8yVTpEf7Ajx1JE_&Key-Pair-Id=APKAJNUSFH4IKQRZ44WA",
+        "size": 6946, "isExternal": false, "name": "cpb-aacip-imalittleguid-.pdf",
+        "format": ""}], "type": "Document", "format": "txt", "status": "Complete",
+        "lastActivityOn": "2026-03-31T16:49:30.739Z", "modifiedOn": "2026-03-31T16:49:30.74Z",
+        "md5Checksum": "50506058cf729ce5a185466d1d5057a6", "clipSource": {}, "technicalMetadata":
+        {}, "technicalMetadataUpdates": {}, "archiveStatus": "Not archived", "restoreStatus":
+        "Not restored", "uploadCompleteDate": "2026-03-31T16:46:15.223Z", "isTrashed":
+        false, "isFavorite": false, "isExternal": false, "uploadTransferType": "MultipartHttp",
+        "folder": {"id": "3d035106f411428ea3bc18c6edc5e1b6", "name": "sonyci-python-test"},
+        "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9", "name": "American
+        Archive of Public Broadcasting", "class": "Team", "type": "Workspace"}, "network":
+        {"id": "e573ff14defc4b4e9ea393c3150a396c", "name": "American Archive", "class":
+        "Company"}, "enterpriseNetwork": {"id": "2075d1389045443d97dfc24c9107f78f",
+        "name": "WGBH"}, "filmstrips": [], "waveforms": [], "mediaAnalyses": [], "acquisitionSource":
+        {"name": "Workspace"}, "totalFolderCount": 1, "isTimedTextMatch": false, "isAvailable":
+        true, "batchId": "022018526ea6484f851baf0e6c48e68d", "kind": "Asset", "createdBy":
+        {"id": "e4f34488314648c29ad9fcffbc5a780b", "name": "Harpo Harbert", "email":
+        "ryan_harbert@wgbh.org"}}], "order": {"by": "Relevance", "direction": "Desc"},
+        "maxSearchResults": 1000000}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '6048'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 31 Mar 2026 19:13:19 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Retry-After:
+      - '41'
+      Strict-Transport-Security:
+      - max-age=86400; includeSubDomains
+      X-Frame-Options:
+      - deny
+      X-RateLimit-Limit:
+      - '3000'
+      X-RateLimit-Remaining:
+      - '2898'
+      X-RateLimit-Reset:
+      - '1774984440'
+    status:
+      code: 200
+      message: OK
 version: 1

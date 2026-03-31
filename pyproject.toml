@@ -39,14 +39,14 @@ docs = [
 [project.scripts]
 ci = 'sonyci.__main__:app'
 docs = 'mkdocs.commands:serve.serve'
-# test = 'pytest --vcr-record=none'
 test = 'pytest:main'
 # lint = 'ruff check . --fix'
 # format = 'black -S .'
 
-[tool.pytest.ini_options]
-testpaths = ['tests']
+[tool.pytest]
+addopts = ['--vcr-record=none']
 markers = ['no_ci: marks tests to skip on CI']
+testpaths = ['tests']
 
 [tool.coverage.run]
 omit = ['tests/*']

@@ -3,16 +3,9 @@ from pytest import fixture, mark
 from sonyci import Config, SonyCi
 
 
-@fixture(scope='module')
-def ci_config(pytestconfig):
-    if pytestconfig.getoption('record'):
-        return Config.load('./ci.toml')
-    return Config.load('./tests/sonyci/sonyci.toml')
-
-
-@fixture(scope='module')
-def ci(ci_config: Config):
-    return SonyCi(**ci_config.model_dump())
+@fixture
+def ci(config: dict):
+    return SonyCi(**config)
 
 
 @mark.vcr()
@@ -45,7 +38,7 @@ def test_workspace_contents(ci: SonyCi):
 
 @mark.vcr()
 def test_workspace_empty_search(ci: SonyCi):
-    result = ci.workspace_search(query='i am not a guid')
+    result = ci.workspace_search(query='asdf')
     assert isinstance(result, list)
     assert not result
 

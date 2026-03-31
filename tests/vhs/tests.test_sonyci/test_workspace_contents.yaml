@@ -1,97 +1,558 @@
 interactions:
-  - request:
-      body: grant_type=password&client_id=FAKE_CLIENT_ID&client_secret=FAKE_CLIENT_SECRET
-      headers:
-        Accept:
-          - '*/*'
-        Accept-Encoding:
-          - gzip, deflate
-        Connection:
-          - keep-alive
-        Content-Length:
-          - '109'
-        Content-Type:
-          - application/x-www-form-urlencoded
-        User-Agent:
-          - python-requests/2.30.0
-        authorization:
-          - Bearer DUMMY
-      method: POST
-      uri: https://api.cimediacloud.com/oauth2/token
-    response:
-      body:
-        string:
-          '{"access_token": "DUMMY_ACCESS_TOKEN", "expires_in": 86400, "token_type":
-          "bearer", "refresh_token": "DUMMY_REFRESH_TOKEN"}'
-      headers:
-        Cache-Control:
-          - no-cache
-        Connection:
-          - keep-alive
-        Content-Length:
-          - '143'
-        Content-Type:
-          - application/json; charset=utf-8
-        Date:
-          - Fri, 12 May 2023 22:12:46 GMT
-        Expires:
-          - '-1'
-        Pragma:
-          - no-cache
-        Strict-Transport-Security:
-          - max-age=86400; includeSubDomains
-        X-Frame-Options:
-          - deny
-      status:
-        code: 200
-        message: OK
-  - request:
-      body: null
-      headers:
-        Accept:
-          - '*/*'
-        Accept-Encoding:
-          - gzip, deflate
-        Connection:
-          - keep-alive
-        User-Agent:
-          - python-requests/2.30.0
-        authorization:
-          - Bearer DUMMY
-      method: GET
-      uri: https://api.cimediacloud.com/workspaces/f44132c2393d470c88b9884f45877ebb/contents
-    response:
-      body:
-        string:
-          '{"limit": 50, "offset": 0, "count": 13, "kind": "All", "order": {"by":
-          "CreatedOn", "direction": "Asc"}, "items": [{"id": "d870616520634dbc8eb8caec141188fa",
-          "name": "Workspace"}]}'
-      headers:
-        Cache-Control:
-          - no-cache
-        Connection:
-          - keep-alive
-        Content-Length:
-          - '119677'
-        Content-Type:
-          - application/json; charset=utf-8
-        Date:
-          - Fri, 12 May 2023 22:12:47 GMT
-        Expires:
-          - '-1'
-        Pragma:
-          - no-cache
-        Strict-Transport-Security:
-          - max-age=86400; includeSubDomains
-        X-Frame-Options:
-          - deny
-        X-RateLimit-Limit:
-          - '5000'
-        X-RateLimit-Remaining:
-          - '4978'
-        X-RateLimit-Reset:
-          - '1683929580'
-      status:
-        code: 200
-        message: OK
+- request:
+    body: grant_type=password&client_id=FAKE_CLIENT_ID&client_secret=FAKE_CLIENT_SECRET
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '109'
+      Content-Type:
+      - application/x-www-form-urlencoded
+      User-Agent:
+      - python-requests/2.32.5
+      authorization:
+      - Bearer DUMMY
+    method: POST
+    uri: https://api.cimediacloud.com/oauth2/token
+  response:
+    body:
+      string: '{"access_token": "DUMMY_ACCESS_TOKEN", "expires_in": 86400, "token_type":
+        "bearer", "refresh_token": "DUMMY_REFRESH_TOKEN"}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '143'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 31 Mar 2026 19:12:59 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=86400; includeSubDomains
+      X-Frame-Options:
+      - deny
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - python-requests/2.32.5
+      authorization:
+      - Bearer DUMMY
+    method: GET
+    uri: https://api.cimediacloud.com/workspaces/051303c1c1d24da7988128e6d2f56aa9/contents
+  response:
+    body:
+      string: '{"limit": 50, "offset": 0, "count": 679463, "kind": "All", "type":
+        ["All"], "order": {"by": "CreatedOn", "direction": "Asc"}, "items": [{"id":
+        "a1459cf719eb4a7cb2686663018be161", "name": "Workspace", "parentId": "051303c1c1d24da7988128e6d2f56aa9",
+        "createdOn": "2014-11-21T00:25:21.978Z", "lastActivityOn": "2026-03-31T19:12:44.194Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "stats": {"childAssetCount": 319515, "childFolderCount": 57},
+        "isFavorite": false, "kind": "Folder", "createdBy": {"id": "a12f49c148074878a6b50ff9f023a639",
+        "name": "Michael Potts", "email": "Michael_Potts@spe.sony.com"}}, {"id": "1aea4c34025f4981b541398a291c16ed",
+        "name": "Staff_File_Sharing_Delete_When_Done", "parentId": "a1459cf719eb4a7cb2686663018be161",
+        "createdOn": "2017-10-25T13:46:06.614Z", "lastActivityOn": "2026-03-31T16:45:43.314Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "a1459cf719eb4a7cb2686663018be161", "name":
+        "Workspace"}, "stats": {"childAssetCount": 115, "childFolderCount": 130},
+        "isFavorite": false, "kind": "Folder", "createdBy": {"id": "2ec0ed738f784c36b77226d125cdc0e6",
+        "name": "Casey Davis", "email": "casey_davis@wgbh.org"}}, {"id": "b276578013bb41ff99717de4880cb295",
+        "name": "Emerson College", "parentId": "a1459cf719eb4a7cb2686663018be161",
+        "createdOn": "2018-08-30T17:38:41.777Z", "lastActivityOn": "2024-03-08T18:58:04.894Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "a1459cf719eb4a7cb2686663018be161", "name":
+        "Workspace"}, "stats": {"childAssetCount": 5, "childFolderCount": 0}, "isFavorite":
+        false, "kind": "Folder", "createdBy": {"id": "88045d0c6bc44802ab1f57fd9a955954",
+        "name": "Alison Smith", "email": "alison_smith@wgbh.org"}}, {"id": "595ca86ec5b3409abaa8ff0e3e81e7f0",
+        "name": "Violence Sonata files", "parentId": "a1459cf719eb4a7cb2686663018be161",
+        "createdOn": "2019-02-14T16:20:54.778Z", "lastActivityOn": "2025-10-14T16:29:19.047Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "a1459cf719eb4a7cb2686663018be161", "name":
+        "Workspace"}, "stats": {"childAssetCount": 6, "childFolderCount": 0}, "isFavorite":
+        false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "c5693ab866a244f5962dd200290eb5a0",
+        "name": "Cakes and Ale", "parentId": "1aea4c34025f4981b541398a291c16ed", "createdOn":
+        "2020-01-23T20:15:51.372Z", "lastActivityOn": "2021-10-22T06:01:03.41Z", "isDeleted":
+        false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 3, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "318e7da67c234b259f3284af3531a6c1",
+        "name": "Evening at Pops for BSO", "parentId": "a1459cf719eb4a7cb2686663018be161",
+        "createdOn": "2020-05-29T20:14:33.388Z", "lastActivityOn": "2024-08-13T17:57:41.033Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "a1459cf719eb4a7cb2686663018be161", "name":
+        "Workspace"}, "stats": {"childAssetCount": 2, "childFolderCount": 0}, "isFavorite":
+        false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "d20ca7cba24841d9be9c99fb5fe4c848",
+        "name": "Evening at Pops proxies", "parentId": "a1459cf719eb4a7cb2686663018be161",
+        "createdOn": "2020-06-01T15:59:26.337Z", "lastActivityOn": "2025-12-15T21:02:17.773Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "a1459cf719eb4a7cb2686663018be161", "name":
+        "Workspace"}, "stats": {"childAssetCount": 15, "childFolderCount": 0}, "isFavorite":
+        false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "929ad01b8b6e49a0883f7073807a9492",
+        "name": "Masterpiece", "parentId": "09026400c3f0481ca8caeb5ff3e9a702", "createdOn":
+        "2020-08-19T21:20:18.074Z", "lastActivityOn": "2026-01-07T19:02:21.797Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "09026400c3f0481ca8caeb5ff3e9a702", "name":
+        "Masterpiece clips"}, "stats": {"childAssetCount": 658, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "b89e9a142ee74b8b85baf76a8d523ae9",
+        "name": "Rebecca Fraimow", "email": "rebecca_fraimow@wgbh.org"}}, {"id": "09026400c3f0481ca8caeb5ff3e9a702",
+        "name": "Masterpiece clips", "parentId": "a1459cf719eb4a7cb2686663018be161",
+        "createdOn": "2020-09-04T14:07:34.807Z", "lastActivityOn": "2026-01-07T19:02:21.797Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "a1459cf719eb4a7cb2686663018be161", "name":
+        "Workspace"}, "stats": {"childAssetCount": 514, "childFolderCount": 1}, "isFavorite":
+        false, "kind": "Folder", "createdBy": {"id": "1b543125e53e4addbc3c14f201f8020b",
+        "name": "Lynn Mason", "email": "Lynn_Mason@wgbh.org"}}, {"id": "59a903500d224109b0f5636530295186",
+        "name": "Notorious Woman", "parentId": "1aea4c34025f4981b541398a291c16ed",
+        "createdOn": "2021-01-19T21:51:38.032Z", "lastActivityOn": "2023-11-11T03:22:26.975Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 7, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "b0a1e39611384298b442f6c9859255f4",
+        "name": "American Playhouse - Concealed Enemies", "parentId": "5a8aed4ffa984b48b16c4408d42dfa32",
+        "createdOn": "2021-02-02T23:13:35.955Z", "lastActivityOn": "2025-02-13T17:19:09.37Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "5a8aed4ffa984b48b16c4408d42dfa32", "name":
+        "American Playhouse"}, "stats": {"childAssetCount": 4, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "ca0475e3f0014bbf93619f60cfefe600",
+        "name": "Nelson Mandela at Riverside Church", "parentId": "1aea4c34025f4981b541398a291c16ed",
+        "createdOn": "2021-05-25T19:55:55.523Z", "lastActivityOn": "2021-05-26T14:50:50.428Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 3, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "2c16c8633b25481ebf66d8f4558c6a27",
+        "name": "Show of Hands", "parentId": "1aea4c34025f4981b541398a291c16ed", "createdOn":
+        "2021-07-12T21:22:33.779Z", "lastActivityOn": "2025-09-16T18:44:47.513Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 14, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "74250d36975d4b4395cf2b874b81c852",
+        "name": "Askwith Forum HGSE", "parentId": "1aea4c34025f4981b541398a291c16ed",
+        "createdOn": "2021-07-27T22:06:03.155Z", "lastActivityOn": "2025-02-21T00:59:52.328Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 69, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "b88f6b0b973a4e75b590f706023a3c8b",
+        "name": "ZOOM, Series II - Season 4", "parentId": "97bfa0e649994953a300df886c6a8c01",
+        "createdOn": "2022-01-18T21:14:46.093Z", "lastActivityOn": "2026-03-18T17:54:50.138Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "97bfa0e649994953a300df886c6a8c01", "name":
+        "ZOOM_1999_proxies"}, "stats": {"childAssetCount": 18, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "668c56e31248455397f7f4769daa6f6d",
+        "name": "Americas", "parentId": "bb6dee44d49241dc9c8750e7df90535c", "createdOn":
+        "2022-02-01T19:02:24.485Z", "lastActivityOn": "2025-08-21T19:47:50.163Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "bb6dee44d49241dc9c8750e7df90535c", "name":
+        "0_MLA_Reference"}, "stats": {"childAssetCount": 10, "childFolderCount": 0},
+        "isFavorite": false, "kind": "Folder", "createdBy": {"id": "8e94f3b7af4a4050a1570359ff9dfc3a",
+        "name": "Samantha Driscoll", "email": "samantha_driscoll@wgbh.org"}}, {"id":
+        "15b73e38d18347ffb5db92225b0c0b7e", "name": "Evening of Championship Skating",
+        "parentId": "1aea4c34025f4981b541398a291c16ed", "createdOn": "2022-03-01T16:07:31.978Z",
+        "lastActivityOn": "2023-06-29T14:20:26.943Z", "isDeleted": false, "isTrashed":
+        false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c", "name": "American
+        Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 26, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "230e0d1986924e96b6bb9f9142750eef",
+        "name": "The Club / Club 44 proxies", "parentId": "1aea4c34025f4981b541398a291c16ed",
+        "createdOn": "2022-03-08T20:04:19.405Z", "lastActivityOn": "2024-08-21T20:08:49.99Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 20, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "8f659267f20a4d21aba06007ffcddf77",
+        "name": "ZOOM, Series II - Season 2", "parentId": "97bfa0e649994953a300df886c6a8c01",
+        "createdOn": "2022-03-23T19:23:53.529Z", "lastActivityOn": "2026-03-17T20:30:20.459Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "97bfa0e649994953a300df886c6a8c01", "name":
+        "ZOOM_1999_proxies"}, "stats": {"childAssetCount": 12, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "8e94f3b7af4a4050a1570359ff9dfc3a",
+        "name": "Samantha Driscoll", "email": "samantha_driscoll@wgbh.org"}}, {"id":
+        "c475736ad6fc43d1bd18918f3eca3810", "name": "Crockett''s VG - Season 1 proxies",
+        "parentId": "56cd51c622444a068cf7c9682c2d91e5", "createdOn": "2022-04-07T16:28:41.5Z",
+        "lastActivityOn": "2024-11-18T19:55:05.35Z", "isDeleted": false, "isTrashed":
+        false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c", "name": "American
+        Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "56cd51c622444a068cf7c9682c2d91e5", "name":
+        "Crockett''s Victory Garden"}, "stats": {"childAssetCount": 24, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "4502653d849848dcb767f133a22ed5fa",
+        "name": "Sound and Spirit", "parentId": "1aea4c34025f4981b541398a291c16ed",
+        "createdOn": "2022-04-21T15:13:08.235Z", "lastActivityOn": "2025-12-01T21:23:22.711Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 119,
+        "childFolderCount": 0}, "isFavorite": false, "kind": "Folder", "createdBy":
+        {"id": "c5dc693cc27f4070ae40057962e4a099", "name": "peter higgins", "email":
+        "peter_higgins@wgbh.org"}}, {"id": "ec1e9fda6ab84097b41280392f886ddc", "name":
+        "columbus_age_of_discovery", "parentId": "1aea4c34025f4981b541398a291c16ed",
+        "createdOn": "2022-05-05T21:06:43.527Z", "lastActivityOn": "2023-09-18T13:11:21.056Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 5, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "8e94f3b7af4a4050a1570359ff9dfc3a",
+        "name": "Samantha Driscoll", "email": "samantha_driscoll@wgbh.org"}}, {"id":
+        "a95deecf242b4ecba210bea1e06a4322", "name": "Rock and Roll (copies)", "parentId":
+        "1aea4c34025f4981b541398a291c16ed", "createdOn": "2022-05-12T15:59:42.258Z",
+        "lastActivityOn": "2025-01-09T19:59:39.589Z", "isDeleted": false, "isTrashed":
+        false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c", "name": "American
+        Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 10, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "037b1da391cc407d8c43640a2a6f2aa1",
+        "name": "China: A Century of Revolution", "parentId": "1aea4c34025f4981b541398a291c16ed",
+        "createdOn": "2022-05-17T03:17:27.12Z", "lastActivityOn": "2024-04-22T17:44:21.927Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 6, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "a6186303e0e741a48145ef3e12f71474",
+        "name": "Last Chance Garage", "parentId": "1aea4c34025f4981b541398a291c16ed",
+        "createdOn": "2022-05-20T13:49:52.489Z", "lastActivityOn": "2024-08-23T21:47:44.731Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 15, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "cd8610652839497f9d2126268b84852b",
+        "name": "LineaAbierta_forcataloging", "parentId": "a1459cf719eb4a7cb2686663018be161",
+        "createdOn": "2022-06-06T01:43:37.909Z", "lastActivityOn": "2024-07-12T18:08:33.717Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "a1459cf719eb4a7cb2686663018be161", "name":
+        "Workspace"}, "stats": {"childAssetCount": 57, "childFolderCount": 0}, "isFavorite":
+        false, "kind": "Folder", "createdBy": {"id": "ac001ff970c14b358664d9ee4da0c39b",
+        "name": "Miranda Villesvik", "email": "miranda_villesvik@wgbh.org"}}, {"id":
+        "b396dcdf869a44b799ceb5df5d86f041", "name": "Christmas at Pops", "parentId":
+        "1aea4c34025f4981b541398a291c16ed", "createdOn": "2022-06-07T19:24:35.283Z",
+        "lastActivityOn": "2022-06-22T14:53:55.61Z", "isDeleted": false, "isTrashed":
+        false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c", "name": "American
+        Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 2, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "6c4c57562fa3425682cc3a41bd26abf1",
+        "name": "AIDS exhibit AAPB", "parentId": "a1459cf719eb4a7cb2686663018be161",
+        "createdOn": "2022-06-10T16:39:19.625Z", "lastActivityOn": "2025-04-18T01:01:43.18Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "a1459cf719eb4a7cb2686663018be161", "name":
+        "Workspace"}, "stats": {"childAssetCount": 0, "childFolderCount": 6}, "isFavorite":
+        false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "578a20c7ad2d4e7897af8ac00259e656",
+        "name": "ZOOM_1970s_not_on_aapb_proxies", "parentId": "1aea4c34025f4981b541398a291c16ed",
+        "createdOn": "2022-06-23T19:10:23.647Z", "lastActivityOn": "2026-02-10T15:03:43.039Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 14, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "8e94f3b7af4a4050a1570359ff9dfc3a",
+        "name": "Samantha Driscoll", "email": "samantha_driscoll@wgbh.org"}}, {"id":
+        "54b3f0850d6d420eb9600f411a22172a", "name": "jamesbrown_garden_BITC", "parentId":
+        "1aea4c34025f4981b541398a291c16ed", "createdOn": "2022-06-24T13:58:52.51Z",
+        "lastActivityOn": "2025-09-08T15:24:19.062Z", "isDeleted": false, "isTrashed":
+        false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c", "name": "American
+        Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 1, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "8e94f3b7af4a4050a1570359ff9dfc3a",
+        "name": "Samantha Driscoll", "email": "samantha_driscoll@wgbh.org"}}, {"id":
+        "810947183e1847d9b6e83c335b36737b", "name": "SayBrother_not_onAAPB_OV", "parentId":
+        "1aea4c34025f4981b541398a291c16ed", "createdOn": "2022-07-18T14:22:26.247Z",
+        "lastActivityOn": "2026-03-27T20:16:12.85Z", "isDeleted": false, "isTrashed":
+        false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c", "name": "American
+        Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 66, "childFolderCount":
+        1}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "8e94f3b7af4a4050a1570359ff9dfc3a",
+        "name": "Samantha Driscoll", "email": "samantha_driscoll@wgbh.org"}}, {"id":
+        "24808b05dbe24bc181d2acdb1d95c4da", "name": "On Approval", "parentId": "1aea4c34025f4981b541398a291c16ed",
+        "createdOn": "2022-08-08T18:33:30.866Z", "lastActivityOn": "2022-08-13T03:38:24.512Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 4, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "e4170e62aa844887ad664a5c82461cad",
+        "name": "Lauren Jefferson", "email": "lauren_jefferson@wgbh.org"}}, {"id":
+        "388778f899cf41e5812528c57c9ab186", "name": "NJN ProxiesFolder For Raananah
+        Sept 2022", "parentId": "1aea4c34025f4981b541398a291c16ed", "createdOn": "2022-09-16T16:28:47.648Z",
+        "lastActivityOn": "2024-04-22T14:53:12.289Z", "isDeleted": false, "isTrashed":
+        false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c", "name": "American
+        Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 346,
+        "childFolderCount": 0}, "isFavorite": false, "kind": "Folder", "createdBy":
+        {"id": "ac001ff970c14b358664d9ee4da0c39b", "name": "Miranda Villesvik", "email":
+        "miranda_villesvik@wgbh.org"}}, {"id": "4089243bb3774765a8397d3aa3a3e339",
+        "name": "Teaching Math", "parentId": "1aea4c34025f4981b541398a291c16ed", "createdOn":
+        "2022-10-03T20:04:24.938Z", "lastActivityOn": "2026-02-18T22:22:28.952Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 0, "childFolderCount":
+        3}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "41bd120eed7c4bfbac367f001ede97b5",
+        "name": "Masterpiece Radio Theatre - The House of Mirth", "parentId": "1aea4c34025f4981b541398a291c16ed",
+        "createdOn": "2022-10-06T20:38:36.314Z", "lastActivityOn": "2022-10-06T20:56:28.355Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 5, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "ef5998900ea441f7beaa105fcf53889c",
+        "name": "Teaching Math 9\u201312", "parentId": "4089243bb3774765a8397d3aa3a3e339",
+        "createdOn": "2022-10-12T20:54:37.767Z", "lastActivityOn": "2026-02-18T22:22:28.952Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "4089243bb3774765a8397d3aa3a3e339", "name":
+        "Teaching Math"}, "stats": {"childAssetCount": 15, "childFolderCount": 0},
+        "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "97bfa0e649994953a300df886c6a8c01",
+        "name": "ZOOM_1999_proxies", "parentId": "1aea4c34025f4981b541398a291c16ed",
+        "createdOn": "2022-12-06T20:31:22.939Z", "lastActivityOn": "2026-03-18T17:54:50.138Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 3, "childFolderCount":
+        4}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "8e94f3b7af4a4050a1570359ff9dfc3a",
+        "name": "Samantha Driscoll", "email": "samantha_driscoll@wgbh.org"}}, {"id":
+        "b5a5ee38e10d4b929b1f6a83ea6f9e0a", "name": "Romagnolis Table", "parentId":
+        "1aea4c34025f4981b541398a291c16ed", "createdOn": "2023-01-19T22:01:29.721Z",
+        "lastActivityOn": "2024-10-16T17:02:52.882Z", "isDeleted": false, "isTrashed":
+        false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c", "name": "American
+        Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 24, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "8e94f3b7af4a4050a1570359ff9dfc3a",
+        "name": "Samantha Driscoll", "email": "samantha_driscoll@wgbh.org"}}, {"id":
+        "668f825a73d54f5291904d7c8574a6cb", "name": "Teaching Math 5\u20138", "parentId":
+        "4089243bb3774765a8397d3aa3a3e339", "createdOn": "2023-02-01T20:07:20.647Z",
+        "lastActivityOn": "2023-10-23T21:09:26.847Z", "isDeleted": false, "isTrashed":
+        false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c", "name": "American
+        Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "4089243bb3774765a8397d3aa3a3e339", "name":
+        "Teaching Math"}, "stats": {"childAssetCount": 4, "childFolderCount": 0},
+        "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "e59258e91bb4473f83bc56221084acd0",
+        "name": "Teaching Math K\u20134", "parentId": "4089243bb3774765a8397d3aa3a3e339",
+        "createdOn": "2023-02-01T20:08:50.813Z", "lastActivityOn": "2025-06-04T18:05:34.6Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "4089243bb3774765a8397d3aa3a3e339", "name":
+        "Teaching Math"}, "stats": {"childAssetCount": 19, "childFolderCount": 0},
+        "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "077827a8c4ff41508e817503db3c6283",
+        "name": "KVZK_FromGeorgeBlood_Mainfolder", "parentId": "a1459cf719eb4a7cb2686663018be161",
+        "createdOn": "2023-02-09T20:48:12.728Z", "lastActivityOn": "2025-07-07T15:12:30.825Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "a1459cf719eb4a7cb2686663018be161", "name":
+        "Workspace"}, "stats": {"childAssetCount": 0, "childFolderCount": 1}, "isFavorite":
+        false, "kind": "Folder", "createdBy": {"id": "ac001ff970c14b358664d9ee4da0c39b",
+        "name": "Miranda Villesvik", "email": "miranda_villesvik@wgbh.org"}}, {"id":
+        "3228b0c64391408cae718485a56a1179", "name": "Jimmy Carter", "parentId": "1aea4c34025f4981b541398a291c16ed",
+        "createdOn": "2023-02-23T20:25:36.478Z", "lastActivityOn": "2024-07-02T22:02:35.132Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 11, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "7995268c27a44eaeb250232c69d51d6f",
+        "name": "Jazz_Decades", "parentId": "1aea4c34025f4981b541398a291c16ed", "createdOn":
+        "2023-03-10T18:42:42.49Z", "lastActivityOn": "2026-03-24T20:52:32.22Z", "isDeleted":
+        false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 6, "childFolderCount":
+        1}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "e4170e62aa844887ad664a5c82461cad",
+        "name": "Lauren Jefferson", "email": "lauren_jefferson@wgbh.org"}}, {"id":
+        "a714044a659a4fb682cb4eac2a500bd9", "name": "March on Washington wav", "parentId":
+        "1aea4c34025f4981b541398a291c16ed", "createdOn": "2023-03-22T20:20:02.026Z",
+        "lastActivityOn": "2024-10-16T17:42:44.778Z", "isDeleted": false, "isTrashed":
+        false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c", "name": "American
+        Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 17, "childFolderCount":
+        1}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "1d858c55aadd40718658093e97641b8e",
+        "name": "March on Washington Revisited", "parentId": "a714044a659a4fb682cb4eac2a500bd9",
+        "createdOn": "2023-03-23T18:40:58.643Z", "lastActivityOn": "2024-10-16T17:43:39.854Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "a714044a659a4fb682cb4eac2a500bd9", "name":
+        "March on Washington wav"}, "stats": {"childAssetCount": 7, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "1bb43cb1c37248a28d6dd4e66aff5f77",
+        "name": "Destinos", "parentId": "1aea4c34025f4981b541398a291c16ed", "createdOn":
+        "2023-03-29T18:52:56.193Z", "lastActivityOn": "2023-03-29T18:59:12.677Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 10, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "e4170e62aa844887ad664a5c82461cad",
+        "name": "Lauren Jefferson", "email": "lauren_jefferson@wgbh.org"}}, {"id":
+        "ceb46ec7b7044c2b9f130cb36f1d38fc", "name": "Masterpiece  Testament of Youth",
+        "parentId": "1aea4c34025f4981b541398a291c16ed", "createdOn": "2023-04-13T16:35:50.725Z",
+        "lastActivityOn": "2023-04-13T19:10:33.776Z", "isDeleted": false, "isTrashed":
+        false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c", "name": "American
+        Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 5, "childFolderCount":
+        0}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "e4170e62aa844887ad664a5c82461cad",
+        "name": "Lauren Jefferson", "email": "lauren_jefferson@wgbh.org"}}, {"id":
+        "bd2d027ee7974f999906b8ae5891ac26", "name": "Spider''s Web", "parentId": "1aea4c34025f4981b541398a291c16ed",
+        "createdOn": "2023-04-19T16:41:33.933Z", "lastActivityOn": "2026-03-17T18:50:19.482Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "1aea4c34025f4981b541398a291c16ed", "name":
+        "Staff_File_Sharing_Delete_When_Done"}, "stats": {"childAssetCount": 0, "childFolderCount":
+        3}, "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "b0c8cccceb00475797bc79c43c2d676c",
+        "name": "Wolves of Willoughby Chase (1979)", "parentId": "bd2d027ee7974f999906b8ae5891ac26",
+        "createdOn": "2023-04-19T16:43:10.982Z", "lastActivityOn": "2023-09-13T23:13:11.93Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "bd2d027ee7974f999906b8ae5891ac26", "name":
+        "Spider''s Web"}, "stats": {"childAssetCount": 10, "childFolderCount": 0},
+        "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}, {"id": "f037ed70d4154113a4a4cf94fc915dd3",
+        "name": "Wind in the Willows (1977)", "parentId": "bd2d027ee7974f999906b8ae5891ac26",
+        "createdOn": "2023-04-26T14:14:20.957Z", "lastActivityOn": "2026-03-17T18:50:19.482Z",
+        "isDeleted": false, "isTrashed": false, "network": {"id": "e573ff14defc4b4e9ea393c3150a396c",
+        "name": "American Archive", "class": "Company"}, "workspace": {"id": "051303c1c1d24da7988128e6d2f56aa9",
+        "name": "American Archive of Public Broadcasting", "class": "Team", "type":
+        "Workspace"}, "parentFolder": {"id": "bd2d027ee7974f999906b8ae5891ac26", "name":
+        "Spider''s Web"}, "stats": {"childAssetCount": 15, "childFolderCount": 0},
+        "isFavorite": false, "kind": "Folder", "createdBy": {"id": "c5dc693cc27f4070ae40057962e4a099",
+        "name": "peter higgins", "email": "peter_higgins@wgbh.org"}}]}'
+    headers:
+      Cache-Control:
+      - no-cache
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '38191'
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Tue, 31 Mar 2026 19:13:04 GMT
+      Expires:
+      - '-1'
+      Pragma:
+      - no-cache
+      Retry-After:
+      - '57'
+      Strict-Transport-Security:
+      - max-age=86400; includeSubDomains
+      X-Frame-Options:
+      - deny
+      X-RateLimit-Limit:
+      - '3000'
+      X-RateLimit-Remaining:
+      - '2902'
+      X-RateLimit-Reset:
+      - '1774984440'
+    status:
+      code: 200
+      message: OK
 version: 1
