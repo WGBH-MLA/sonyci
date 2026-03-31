@@ -21,6 +21,13 @@ git clone https://github.com/WGBH-MLA/sonyci.git && cd sonyci
 uv sync
 ```
 
+### with docker
+
+```sh
+docker pull ghcr.io/wgbh-mla/sonyci:latest
+docker run -it --rm ghcr.io/wgbh-mla/sonyci:latest
+```
+
 ## Configure
 
 Create a file called `.cred` with the following contents, and add your credentials:

@@ -1,5 +1,6 @@
 from os import environ
 
+from pydantic import SecretStr
 from pytest import fixture
 
 from sonyci import Config
@@ -36,5 +37,6 @@ def test_load_precedence():
         toml_filename='./tests/sonyci/sonyci.toml', password='password from arg'
     )
     assert config.username == 'username from environment'
-    assert config.password == 'password from arg'
+    assert isinstance(config.password, SecretStr)
+    assert config.password.get_secret_value() == 'password from arg'
     assert config.client_id == 'test client id'

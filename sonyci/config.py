@@ -1,7 +1,7 @@
 from os import environ
 
 import tomllib
-from pydantic import BaseModel
+from pydantic import BaseModel, SecretStr
 
 BASE_URL = 'https://api.cimediacloud.com/'
 TOKEN_URL = 'https://api.cimediacloud.com/oauth2/token'
@@ -14,9 +14,9 @@ class Config(BaseModel):
     base_url: str = BASE_URL
     token_url: str = TOKEN_URL
     username: str | None = None
-    password: str | None = None
+    password: SecretStr | None = None
     client_id: str | None = None
-    client_secret: str | None = None
+    client_secret: SecretStr | None = None
     workspace_id: str | None = None
 
     @classmethod
