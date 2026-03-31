@@ -1,5 +1,4 @@
 from os import environ as env
-
 from pydantic import SecretStr
 from pytest import fixture, mark
 from sonyci import Config
