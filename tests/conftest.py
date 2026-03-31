@@ -72,7 +72,7 @@ def pytest_collection_modifyitems(config, items):
 
 @fixture
 def guid() -> str:
-    return 'cpb-aacip-imalittleguid'  # This asset is a text file with the guid in its name, so it's easy to verify in tests
+    return 'cpb-aacip-e4308199588'
 
 
 @fixture

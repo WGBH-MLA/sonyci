@@ -13,7 +13,7 @@ interactions:
       authorization:
       - Bearer DUMMY
     method: GET
-    uri: https://api.cimediacloud.com/workspaces/051303c1c1d24da7988128e6d2f56aa9/search?query=asdf&kind=asset
+    uri: https://api.cimediacloud.com/workspaces/f44132c2393d470c88b9884f45877ebb/search?query=asdf&kind=asset
   response:
     body:
       string: '{"limit": 50, "offset": 0, "count": 0, "kind": "Asset", "query": "asdf",
@@ -29,13 +29,13 @@ interactions:
       Content-Type:
       - application/json; charset=utf-8
       Date:
-      - Tue, 31 Mar 2026 19:12:34 GMT
+      - Tue, 31 Mar 2026 19:49:43 GMT
       Expires:
       - '-1'
       Pragma:
       - no-cache
       Retry-After:
-      - '26'
+      - '16'
       Strict-Transport-Security:
       - max-age=86400; includeSubDomains
       X-Frame-Options:
@@ -43,9 +43,9 @@ interactions:
       X-RateLimit-Limit:
       - '3000'
       X-RateLimit-Remaining:
-      - '2897'
+      - '2885'
       X-RateLimit-Reset:
-      - '1774984380'
+      - '1774986600'
     status:
       code: 200
       message: OK
