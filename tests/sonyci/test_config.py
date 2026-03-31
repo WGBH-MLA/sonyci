@@ -2,6 +2,7 @@ from os import environ
 
 from pydantic import SecretStr
 from pytest import fixture
+
 from sonyci import Config
 
 
