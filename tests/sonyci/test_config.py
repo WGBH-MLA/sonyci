@@ -1,7 +1,7 @@
-from os import environ
+from os import environ as env
 
 from pydantic import SecretStr
-from pytest import fixture
+from pytest import fixture, mark
 
 from sonyci import Config
 
@@ -30,9 +30,13 @@ def test_from_toml(dict_from_toml):
     assert dict_from_toml['client_secret'] == 'test client secret'
 
 
+@mark.skipif(
+    env.get('CI_USERNAME') is not None,
+    reason='CI_USERNAME env var set. Not testing load precedence when config is provided through env vars',
+)
 def test_load_precedence():
     """Returns a Config instance loaded with data merged from different sources"""
-    environ['CI_USERNAME'] = 'username from environment'
+    env['CI_USERNAME'] = 'username from environment'
     config = Config.load(
         toml_filename='./tests/sonyci/sonyci.toml', password='password from arg'
     )

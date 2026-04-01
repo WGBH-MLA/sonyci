@@ -13,7 +13,7 @@ def test_empty_search(runner, config):
             '-w',
             config['workspace_id'],
             'search',
-            'i am not a guid',
+            'asdf',
         ],
     )
     assert result.exit_code == 0

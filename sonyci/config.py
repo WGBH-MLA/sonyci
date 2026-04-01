@@ -28,8 +28,11 @@ class Config(BaseModel):
         **kwargs,
     ):
         """
-        Returns a new Config instance loaded with data in the following precedence: arguments,
-        environment variables, toml file, defaults defined in the Config class.
+        Returns a new Config instance loaded with data in the following precedence:
+        - arguments,
+        - environment variables,
+        - toml file,
+        - defaults defined in the Config class.
         """
         if toml_filename:
             from_toml = cls.from_toml(filename=toml_filename, key=toml_key)
@@ -53,10 +56,13 @@ class Config(BaseModel):
 
     @classmethod
     def from_env(cls, prefix: str = ENV_PREFIX) -> dict:
+        """Returns a dict of config vars from the environment that begin with `prefix`
+        with the prefix stripped from the keys and the keys lowercased.
+        For example, with prefix 'CI_', the environment variable 'CI_USERNAME' would be returned as {'username': <value of CI_USERNAME>}.
+        """
         if not prefix:
             return {}
 
-        # Returns a dict of config vars from the environment that begin with `prefix`
         return {
             k[len(prefix) :].lower(): v
             for k, v in environ.items()
