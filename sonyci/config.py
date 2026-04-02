@@ -18,6 +18,7 @@ class Config(BaseModel):
     client_id: str | None = None
     client_secret: SecretStr | None = None
     workspace_id: str | None = None
+    max_tries: int = 5
 
     @classmethod
     def load(

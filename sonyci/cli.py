@@ -72,7 +72,7 @@ def login(
 @app.command()
 def get(ctx: Context, path: Annotated[str, Argument(..., help='The path to GET')]):
     """Make a GET request to Sony CI."""
-    ci = SonyCi(t=ctx.parent.params['token'])
+    ci = SonyCi(t=ctx.parent.params['token'], max_tries=ctx.parent.params['retry'])
     log.trace(f'GET {path}')
     result = ci(path)
     log.success(result)
@@ -86,7 +86,7 @@ def post(
     data=Argument(help='The data to POST'),
 ):
     """Make a POST request to Sony CI."""
-    ci = SonyCi(t=ctx.parent.params['token'])
+    ci = SonyCi(t=ctx.parent.params['token'], max_tries=ctx.parent.params['retry'])
     data = loads(data)
     log.debug(f'POST {path} {data}')
     result = ci.post(path, data)
@@ -100,7 +100,9 @@ def search(
 ):
     """Search for files in a Sony CI workspace"""
     ci = SonyCi(
-        t=ctx.parent.params['token'], workspace_id=ctx.parent.params['workspace_id']
+        t=ctx.parent.params['token'],
+        workspace_id=ctx.parent.params['workspace_id'],
+        max_tries=ctx.parent.params['retry'],
     )
     log.trace(f'search {query}')
     result = ci.workspace_search(query)
@@ -119,7 +121,7 @@ def download(
     ] = None,
 ):
     """Download a file from Sony CI"""
-    ci = SonyCi(t=ctx.parent.params['token'])
+    ci = SonyCi(t=ctx.parent.params['token'], max_tries=ctx.parent.params['retry'])
     log.trace(f'download id: {id} proxy: {proxy} output: {output}')
     result = ci.asset_download(id)
     link = result['location']
@@ -147,7 +149,9 @@ def asset(
 ):
     """Search for files in a Sony CI workspace"""
     ci = SonyCi(
-        t=ctx.parent.params['token'], workspace_id=ctx.parent.params['workspace_id']
+        t=ctx.parent.params['token'],
+        workspace_id=ctx.parent.params['workspace_id'],
+        max_tries=ctx.parent.params['retry'],
     )
     log.trace(f'asset {asset}')
     result = ci.asset(asset)
@@ -193,6 +197,13 @@ def main(
         '-s',
         help='Sony CI client secret.',
         envvar='CI_CLIENT_SECRET',
+    ),
+    retry: int = Option(
+        5,
+        '--retry',
+        '-r',
+        help='Maximum number of retry attempts on rate limit errors.',
+        envvar='CI_RETRY',
     ),
 ):
     if not verbose:

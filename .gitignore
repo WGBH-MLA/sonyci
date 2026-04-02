@@ -4,4 +4,6 @@ dist/
 site/
 .env
 .token
+.cred
+.env
 .cache_ggshield
