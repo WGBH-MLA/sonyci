@@ -1,4 +1,6 @@
-from requests import post
+from time import sleep
+
+from requests import HTTPError, post
 from requests_oauth2client import BearerToken, TokenSerializer
 
 from sonyci.config import TOKEN_URL
@@ -53,17 +55,13 @@ def json(func):
 
 def retry(func):
     """Decorator for retrying a function call after a rate limit error."""
-    from requests import HTTPError
-    from time import sleep
 
     def inner(*args, **kwargs):
-        tries: int = -1
         max_tries: int = (
             args[0].max_tries if args and hasattr(args[0], 'max_tries') else 5
         )
-        while tries < max_tries:
+        for _ in range(max_tries):
             try:
-                tries += 1
                 return func(*args, **kwargs)
             except HTTPError as e:
                 if e.response.status_code != 429:
@@ -77,7 +75,7 @@ def retry(func):
                     raise e
                 retry_after = int(retry_after)
                 log.warning(f'Rate limited. Retrying after {retry_after} seconds...')
-                sleep(int(retry_after + 1))
+                sleep(retry_after + 1)
         log.error(f'Failed after {max_tries} tries')
         raise RetryError(f'Failed after {max_tries} tries')
 
