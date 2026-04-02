@@ -54,27 +54,30 @@ def json(func):
 def retry(func):
     """Decorator for retrying a function call after a rate limit error."""
     from requests import HTTPError
+    from time import sleep
 
     def inner(*args, **kwargs):
-        tries: int = 0
-        max_tries: int = 5
+        tries: int = -1
+        max_tries: int = (
+            args[0].max_tries if args and hasattr(args[0], 'max_tries') else 5
+        )
         while tries < max_tries:
             try:
+                tries += 1
                 return func(*args, **kwargs)
             except HTTPError as e:
                 if e.response.status_code != 429:
                     log.error(f'HTTPError {e.response.status_code}: {e}')
                     raise e
-                from time import sleep
 
                 # Get the retry-after header, if it exists
                 retry_after = e.response.headers.get('Retry-After')
                 if not retry_after:
                     log.error('No Retry-After header found')
                     raise e
+                retry_after = int(retry_after)
                 log.warning(f'Rate limited. Retrying after {retry_after} seconds...')
                 sleep(int(retry_after + 1))
-                tries += 1
         log.error(f'Failed after {max_tries} tries')
         raise RetryError(f'Failed after {max_tries} tries')
 
