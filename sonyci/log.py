@@ -1,12 +1,12 @@
 from loguru import logger as log
 
 try:
-    from rich.logging import RichHandler
+    from rich.logging import RichHandler, Console
 
     log.configure(
         handlers=[
             {
-                'sink': RichHandler(),
+                'sink': RichHandler(console=Console(stderr=True)),
             }
         ]
     )
