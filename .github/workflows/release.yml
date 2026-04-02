@@ -7,4 +7,4 @@ on:
 jobs:
   release:
     name: 📝 Draft Release
-    uses: WGBH-MLA/.github/.github/workflows/draft_release.yml@main
+    uses: WGBH-MLA/.github/.github/workflows/draft_release.yml@v1

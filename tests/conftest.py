@@ -65,7 +65,7 @@ def pytest_collection_modifyitems(config, items):
 
 @fixture
 def guid() -> str:
-    return Config.from_toml('./tests/sonyci/guid.toml')['guid']
+    return 'cpb-aacip-e4308199588'
 
 
 @fixture
@@ -94,7 +94,7 @@ def error_runner():
 @fixture
 def config(pytestconfig):
     if pytestconfig.getoption('record'):
-        return Config.from_toml('./ci.toml')
+        return Config.from_env()
     return Config.from_toml('./tests/sonyci/sonyci.toml')
 
 

@@ -15,18 +15,25 @@ class SonyCi(Config):
     """A SonyCI client."""
     # This will not be needed when we upgrade to pydantic2,
     # we will be able to directly overwrite the @cached_property instance
-    t: BearerToken = None
+    t: BearerToken | None = None
 
     @property
     def oauth(self) -> OAuth2Client:
         """Create and cache an OAuth2Client instance."""
         return OAuth2Client(
             token_endpoint=self.token_url,
-            auth=(self.username, self.password),
+            auth=(
+                self.username,
+                self.password.get_secret_value() if self.password else None,
+            ),
             data={
                 'grant_type': 'password',
                 'client_id': self.client_id,
-                'client_secret': self.client_secret,
+                'client_secret': (
+                    self.client_secret.get_secret_value()
+                    if self.client_secret
+                    else None
+                ),
             },
         )
 
@@ -35,11 +42,17 @@ class SonyCi(Config):
         """Get a token from SonyCI and cache the results."""
         if self.t:
             return self.t
+        if not self.client_id or not self.client_secret:
+            raise ValueError(
+                'client_id and client_secret are required for authentication'
+            )
+        if not self.username or not self.password:
+            raise ValueError('username and password are required for authentication')
         return get_token(
             username=self.username,
-            password=self.password,
+            password=self.password.get_secret_value(),
             client_id=self.client_id,
-            client_secret=self.client_secret,
+            client_secret=(self.client_secret.get_secret_value()),
         )
 
     @property

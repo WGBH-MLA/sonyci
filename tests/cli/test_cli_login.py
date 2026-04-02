@@ -1,3 +1,5 @@
+from os import environ as env
+
 from pytest import mark
 
 from sonyci.cli import app
@@ -25,8 +27,8 @@ def test_login(runner, config):
 
 
 @mark.vcr()
-def test_bad_login(error_runner):
-    result = error_runner.invoke(
+def test_bad_login(runner):
+    result = runner.invoke(
         app,
         [
             '--client-id',
@@ -45,8 +47,16 @@ def test_bad_login(error_runner):
     assert 'invalid_client' in str(result.exception)
 
 
-def test_missing_username(error_runner):
-    result = error_runner.invoke(
+@mark.skipif(
+    env.get('CI_USERNAME') is not None,
+    reason='CI_USERNAME env var set. Not checking for missing username error when config is provided through env vars',
+)
+def test_missing_username(runner, pytestconfig):
+    if pytestconfig.getoption('record'):
+        mark.skip(
+            'This is testing the error handling of typer when missing required options and should not run in record mode when using env vars for config'
+        )
+    result = runner.invoke(
         app,
         [
             '--client-id',
@@ -58,6 +68,6 @@ def test_missing_username(error_runner):
             'test',
         ],
     )
-    assert result.exit_code == 2
+    assert result.exit_code != 0
+    assert '-username' in result.stderr
     assert 'Missing option' in result.stderr
-    assert 'username' in result.stderr

@@ -1,72 +1,57 @@
 # Install
 
-This guide will walk you through the installation process for the `sonyci` package. It can be installed with `pip` or `pdm`
+This guide will walk you through the installation process for the `sonyci` package. It can be installed with `pip` or `uv`
 
 ## (Option 1) Install with pip
 
-```shell
+```sh
 pip install sonyci
 ```
 
-## (Option 2) Install with pdm
+## (Option 2) Install with uv
 
-[PDM](https://pdm.fming.dev/) is used as the packaging manager. It can be installed with `pip install pdm`.
+[uv](https://docs.astral.sh/uv/) is used as the packaging manager. It can be installed with `pip install uv`.
 
 ### Clone the repository::
 
-```shell
+```sh
 git clone https://github.com/WGBH-MLA/sonyci.git
 cd sonyci
 ```
 
-### Install
+### Create a virtual environment
 
-Install the project with development dependencies:
-
-```shell
-pdm install
+```sh
+uv venv
 ```
 
-Activate your virtual environment
+### Activate your virtual environment
 
-```shell
-$(pdm venv activate)
+```sh
+source .venv/bin/activate
 ```
-
-!!! note "What is `$(pdm venv activate)`?"
-
-    `pdm venv activate` outputs the command needed to activate your virtual environment.
-
-    The `$()` wrapper evaluates it in your current shell context.
-
-??? abstract "Install with venv"
-
-    If PDM is not available, it can also be installed with pip. It is recommeneded to install to a virtual environment using `venv`:
-
-    ```shell
-    python3 -m venv .venv
-    source .venv/bin/activate
-    ```
-
-    Install the package
-
-    ```shell
-    pip install .
-    ```
 
 !!! info "Deactivate"
 
     To deactivate the virtual environmet, run the `deactivate` command.
 
-    ```shell
+    ```sh
     deactivate
     ```
+
+### Install
+
+Install the project with development dependencies:
+
+```sh
+uv sync
+```
 
 ## Login
 
 The first time you run the application, you will need to get an access token. You can do this with the `login` command:
 
-```shell
+```sh
 ci login
 ```
 
@@ -76,7 +61,7 @@ You will need to provide your `username` and `password`, as well as your `client
 
 Create a file called `.cred` with the following contents, and add your credentials:
 
-```shell
+```sh
 export CI_USERNAME=
 export CI_PASSWORD=
 export CI_CLIENT_ID=
@@ -88,13 +73,13 @@ export CI_WORKSPACE_ID=
 
     Alternate notation for `source` (may not be available in your terminal):
 
-    ```shell
+    ```sh
     . .cred
     ```
 
 Activate the variables:
 
-```shell
+```sh
 source .cred
 ```
 
@@ -102,7 +87,7 @@ source .cred
 
     To check your environment variables are stored, run:
 
-    ```shell
+    ```sh
     echo $CI_USERNAME
     ```
 
@@ -110,7 +95,7 @@ source .cred
 
 Otherwise, you can now login and get an access token:
 
-```shell
+```sh
 ci login
 ```
 
@@ -120,7 +105,7 @@ This will save a file called `.token` in the current directory. This file will b
 
 Now you are ready to run the application:
 
-```shell
+```sh
 ci -h
 ```
 
@@ -128,10 +113,10 @@ See the [CLI reference](../reference/cli) for more details.
 
 ## Development
 
-Additional development scripts are available in the `pyproject.toml` file. You can run them with `pdm <script_name>`. For example, to run the tests:
+Additional development scripts are available in the `pyproject.toml` file. You can run them with `uv run <script_name>`. For example, to run the tests:
 
-```shell
-pdm test
+```sh
+uv run test
 ```
 
 ### Available scripts

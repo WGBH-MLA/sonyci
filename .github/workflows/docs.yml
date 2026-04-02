@@ -4,10 +4,15 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - main
-      - docs
+    - main
+    - docs
+
+permissions:
+  contents: write
 
 jobs:
   build:
     name: 📓 Build and deploy docs
-    uses: WGBH-MLA/.github/.github/workflows/docs.yml@main
+    uses: WGBH-MLA/.github/.github/workflows/docs.yml@v1
+    with:
+      uv_args: --extra docs

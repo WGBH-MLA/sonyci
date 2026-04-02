@@ -1,16 +1,17 @@
 from json import dumps, loads
 from pathlib import Path
-from typing import Annotated, Optional
+from typing import Annotated
 from urllib.request import urlretrieve
 
-from requests_oauth2client.tokens import BearerToken, BearerTokenSerializer
+from requests_oauth2client import BearerToken, TokenSerializer
 from typer import Argument, Context, Exit, Option, Typer
 from typer.main import get_group
 
 from sonyci import SonyCi
+from sonyci._version import __version__
 from sonyci.log import log
 from sonyci.types import ProxyType
-from sonyci.utils import save_token_to_file
+from sonyci.utils import get_token, save_token_to_file
 
 app = Typer(context_settings={'help_option_names': ['-h', '--help']})
 
@@ -23,7 +24,6 @@ def parse_bearer_token(token: str) -> BearerToken:
 def version_callback(value: bool):
     """Print the version of the program and exit."""
     if value:
-        from ._version import __version__
 
         print(f'v{__version__}')
 
@@ -57,7 +57,6 @@ def login(
     test: bool = Option(False, '--test', '-t', help='Skips saving the token.'),
 ):
     """Login to Sony CI."""
-    from sonyci.utils import get_token
 
     token: BearerToken = get_token(
         username,
@@ -115,7 +114,7 @@ def download(
     id: Annotated[str, Argument(..., help='The SonyCi ID of the file to download')],
     proxy: Annotated[ProxyType, Option('--proxy', '-p', help='Download ')] = None,
     output: Annotated[
-        Optional[Path],
+        Path | None,
         Option('--output', '-o', help='The path to download the file to'),
     ] = None,
 ):
@@ -201,8 +200,8 @@ def main(
     if not token:  # and if command is not login
         log.debug('no token provided, trying to load from .token')
         try:
-            with open('.token') as f:
-                token = BearerTokenSerializer().loads(f.read())
+            with open('.token', 'rb') as f:
+                token = TokenSerializer().loads(f.read())
                 log.debug('loaded token from .token')
                 ctx.params['token'] = token
         except FileNotFoundError:
