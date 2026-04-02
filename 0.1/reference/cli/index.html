@@ -844,9 +844,7 @@
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>sonyci/cli.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">145</span>
 <span class="normal">146</span>
 <span class="normal">147</span>
 <span class="normal">148</span>
@@ -856,14 +854,20 @@
 <span class="normal">152</span>
 <span class="normal">153</span>
 <span class="normal">154</span>
-<span class="normal">155</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">asset</span><span class="p">(</span>
     <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
     <span class="n">asset</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Argument</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The asset ID to search for&#39;</span><span class="p">)],</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Search for files in a Sony CI workspace&quot;&quot;&quot;</span>
     <span class="n">ci</span> <span class="o">=</span> <span class="n">SonyCi</span><span class="p">(</span>
-        <span class="n">t</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">],</span> <span class="n">workspace_id</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;workspace_id&#39;</span><span class="p">]</span>
+        <span class="n">t</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">],</span>
+        <span class="n">workspace_id</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;workspace_id&#39;</span><span class="p">],</span>
+        <span class="n">max_tries</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;retry&#39;</span><span class="p">],</span>
     <span class="p">)</span>
     <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;asset </span><span class="si">{</span><span class="n">asset</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">ci</span><span class="o">.</span><span class="n">asset</span><span class="p">(</span><span class="n">asset</span><span class="p">)</span>
@@ -891,9 +895,7 @@
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>sonyci/cli.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">113</span>
 <span class="normal">114</span>
 <span class="normal">115</span>
 <span class="normal">116</span>
@@ -920,7 +922,9 @@
 <span class="normal">137</span>
 <span class="normal">138</span>
 <span class="normal">139</span>
-<span class="normal">140</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">download</span><span class="p">(</span>
     <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
     <span class="nb">id</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Argument</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The SonyCi ID of the file to download&#39;</span><span class="p">)],</span>
@@ -931,7 +935,7 @@
     <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Download a file from Sony CI&quot;&quot;&quot;</span>
-    <span class="n">ci</span> <span class="o">=</span> <span class="n">SonyCi</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">])</span>
+    <span class="n">ci</span> <span class="o">=</span> <span class="n">SonyCi</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">],</span> <span class="n">max_tries</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;retry&#39;</span><span class="p">])</span>
     <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;download id: </span><span class="si">{</span><span class="nb">id</span><span class="si">}</span><span class="s1"> proxy: </span><span class="si">{</span><span class="n">proxy</span><span class="si">}</span><span class="s1"> output: </span><span class="si">{</span><span class="n">output</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">ci</span><span class="o">.</span><span class="n">asset_download</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span>
     <span class="n">link</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span>
@@ -982,7 +986,7 @@
 <span class="normal">79</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Argument</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The path to GET&#39;</span><span class="p">)]):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a GET request to Sony CI.&quot;&quot;&quot;</span>
-    <span class="n">ci</span> <span class="o">=</span> <span class="n">SonyCi</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">])</span>
+    <span class="n">ci</span> <span class="o">=</span> <span class="n">SonyCi</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">],</span> <span class="n">max_tries</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;retry&#39;</span><span class="p">])</span>
     <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;GET </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">ci</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
     <span class="n">log</span><span class="o">.</span><span class="n">success</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
@@ -1120,7 +1124,7 @@
     <span class="n">data</span><span class="o">=</span><span class="n">Argument</span><span class="p">(</span><span class="n">help</span><span class="o">=</span><span class="s1">&#39;The data to POST&#39;</span><span class="p">),</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Make a POST request to Sony CI.&quot;&quot;&quot;</span>
-    <span class="n">ci</span> <span class="o">=</span> <span class="n">SonyCi</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">])</span>
+    <span class="n">ci</span> <span class="o">=</span> <span class="n">SonyCi</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">],</span> <span class="n">max_tries</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;retry&#39;</span><span class="p">])</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">loads</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
     <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;POST </span><span class="si">{</span><span class="n">path</span><span class="si">}</span><span class="s1"> </span><span class="si">{</span><span class="n">data</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">ci</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
@@ -1159,13 +1163,17 @@
 <span class="normal">105</span>
 <span class="normal">106</span>
 <span class="normal">107</span>
-<span class="normal">108</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">command</span><span class="p">()</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">search</span><span class="p">(</span>
     <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="n">Annotated</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Argument</span><span class="p">(</span><span class="o">...</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The query to search for&#39;</span><span class="p">)]</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Search for files in a Sony CI workspace&quot;&quot;&quot;</span>
     <span class="n">ci</span> <span class="o">=</span> <span class="n">SonyCi</span><span class="p">(</span>
-        <span class="n">t</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">],</span> <span class="n">workspace_id</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;workspace_id&#39;</span><span class="p">]</span>
+        <span class="n">t</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;token&#39;</span><span class="p">],</span>
+        <span class="n">workspace_id</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;workspace_id&#39;</span><span class="p">],</span>
+        <span class="n">max_tries</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;retry&#39;</span><span class="p">],</span>
     <span class="p">)</span>
     <span class="n">log</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;search </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">ci</span><span class="o">.</span><span class="n">workspace_search</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
