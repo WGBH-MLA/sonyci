@@ -6,7 +6,7 @@ from requests_oauth2client.tokens import BearerToken
 
 from sonyci.config import Config
 from sonyci.log import log
-from sonyci.utils import get_token, json, retry
+from sonyci.utils import get_token, json, retry, login, save_token_to_file
 
 
 class SonyCi(Config):
@@ -75,6 +75,17 @@ class SonyCi(Config):
             ```
         """
         return ApiClient(self.base_url, auth=self.auth)
+
+    def login(self, save_token=True) -> None:
+        """Login to SonyCI and cache the token, and save to file."""
+        self.t = login(
+            username=self.username,
+            password=self.password.get_secret_value(),
+            client_id=self.client_id,
+            client_secret=self.client_secret.get_secret_value(),
+        )
+        if save_token:
+            save_token_to_file(self.t)
 
     def workspaces(self) -> list:
         return self.get('workspaces')['items']
