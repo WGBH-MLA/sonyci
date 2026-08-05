@@ -54,10 +54,11 @@ def login(
 ) -> BearerToken:
     """Login to SonyCI, save the token to a file, and return a BearerToken."""
     try:
+        log.trace('Trying to load token from file')
         token = get_token_from_file()
         log.debug('Loaded token from file')
         if not token.is_expired():
-            log.debug('Token is valid')
+            log.debug(f'Token is not expired (expires at {token.expires_at})')
             return token
     except FileNotFoundError:
         log.debug('Token file not found, getting new token')
