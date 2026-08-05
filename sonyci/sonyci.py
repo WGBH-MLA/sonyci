@@ -6,7 +6,7 @@ from requests_oauth2client.tokens import BearerToken
 
 from sonyci.config import Config
 from sonyci.log import log
-from sonyci.utils import get_token, json, retry, login, save_token_to_file
+from sonyci.utils import get_token, json, login, retry, save_token_to_file
 
 
 class SonyCi(Config):

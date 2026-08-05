@@ -43,9 +43,17 @@ def save_token_to_file(token: BearerToken, filename: str = '.token') -> None:
     with open(filename, 'wb') as f:
         f.write(TokenSerializer().dumps(token))
 
-def login(username: str, password: str, client_id: str, client_secret: str, token_url: str = TOKEN_URL, save_token: bool = True) -> BearerToken:
+
+def login(
+    username: str,
+    password: str,
+    client_id: str,
+    client_secret: str,
+    token_url: str = TOKEN_URL,
+    save_token: bool = True,
+) -> BearerToken:
     """Login to SonyCI, save the token to a file, and return a BearerToken."""
-    try: 
+    try:
         token = get_token_from_file()
         log.debug('Loaded token from file')
         if not token.is_expired():
@@ -57,6 +65,7 @@ def login(username: str, password: str, client_id: str, client_secret: str, toke
     if save_token:
         save_token_to_file(token)
     return token
+
 
 def json(func) -> callable:
     """Decorator for calling .json() on Response objects."""
