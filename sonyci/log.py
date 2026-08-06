@@ -10,7 +10,11 @@ try:
     from rich.logging import RichHandler
 
     # RichHandler renders its own time/level, so only pass the message.
-    _sink = RichHandler(console=Console(stderr=True), rich_tracebacks=True, log_time_format='[%H:%M:%S.%f]')
+    _sink = RichHandler(
+        console=Console(stderr=True),
+        rich_tracebacks=True,
+        log_time_format='[%H:%M:%S.%f]',
+    )
     _format = '{message}'
 except ImportError:
     _sink = sys.stderr
