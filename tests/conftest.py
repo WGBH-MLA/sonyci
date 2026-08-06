@@ -87,16 +87,14 @@ def runner(token, pytestconfig):
 
 
 @fixture
-def error_runner():
-    return CliRunner(mix_stderr=False)
-
+def login_runner():
+    return CliRunner()
 
 @fixture
 def config(pytestconfig):
     if pytestconfig.getoption('record'):
         return Config.from_env()
     return Config.from_toml('./tests/sonyci/sonyci.toml')
-
 
 @fixture
 def asset_id():
