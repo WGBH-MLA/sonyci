@@ -34,17 +34,41 @@ def get_token(
     return BearerToken(**response.json())
 
 
-def get_token_from_file(filename: str = '.token'):
+def get_token_from_file(filename: str = '.token') -> BearerToken:
     with open(filename) as f:
         return TokenSerializer().loads(f.read())
 
 
-def save_token_to_file(token: BearerToken, filename: str = '.token'):
+def save_token_to_file(token: BearerToken, filename: str = '.token') -> None:
     with open(filename, 'wb') as f:
         f.write(TokenSerializer().dumps(token))
 
 
-def json(func):
+def login(
+    username: str,
+    password: str,
+    client_id: str,
+    client_secret: str,
+    token_url: str = TOKEN_URL,
+    save_token: bool = True,
+) -> BearerToken:
+    """Login to SonyCI, save the token to a file, and return a BearerToken."""
+    try:
+        log.trace('Trying to load token from file')
+        token = get_token_from_file()
+        log.debug('Loaded token from file')
+        if not token.is_expired():
+            log.debug(f'Token is not expired (expires at {token.expires_at})')
+            return token
+    except FileNotFoundError:
+        log.debug('Token file not found, getting new token')
+    token = get_token(username, password, client_id, client_secret, token_url)
+    if save_token:
+        save_token_to_file(token)
+    return token
+
+
+def json(func) -> callable:
     """Decorator for calling .json() on Response objects."""
 
     def inner(*args, **kwargs):
@@ -53,7 +77,7 @@ def json(func):
     return inner
 
 
-def retry(func):
+def retry(func) -> callable:
     """Decorator for retrying a function call after a rate limit error."""
 
     def inner(*args, **kwargs):

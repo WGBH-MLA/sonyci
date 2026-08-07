@@ -6,8 +6,8 @@ from sonyci.cli import app
 
 
 @mark.vcr()
-def test_login(runner, config):
-    result = runner.invoke(
+def test_login(login_runner, config):
+    result = login_runner.invoke(
         app,
         [
             '--client-id',
@@ -27,8 +27,8 @@ def test_login(runner, config):
 
 
 @mark.vcr()
-def test_bad_login(runner):
-    result = runner.invoke(
+def test_bad_login(login_runner):
+    result = login_runner.invoke(
         app,
         [
             '--client-id',
@@ -51,12 +51,12 @@ def test_bad_login(runner):
     env.get('CI_USERNAME') is not None,
     reason='CI_USERNAME env var set. Not checking for missing username error when config is provided through env vars',
 )
-def test_missing_username(runner, pytestconfig):
+def test_missing_username(login_runner, pytestconfig):
     if pytestconfig.getoption('record'):
         mark.skip(
             'This is testing the error handling of typer when missing required options and should not run in record mode when using env vars for config'
         )
-    result = runner.invoke(
+    result = login_runner.invoke(
         app,
         [
             '--client-id',
