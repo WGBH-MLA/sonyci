@@ -87,8 +87,8 @@ def runner(token, pytestconfig):
 
 
 @fixture
-def error_runner():
-    return CliRunner(mix_stderr=False)
+def login_runner():
+    return CliRunner()
 
 
 @fixture

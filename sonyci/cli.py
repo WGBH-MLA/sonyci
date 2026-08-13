@@ -7,11 +7,10 @@ from requests_oauth2client import BearerToken, TokenSerializer
 from typer import Argument, Context, Exit, Option, Typer
 from typer.main import get_group
 
-from sonyci import SonyCi
+from sonyci import SonyCi, utils
 from sonyci._version import __version__
-from sonyci.log import log
+from sonyci.log import configure, log
 from sonyci.types import ProxyType
-from sonyci.utils import get_token, save_token_to_file
 
 app = Typer(context_settings={'help_option_names': ['-h', '--help']})
 
@@ -57,15 +56,14 @@ def login(
     test: bool = Option(False, '--test', '-t', help='Skips saving the token.'),
 ):
     """Login to Sony CI."""
-
-    token: BearerToken = get_token(
-        username,
-        password,
-        ctx.parent.params.get('client_id'),
-        ctx.parent.params.get('client_secret'),
-    )
-    if not test:
-        save_token_to_file(token, '.token')
+    token = ctx.parent.params.get('token')
+    if token and not token.is_expired():
+        log.info('Valid token found, skipping login.')
+        return
+    client_id = ctx.parent.params.get('client_id')
+    client_secret = ctx.parent.params.get('client_secret')
+    log.trace(f'logging in with username: {username} / client_id: {client_id}')
+    utils.login(username, password, client_id, client_secret, save_token=not test)
     log.success('logged in to Sony CI!')
 
 
@@ -75,7 +73,7 @@ def get(ctx: Context, path: Annotated[str, Argument(..., help='The path to GET')
     ci = SonyCi(t=ctx.parent.params['token'], max_tries=ctx.parent.params['retry'])
     log.trace(f'GET {path}')
     result = ci(path)
-    log.success(result)
+    log.trace(result)
     print(dumps(result))
 
 
@@ -88,9 +86,9 @@ def post(
     """Make a POST request to Sony CI."""
     ci = SonyCi(t=ctx.parent.params['token'], max_tries=ctx.parent.params['retry'])
     data = loads(data)
-    log.debug(f'POST {path} {data}')
+    log.trace(f'POST {path} {data}')
     result = ci.post(path, data)
-    log.success(result)
+    log.trace(result)
     print(dumps(result))
 
 
@@ -106,7 +104,7 @@ def search(
     )
     log.trace(f'search {query}')
     result = ci.workspace_search(query)
-    log.success(result)
+    log.trace(result)
     print(dumps(result))
 
 
@@ -155,7 +153,7 @@ def asset(
     )
     log.trace(f'asset {asset}')
     result = ci.asset(asset)
-    log.success(result)
+    log.trace(result)
     print(dumps(result))
 
 
@@ -171,6 +169,9 @@ def main(
         help='Show the version and exit.',
     ),
     verbose: bool = Option(None, '--verbose', '-v', help='Show verbose output.'),
+    quiet: bool = Option(
+        None, '--quiet', '-q', help='Suppress output. Overrides --verbose.'
+    ),
     token: Annotated[
         BearerToken,
         Option(
@@ -206,15 +207,19 @@ def main(
         envvar='CI_RETRY',
     ),
 ):
-    if not verbose:
+    if verbose:
+        configure('DEBUG')
+    if quiet:
         log.remove()
     if not token:  # and if command is not login
-        log.debug('no token provided, trying to load from .token')
+        log.trace('no token provided, trying to load from .token')
         try:
             with open('.token', 'rb') as f:
                 token = TokenSerializer().loads(f.read())
-                log.debug('loaded token from .token')
-                ctx.params['token'] = token
+            log.debug('loaded token from .token')
+            if token.is_expired():
+                log.warning('token is expired, please login again')
+            ctx.params['token'] = token
         except FileNotFoundError:
             log.debug('no .token file found')
 
