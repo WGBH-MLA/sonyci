@@ -9,7 +9,7 @@ from typer.main import get_group
 
 from sonyci import SonyCi, utils
 from sonyci._version import __version__
-from sonyci.log import configure, log
+from sonyci.log import LOG_LEVEL, configure, log
 from sonyci.types import ProxyType
 
 app = Typer(context_settings={'help_option_names': ['-h', '--help']})
@@ -207,10 +207,9 @@ def main(
         envvar='CI_RETRY',
     ),
 ):
-    if verbose:
-        configure('DEBUG')
+    configure('DEBUG' if verbose else LOG_LEVEL)
     if quiet:
-        log.remove()
+        log.disable('sonyci')
     if not token:  # and if command is not login
         log.trace('no token provided, trying to load from .token')
         try:
