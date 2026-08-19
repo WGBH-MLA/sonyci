@@ -22,9 +22,10 @@ except ImportError:
 
 
 def configure(level: str = LOG_LEVEL) -> None:
-    """(Re)configure logging to emit ``sonyci`` records at ``level``."""
+    """Take over logging for the CLI: emit ``sonyci`` records at ``level``.
+
+    Only call this from the application entry point, never at import time, as
+    it mutates the process-wide loguru logger.
+    """
     log.remove()
     log.add(_sink, format=_format, filter='sonyci', level=level)
-
-
-configure()
