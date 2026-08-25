@@ -1,6 +1,7 @@
 from time import sleep
 
-from requests import HTTPError, post
+from requests import post
+from requests.exceptions import ConnectionError, HTTPError, RequestException, Timeout
 from requests_oauth2client import BearerToken, TokenSerializer
 
 from sonyci.config import TOKEN_URL
@@ -77,29 +78,54 @@ def json(func) -> callable:
     return inner
 
 
-def retry(func) -> callable:
+DEFAULT_RETRY_HTTP_CODES = [429, 500, 502, 503, 504]
+
+
+def retry(
+    func: callable, http_codes: list = DEFAULT_RETRY_HTTP_CODES, initial_delay: int = 1
+) -> callable:
     """Decorator for retrying a function call after a rate limit error."""
 
     def inner(*args, **kwargs):
         max_tries: int = (
             args[0].max_tries if args and hasattr(args[0], 'max_tries') else 5
         )
-        for _ in range(max_tries):
+        for attempt_number in range(max_tries):
+            # Reset the retry_after value before each attempt
+            retry_after = None
             try:
                 return func(*args, **kwargs)
             except HTTPError as e:
-                if e.response.status_code != 429:
-                    log.error(f'HTTPError {e.response.status_code}: {e}')
+                if e.response.status_code not in http_codes:
+                    log.error(
+                        f'HTTPError {e.response.status_code} {e} on attempt {attempt_number + 1}'
+                    )
                     raise e
-
-                # Get the retry-after header, if it exists
-                retry_after = e.response.headers.get('Retry-After')
-                if not retry_after:
-                    log.error('No Retry-After header found')
-                    raise e
-                retry_after = int(retry_after)
-                log.warning(f'Rate limited. Retrying after {retry_after} seconds...')
-                sleep(retry_after + 1)
+                if e.response.status_code == 429:
+                    log.warning(f'Rate limited: {e} on attempt {attempt_number + 1}')
+                    # Get the retry-after header, if it exists
+                    retry_after = int(
+                        e.response.headers.get('Retry-After', initial_delay)
+                    )
+                    log.debug(f'Retry-After header: {retry_after}s')
+            # Catch network errors and retry
+            except ConnectionError as ce:
+                log.warning(
+                    f'Network error occurred (DNS, refused connection, etc.): {ce}'
+                )
+            except Timeout as te:
+                log.warning(f'The request timed out: {te}')
+            except RequestException as re:
+                log.warning(
+                    f'An ambiguous error occurred while handling your request: {re}'
+                )
+            # Wait before retrying, except last time
+            if attempt_number < max_tries - 1:
+                wait_time = retry_after or (attempt_number + 1) * initial_delay
+                log.debug(
+                    f'Attempt {attempt_number + 1} failed. Waiting {wait_time}s before retrying...'
+                )
+                sleep(wait_time)
         log.error(f'Failed after {max_tries} tries')
         raise RetryError(f'Failed after {max_tries} tries')
 
