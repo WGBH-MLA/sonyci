@@ -87,7 +87,7 @@ def post(
     ci = SonyCi(t=ctx.parent.params['token'], max_tries=ctx.parent.params['retry'])
     data = loads(data)
     log.trace(f'POST {path} {data}')
-    result = ci.post(path, data)
+    result = ci.post(path=path, data=data)
     log.trace(result)
     print(dumps(result))
 
