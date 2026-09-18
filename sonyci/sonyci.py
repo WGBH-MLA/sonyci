@@ -8,6 +8,8 @@ from sonyci.config import Config
 from sonyci.log import log
 from sonyci.utils import get_token, json, login, retry, save_token_to_file
 
+JSON_BODY_METHODS = {'POST', 'PUT'}
+
 
 class SonyCi(Config):
     model_config: ClassVar = {'arbitrary_types_allowed': True}
@@ -120,15 +122,26 @@ class SonyCi(Config):
 
     @json
     @retry
-    def get(self, *args, **kwargs):
-        log.debug(f'GET {args} {kwargs}')
-        return self.client.get(*args, **kwargs)
+    def request(self, method: str, *args, **kwargs):
+        log.debug(f'{method} {args} {kwargs}')
+        if method in JSON_BODY_METHODS:
+            kwargs['headers'] = {
+                **kwargs.get('headers', {}),
+                'Content-Type': 'application/json',
+            }
+        return getattr(self.client, method.lower())(*args, **kwargs)
 
-    @json
-    @retry
+    def get(self, *args, **kwargs):
+        return self.request('GET', *args, **kwargs)
+
     def post(self, *args, **kwargs):
-        log.debug(f'POST {args} {kwargs}')
-        return self.client.post(*args, **kwargs)
+        return self.request('POST', *args, **kwargs)
+
+    def put(self, *args, **kwargs):
+        return self.request('PUT', *args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        return self.request('DELETE', *args, **kwargs)
 
     def __call__(self, path: str, **kwds: Any) -> Any:
         """Default action: make GET request to Sony CI."""
