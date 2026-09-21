@@ -67,29 +67,50 @@ def login(
     log.success('logged in to Sony CI!')
 
 
+def request(ctx: Context, method: str, path: str, data: str | None = None):
+    """Make a request to Sony CI and print the JSON response."""
+    ci = SonyCi(t=ctx.parent.params['token'], max_tries=ctx.parent.params['retry'])
+    kwargs = {'data': loads(data)} if data is not None else {}
+    log.trace(f'{method} {path} {kwargs.get("data", "")}')
+    result = getattr(ci, method.lower())(path, **kwargs)
+    log.trace(result)
+    print(dumps(result))
+
+
 @app.command()
 def get(ctx: Context, path: Annotated[str, Argument(..., help='The path to GET')]):
     """Make a GET request to Sony CI."""
-    ci = SonyCi(t=ctx.parent.params['token'], max_tries=ctx.parent.params['retry'])
-    log.trace(f'GET {path}')
-    result = ci(path)
-    log.trace(result)
-    print(dumps(result))
+    request(ctx, 'GET', path)
 
 
 @app.command()
 def post(
     ctx: Context,
     path: Annotated[str, Argument(..., help='The path to POST')],
-    data=Argument(help='The data to POST'),
+    data: Annotated[str, Argument(help='The data to POST')],
 ):
     """Make a POST request to Sony CI."""
-    ci = SonyCi(t=ctx.parent.params['token'], max_tries=ctx.parent.params['retry'])
-    data = loads(data)
-    log.trace(f'POST {path} {data}')
-    result = ci.post(path=path, data=data)
-    log.trace(result)
-    print(dumps(result))
+    request(ctx, 'POST', path, data)
+
+
+@app.command()
+def put(
+    ctx: Context,
+    path: Annotated[str, Argument(..., help='The path to PUT')],
+    data: Annotated[str, Argument(help='The data to PUT')],
+):
+    """Make a PUT request to Sony CI."""
+    request(ctx, 'PUT', path, data)
+
+
+@app.command()
+def delete(
+    ctx: Context,
+    path: Annotated[str, Argument(..., help='The path to DELETE')],
+    data: Annotated[str | None, Argument(help='The data to DELETE')] = None,
+):
+    """Make a DELETE request to Sony CI."""
+    request(ctx, 'DELETE', path, data)
 
 
 @app.command()
